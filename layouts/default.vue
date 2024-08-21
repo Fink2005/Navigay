@@ -2,15 +2,8 @@
   <v-app dark>
     <div>
       <v-toolbar flat dense height="42px">
-      <v-toolbar-items class="d-flex justify-end align-center mr-3">
-        <a href="https://navigo.club/en/about-us" class="mx-3 subtitle-2 text-decoration-none cursor-pointer">About us</a>
-        <a href="https://navigo.club/en/contact-us" class="mx-3 subtitle-2 text-decoration-none cursor-pointer">Contact us</a>
-        <a href="https://navigo.club/en/press-kit" class="mx-3 subtitle-2 text-decoration-none cursor-pointer">Press kit</a>
-        <a href="https://navigo.club/en/lakes" class="mx-3 subtitle-2 text-decoration-none cursor-pointer">Lakes</a>
-        <a href="https://navigo.club/en/rules" class="mx-3 subtitle-2 text-decoration-none cursor-pointer">Rules</a>
-        <a href="https://navigo.club/en/blog" class="mx-3 subtitle-2 text-decoration-none cursor-pointer">Blog</a>
-        <a href="https://3ours.ca/en" class="mx-3 subtitle-2 text-decoration-none cursor-pointer">Hosting</a>
-        <a href="https://navigo.club/en/franchisee" class="mx-3 subtitle-2 text-decoration-none cursor-pointer">Become a franchisee</a>
+      <v-toolbar-items class="layout wrap justify-end align-center mr-3">
+        <a :href=item.link class="mx-3 subtitle-2 text-decoration-none cursor-pointer" v-for="item in navLinks" :key="item">{{ item.text }}</a>
         <div class="mx-3 subtitle-2 cursor-pointer">French</div>
       </v-toolbar-items>
       </v-toolbar>
@@ -20,12 +13,7 @@
       <v-toolbar flat dense>
         <v-toolbar-items class="d-flex align-center">
           <a href="/" class="ml-n1 ml-sm-2 ml-md-4 mr-3 mb-sm-3"><v-img src="https://rc.navigo.club/_nuxt/img/logo_mobile.b5097fc.svg" height="40px" max-width="500px"></v-img></a>
-          <a href="/subscription" class="mx-2 subtitle-2 font-weight-bold cursor-pointer text-decoration-none">Subcriptions</a>
-          <a href="https://navigo.club/en#advantages" class="mx-2 subtitle-2 font-weight-bold cursor-pointer text-decoration-none" >Advantages</a>
-          <a href="https://navigo.club/en#" class="mx-2 subtitle-2 font-weight-bold cursor-pointer text-decoration-none">Functioning</a>
-          <a href="https://navigo.club/en/the-boats" class="mx-2 subtitle-2 font-weight-bold cursor-pointer text-decoration-none">The boats</a>
-          <a href="https://navigo.club/en#" class="mx-2 subtitle-2 font-weight-bold cursor-pointer text-decoration-none">Boating Licence</a>
-          <a href="/pricing" class="mx-2 subtitle-2 font-weight-bold cursor-pointer text-decoration-none">Pricing</a>
+          <a :href=item.link class="mx-2 subtitle-2 font-weight-bold cursor-pointer text-decoration-none" v-for="item in menuLinks" :key="item">{{ item.text }}</a>
         </v-toolbar-items> 
       </v-toolbar>
       <v-btn color="#1976d2" rounded x-large class="mr-6">rent a boat</v-btn> 
@@ -45,6 +33,24 @@ export default {
   name: 'DefaultLayout',
   data () {
     return {
+      navLinks : [
+        {link: 'https://navigo.club/en/about-us', text: 'About us'},
+        {link: 'https://navigo.club/en/contact-us', text: 'Contact us'},
+        {link: 'https://navigo.club/en/press-kit', text: 'Press kit'},
+        {link: 'https://navigo.club/en/lakes', text: 'Lakes'},
+        {link: 'https://navigo.club/en/rules', text: 'Rules'},
+        {link: 'https://navigo.club/en/blog', text: 'Blog'},
+        {link: 'https://3ours.ca/en', text: 'Hosting'},
+        {link: 'https://navigo.club/en/franchisee', text: 'Become a franchisee'},
+      ],
+      menuLinks : [
+        {link: '/subscription', text: 'Subcriptions'},
+        {link: 'https://navigo.club/en#advantages', text: 'Advantages'},
+        {link: 'https://navigo.club/en#', text: 'Functioning'},
+        {link: 'https://navigo.club/en/the-boats', text: 'The boats'},
+        {link: 'https://navigo.club/en#', text: 'Boating Licence'},
+        {link: '/pricing', text: 'Pricing'}
+      ]
     }
   }
 }
