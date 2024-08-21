@@ -40,11 +40,11 @@
         </v-row>
       </v-header>
   
-      <v-divider></v-divider>
   
       <!-- Step Progress Line -->
       <div class="progress-container">
             <div class="progress-bar">
+                <div class="arrow-complete"></div>
                 <div class="step completed">1</div>
                 <div class="arrow"></div>
                 <div class="step active">2</div>
@@ -158,37 +158,36 @@
 .step {
     width: 40px;
     height: 40px;
-    background-color: #cfe9f5;
+    background-color: #bcefff;
     border-radius: 50%;
     text-align: center;
     line-height: 40px;
     font-size: 18px;
     font-weight: bold;
-    color: #fff;
+    color: #1a2444;
     z-index: 1;
 }
 
 .step.completed {
     background-color: #2a3a4e;
+    color: #fff;
 }
 
 .step.active {
-    background-color: #5db1ff;
+    background-color: #bcefff;
 }
 
 .arrow {
-    width: 0;
-    height: 0;
-    border-left: 20px solid #cfe9f5;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
+    width: 22%;
+    height: 5;
+    border: solid #bcefff 4px;
 }
 
-.step.completed ~ .arrow {
-    border-left-color: #2a3a4e;
-}
 
-.step.active ~ .arrow {
-    border-left-color: #5db1ff;
+
+.arrow-complete {
+    width: 22%;
+    height: 5;
+    border: solid #2a3a4e 4px;
 }
 </style>
