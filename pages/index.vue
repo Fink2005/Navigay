@@ -1,5 +1,5 @@
 <template>
-  
+  <nghia></nghia>
 </template>
 
 <script>
