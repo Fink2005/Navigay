@@ -1,5 +1,6 @@
 <template>
-  
+    <chillman>
+    </chillman>
 </template>
 
 <script>
