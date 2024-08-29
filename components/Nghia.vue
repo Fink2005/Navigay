@@ -39,155 +39,148 @@
           </v-col>
         </v-row>
       </v-header>
+
+      <!-- Step 2 -->
+
+      <v-stepper v-model="e1">
+        <v-stepper-header  fluid style="background-color: #c4f1ff5f; box-shadow: none; border: 0">
+
+          <v-divider color="#1a2444" class="ml-12" :style="{ color: e1 >= 1 ? '#1a2444' : '#bcefff', borderColor: e1 >= 1 ? '#1a2444' : '#bcefff' }" style="border: solid 5px;"></v-divider>
+          
+          <v-stepper-step :complete="e1 > 1" step="1" color="#1a2444" style="color: #bcefff;"> 
+              
+          </v-stepper-step>
+
+          <v-divider :style="{ color: e1 >= 2 ? '#1a2444' : '#bcefff', borderColor: e1 >= 2 ? '#1a2444' : '#bcefff' }" style="border: solid 5px;"></v-divider>
+
+          <v-stepper-step :complete="e1 > 2" step="2" color="#1a2444">
+              
+          </v-stepper-step>
+
+          <v-divider :style="{ color: e1 >= 3 ? '#1a2444' : '#bcefff', borderColor: e1 >= 3 ? '#1a2444' : '#bcefff' }" style="border: solid 5px;"></v-divider>
+
+          <v-stepper-step :complete="e1 > 3" step="3" color="#1a2444">
+              
+          </v-stepper-step>
+
+          <v-divider :style="{ color: e1 >= 4 ? '#1a2444' : '#bcefff', borderColor: e1 >= 4 ? '#1a2444' : '#bcefff' }" style="border: solid 5px;"></v-divider>
+
+          <v-stepper-step step="4" class="mr-12" color="#1a2444">
+              
+          </v-stepper-step>
+        </v-stepper-header>
+
+        <v-stepper-items>
+            <v-stepper-content step="1">
+                <v-card class="mb-12"  height="200px" style="box-shadow: none;">
+
+                </v-card>
+
+                
+
+                <v-btn color="#1a2444" @click="e1 = 2" class="white--text" width="25%">
+                    Next Step
+
+                    <v-icon>mdi-chevron-right</v-icon>
+                </v-btn>
+
+            </v-stepper-content>
+
+            <v-stepper-content step="2">
+                <v-card class="mb-12"  height="200px" style="box-shadow: none;">
+                    <div>
+
+                    </div>
+
+                </v-card>
+
+                <v-btn text @click="e1 = 1" width="25%" class="pa-03" style="border: thin solid ;">
+                  <v-icon>mdi-chevron-left</v-icon>
+
+                  Previous
+
+                </v-btn>
+                
+                <v-btn color="#1a2444" @click = "e1 = 3" class="white--text pa-03" width="25%">
+                  Next Step
+
+                  <v-icon>mdi-chevron-right</v-icon>
+                </v-btn>
+
+            </v-stepper-content>
+
+            <v-stepper-content step="3">
+                <v-card class="mb-12"  height="200px" style="box-shadow: none;">
+        
+                </v-card>
+          
+                <v-btn text  @click="e1 = 2" width="25%" class="pa-03" style="border: thin solid ;"> 
+                  <v-icon>mdi-chevron-left</v-icon>
+
+                  Previous
+
+                </v-btn>
+                
+                <v-btn color="#1a2444" @click="e1 = 4" class="white--text pa-03" width="25%">
+                  Next Step
+                  <v-icon> mdi-chevron-right</v-icon>
+                </v-btn>
+                
+            </v-stepper-content>
+
+            <v-stepper-content step="4">
+                <v-card class="mb-12"  height="200px" style="box-shadow: none;">
+        
+                </v-card>
+
+                <v-btn text @click="e1 = 3" width="25%" class="pa-03" style="border: thin solid ;">
+                  <v-icon>mdi-chevron-left</v-icon>
+
+                  Previous
+                </v-btn>
+
+                <v-btn color="#1a2444" @click="e1 = 1" class="white--text pa-03" width="25%">
+                  Next Step
   
+                  <v-icon>mdi-chevron-right</v-icon>
+                </v-btn>
+              </v-stepper-content>
+
+            
+        </v-stepper-items>
+      </v-stepper>
   
-      <!-- Step Progress Line -->
-      <div class="progress-container">
-            <div class="progress-bar">
-                <div class="arrow-complete"></div>
-                <div class="step completed">1</div>
-                <div class="arrow"></div>
-                <div class="step active">2</div>
-                <div class="arrow"></div>
-                <div class="step">3</div>
-                <div class="arrow"></div>
-                <div class="step">4</div>
-            </div>
-        </div>
-  
-      <!-- White Card Section -->
-      <v-container>
-        <v-row>
-          <v-col cols="12">
-            <v-card>
-              <v-card-title>
-                <v-icon class="mr-2" color="blue">mdi-numeric-1-circle</v-icon>
-                <span class="font-weight-bold">Choose time</span>
-              </v-card-title>
-             
-              <v-card-text>
-                <v-row class="align-center">
-                  <v-col cols="12" md="3">
-                    <v-menu
-                      v-model="menu"
-                      :close-on-content-click="false"
-                      :nudge-right="40"
-                      transition="scale-transition"
-                      offset-y
-                      min-width="290px"
-                    >
-                      <template v-slot:activator="{ on, attrs }">
-                        <v-text-field
-                          v-model="date"
-                          label="Select Date"
-                          prepend-icon="mdi-calendar"
-                          readonly
-                          v-bind="attrs"
-                          v-on="on"
-                        ></v-text-field>
-                      </template>
-                      <v-date-picker
-                        v-model="date"
-                        @input="menu = false"
-                      ></v-date-picker>
-                    </v-menu>
-                  </v-col>
-  
-                  <v-col cols="12" md="9">
-                    <v-row>
-                      <v-col
-                        v-for="(day, index) in days"
-                        :key="index"
-                        cols="2"
-                        class="text-center"
-                      >
-                        <v-icon color="green">mdi-clock-outline</v-icon>
-                        <div>{{ day }}</div>
-                      </v-col>
-                    </v-row>
-                  </v-col>
-                </v-row>
-              </v-card-text>
-              <v-divider></v-divider>
-              <v-card-actions class="justify-end">
-                <v-btn color="primary" dark>Next Step</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
     </div>
   </template>
   
   <script>
-  export default {
-    data() {
+export default {
+  data() {
+    return {
+      e1: 1 // Initial step
+    };
+  },
+  methods: {
+    stepStyle(stepNumber) {
       return {
-        menu: false,
-        date: '',
-        days: [
-          '21 August',
-          '22 August',
-          '23 August',
-          '24 August',
-          '25 August',
-          '26 August',
-        ],
-        step: 1,
+        color: this.e1 >= stepNumber ? '#1a2444' : '#c4f1ff5f',
+        borderColor: this.e1 >= stepNumber ? '#1a2444' : '#c4f1ff5f',
+        fontSize: '24px', // Adjust the font size of the step number
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       };
     },
-  };
-  </script>
-  
-  <style scoped>
-.progress-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 100px;
-    background-color: #E5F6FC;
-}
+    stepNumberStyle(stepNumber) {
+      return {
+        color: this.e1 >= stepNumber ? '#1a2444' : '#c4f1ff5f',
+      };
+    }
+  }
+};
+</script>
 
-.progress-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    position: relative;
-}
+<style scoped>
 
-.step {
-    width: 40px;
-    height: 40px;
-    background-color: #bcefff;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 40px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #1a2444;
-    z-index: 1;
-}
-
-.step.completed {
-    background-color: #2a3a4e;
-    color: #fff;
-}
-
-.step.active {
-    background-color: #bcefff;
-}
-
-.arrow {
-    width: 22%;
-    height: 5;
-    border: solid #bcefff 4px;
-}
-
-
-
-.arrow-complete {
-    width: 22%;
-    height: 5;
-    border: solid #2a3a4e 4px;
-}
 </style>
+  
