@@ -47,25 +47,25 @@
 
           <v-divider color="#1a2444" class="ml-12" :style="{ color: e1 >= 1 ? '#1a2444' : '#bcefff', borderColor: e1 >= 1 ? '#1a2444' : '#bcefff' }" style="border: solid 5px;"></v-divider>
           
-          <v-stepper-step :complete="e1 > 1" step="1" color="#1a2444" style="color: #bcefff;"> 
-              
+          <v-stepper-step :complete="e1 > 1" step="1" color="#1a2444" class="pa-0 mr-2"> 
+            
           </v-stepper-step>
 
           <v-divider :style="{ color: e1 >= 2 ? '#1a2444' : '#bcefff', borderColor: e1 >= 2 ? '#1a2444' : '#bcefff' }" style="border: solid 5px;"></v-divider>
 
-          <v-stepper-step :complete="e1 > 2" step="2" color="#1a2444">
+          <v-stepper-step :complete="e1 > 2" step="2" class="pa-0" color="#1a2444">
               
           </v-stepper-step>
 
           <v-divider :style="{ color: e1 >= 3 ? '#1a2444' : '#bcefff', borderColor: e1 >= 3 ? '#1a2444' : '#bcefff' }" style="border: solid 5px;"></v-divider>
 
-          <v-stepper-step :complete="e1 > 3" step="3" color="#1a2444">
+          <v-stepper-step :complete="e1 > 3" step="3" color="#1a2444" class="pa-0">
               
           </v-stepper-step>
 
           <v-divider :style="{ color: e1 >= 4 ? '#1a2444' : '#bcefff', borderColor: e1 >= 4 ? '#1a2444' : '#bcefff' }" style="border: solid 5px;"></v-divider>
 
-          <v-stepper-step step="4" class="mr-12" color="#1a2444">
+          <v-stepper-step step="4" class="mr-12 pa-0" color="#1a2444" >
               
           </v-stepper-step>
         </v-stepper-header>
@@ -87,11 +87,301 @@
             </v-stepper-content>
 
             <v-stepper-content step="2">
-                <v-card class="mb-12"  height="200px" style="box-shadow: none;">
-                    <div>
+                <v-card class="mb-12"  height="auto" style="box-shadow: none;">
 
+                    <h2 class="d-flex mb-3">
+                        <v-row class="text-center">
+                          <v-col cols="12" class="d-flex">
+                            <div class="rounded-circle deep-orange lighten-4 d-flex align-center justify-center" style="width:40px; height:40px;">2</div>
+
+                            <div class="d-flex align-center justify-start ml-3" >Selected trip</div>
+                          </v-col>
+                        </v-row>
+                    </h2>
+
+                    <div style="max-width:70%">                   
+                      <div class="d-flex flex-wrap pa-5 pr-sm-5">
+                          <div class="d-flex justify-start align-center order-1 flex-grow-1 col-sm-4 col-12">
+
+                            <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px;">Date</subtitle-2>
+
+                            <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              :
+                              <span> 31 August </span>
+                            </subtitle-2>
+
+                          </div>
+
+                          <div class="d-flex justify-start align-center order-2 flex-grow-1 col-sm-4 col-12">
+
+                            <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Boat</subtitle-2>
+
+                            <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              :
+                              <a> Vectra 21 </a>
+                            </subtitle-2>
+
+                          </div>
+
+                          <div class="d-flex justify-start align-center order-3 flex-grow-1 col-sm-4 col-12">
+
+                            <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px;">Primary</subtitle-2>
+
+                            <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              :
+                              <span> Red </span>
+                            </subtitle-2>
+                          </div>
+
+                          <div class="d-flex justify-start align-center order-4 flex-grow-1 col-sm-4 col-12">
+
+                            <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px;">City</subtitle-2>
+
+                            <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              :
+                              <a> Magos </a>
+                            </subtitle-2>
+
+                          </div>
+
+                          <div class="d-flex justify-start align-center order-5 flex-grow-1 col-sm-4 col-12">
+
+                            <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">HP</subtitle-2>
+
+                            <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              :
+                              <span> 60 </span>
+                            </subtitle-2>
+
+                          </div>
+
+                          <div class="d-flex justify-start align-center order-6 flex-grow-1 col-sm-4 col-12">
+
+                            <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Secondary</subtitle-2>
+
+                            <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              :
+                              <span> Black </span>
+                            </subtitle-2>
+
+                          </div>
+
+                          <div class="d-flex justify-start align-center order-7 flex-grow-1 col-sm-4 col-12">
+
+                            <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Lake</subtitle-2>
+
+                            <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              :
+                              <a> Memphrémagog </a>
+                            </subtitle-2>
+
+                          </div>
+
+                          <div class="d-flex justify-start align-center order-8 flex-grow-1 col-sm-4 col-12">
+
+                            <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Passengers</subtitle-2>
+
+                            <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              :
+                              <span> 10 Passsengers </span>
+                            </subtitle-2>
+
+                          </div>
+
+                          <div class="d-flex justify-start align-center order-9 flex-grow-1 col-sm-4 col-12">
+
+                            <subtitle-2 class="d-flex align-center"></subtitle-2>
+
+                            <subtitle-2 class="d-flex justify-end pl-5 align-center">
+                              
+                              <a></a>
+                            </subtitle-2>
+
+                          </div>
+
+                          <div class="d-flex justify-start align-center order-10 flex-grow-1 col-sm-4 col-12">
+
+                            <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Dock</subtitle-2>
+
+                            <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              :
+                              <a> Pointe Merry </a>
+                            </subtitle-2>
+
+                          </div>
+
+                          <div class="d-flex justify-start align-center order-11 flex-grow-1 col-sm-4 col-12">
+
+                            <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Licenses</subtitle-2>
+
+                            <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              :
+                              <span> C35594QC </span>
+                            </subtitle-2>
+
+                          </div>
+
+                          
+                        </div>
+
+                        <div class="d-flex flex-row" style="width:70%">
+                          <div class="py-0 col col-12">
+                            <div>
+                              <v-simple-table>
+                                <template v-slot:default>
+                                    <tbody>
+                                      <tr>
+                                        <td style="font-weight: bold" class="col-5">
+                                          Time
+                                        </td>
+
+                                        <td>
+                                          <span href="" style="font-weight: bold">Member</span>
+                                        </td>
+
+                                        <td>
+                                          <a href="" style="font-weight: bold; color:Black;">Non-member</a>
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <td class="d-flex align-center">
+                                          <div> 06:00-08:00 </div>
+
+                                          <div class="ml-2">
+                                              <div>
+                                                <div>
+                                                  <v-checkbox v-model="checkbox">
+
+                                                  </v-checkbox>
+                                                </div>
+                                              </div>
+                                          </div>
+                                        </td>
+
+                                        <td>
+                                          <div>30.15$/h</div>
+                                        </td>
+
+                                        <td>39.19$/h</td>
+                                      </tr>
+
+                                      <tr>
+                                        <td class="d-flex align-center">
+                                          <div> 08:15-10:15</div>
+
+                                          <div class="ml-2">
+                                              <div>
+                                                <div>
+                                                  <v-checkbox v-model="checkbox">
+
+                                                  </v-checkbox>
+                                                </div>
+                                              </div>
+                                          </div>
+                                        </td>
+
+                                        <td>
+                                          <div>67.07$/h</div>
+                                        </td>
+
+                                        <td>87.20$/h</td>
+                                      </tr>
+
+                                      <tr>
+                                        <td class="d-flex align-center">
+                                          <div> 10:30-12:30 </div>
+
+                                          <div class="ml-2">
+                                              <div>
+                                                <div>
+                                                  <v-checkbox v-model="checkbox">
+
+                                                  </v-checkbox>
+                                                </div>
+                                              </div>
+                                          </div>
+                                        </td>
+
+                                        <td>
+                                          <div>73.86$/h</div>
+                                        </td>
+
+                                        <td>96.01$/h</td>
+                                      </tr>
+
+                                      <tr>
+                                        <td class="d-flex align-center">
+                                          <div> 12:45-14:45 </div>
+
+                                          <div class="ml-2">
+                                              <div>
+                                                <div>
+                                                  <v-checkbox v-model="checkbox">
+
+                                                  </v-checkbox>
+                                                </div>
+                                              </div>
+                                          </div>
+                                        </td>
+
+                                        <td>
+                                          <div>78.38$/h</div>
+                                        </td>
+
+                                        <td>101.89$/h</td>
+                                      </tr>
+
+                                      <tr>
+                                        <td class="d-flex align-center">
+                                          <div> 15:00-17:00 </div>
+
+                                          <div class="ml-2">
+                                              <div>
+                                                <div>
+                                                  <v-checkbox v-model="checkbox">
+
+                                                  </v-checkbox>
+                                                </div>
+                                              </div>
+                                          </div>
+                                        </td>
+
+                                        <td>
+                                          <div>78.38$/h</div>
+                                        </td>
+
+                                        <td>101.89$/h</td>
+                                      </tr>
+
+                                      <tr>
+                                        <td class="d-flex align-center">
+                                          <div> 17:15-18:30 </div>
+
+                                          <div class="ml-2">
+                                              <div>
+                                                <div>
+                                                  <v-checkbox v-model="checkbox">
+
+                                                  </v-checkbox>
+                                                </div>
+                                              </div>
+                                          </div>
+                                        </td>
+
+                                        <td>
+                                          <div>62.70$/h</div>
+                                        </td>
+
+                                        <td>81.51$/h</td>
+                                      </tr>
+                                    </tbody>
+                                </template>
+                              </v-simple-table>
+                            </div>
+                          </div>
+                        </div>
                     </div>
-
                 </v-card>
 
                 <v-btn text @click="e1 = 1" width="25%" class="pa-03" style="border: thin solid ;">
@@ -160,23 +450,6 @@ export default {
       e1: 1 // Initial step
     };
   },
-  methods: {
-    stepStyle(stepNumber) {
-      return {
-        color: this.e1 >= stepNumber ? '#1a2444' : '#c4f1ff5f',
-        borderColor: this.e1 >= stepNumber ? '#1a2444' : '#c4f1ff5f',
-        fontSize: '24px', // Adjust the font size of the step number
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      };
-    },
-    stepNumberStyle(stepNumber) {
-      return {
-        color: this.e1 >= stepNumber ? '#1a2444' : '#c4f1ff5f',
-      };
-    }
-  }
 };
 </script>
 
