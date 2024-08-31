@@ -45,27 +45,27 @@
         <v-stepper v-model="e1">
           <v-stepper-header  fluid style="background-color: #c4f1ff5f; box-shadow: none; border: 0">
             
-            <v-divider color="#1a2444" class="ml-12" :style="{ color: e1 >= 1 ? '#1a2444' : '#bcefff', borderColor: e1 >= 1 ? '#1a2444' : '#bcefff' }" style="border: solid 5px;"></v-divider>
+            <v-divider color="#1a2444" class="ml-12" :style="{color: e1 >= 1 ? '#1a2444' : '#bcefff', borderColor: e1 >= 1 ? '#1a2444' : '#bcefff'}" style="border: solid 5px;"></v-divider>
             
-            <v-stepper-step :complete="e1 > 1" step="1" color="#1a2444" class="pa-0 mr-2" > 
+            <v-stepper-step :complete="e1 > 1" step="1" class="pa-0 active-step" > 
               
             </v-stepper-step>
             
             <v-divider :style="{ color: e1 >= 2 ? '#1a2444' : '#bcefff', borderColor: e1 >= 2 ? '#1a2444' : '#bcefff' }" style="border: solid 5px;"></v-divider>
             
-            <v-stepper-step :complete="e1 > 2" step="2" class="pa-0" color="#1a2444" :style="{ color: e1 >= 2 ? '#1a2444' : '#bcefff', borderColor: e1 >= 2 ? '#1a2444' : '#bcefff' }">
+            <v-stepper-step :complete="e1 > 2" step="2" class="pa-0" :class="e1 >= 2 ? 'active-step' : 'inactive-step'">
               
             </v-stepper-step>
             
             <v-divider :style="{ color: e1 >= 3 ? '#1a2444' : '#bcefff', borderColor: e1 >= 3 ? '#1a2444' : '#bcefff' }" style="border: solid 5px;"></v-divider>
             
-            <v-stepper-step :complete="e1 > 3" step="3" color="#1a2444" class="pa-0" :style="{ color: e1 >= 3 ? '#1a2444' : '#bcefff', borderColor: e1 >= 3 ? '#1a2444' : '#bcefff' }">
+            <v-stepper-step :complete="e1 > 3" step="3" class="pa-0" :class="e1 >= 3 ? 'active-step' : 'inactive-step'">
               
             </v-stepper-step>
             
             <v-divider :style="{ color: e1 >= 4 ? '#1a2444' : '#bcefff', borderColor: e1 >= 4 ? '#1a2444' : '#bcefff' }" style="border: solid 5px;"></v-divider>
             
-            <v-stepper-step step="4" class="mr-12 pa-0" color="#1a2444" :style="{ color: e1 >= 4 ? '#1a2444' : '#bcefff', borderColor: e1 >= 4 ? '#1a2444' : '#bcefff' }">
+            <v-stepper-step step="4" class="mr-12 pa-0" :class="e1 >= 4 ? 'active-step' : 'inactive-step'">
               
             </v-stepper-step>
           </v-stepper-header>
@@ -470,7 +470,22 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
+::v-deep .active-step .v-stepper__step__step {
+    color: white; 
+    width: 33px; 
+    height: 33px; 
+    font-size: 20px; 
+    background-color: #1a2444 !important;
+}
+
+::v-deep .inactive-step .v-stepper__step__step {
+    color: #1a2444; 
+    width: 33px; 
+    height: 33px; 
+    font-size: 20px; 
+    background-color: #bcefff !important;
+}
 </style>
   
