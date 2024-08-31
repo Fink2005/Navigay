@@ -9,18 +9,18 @@
       </v-toolbar>
       <v-divider color="#8b8b8b"></v-divider>
     </div>
-    <v-layout justify-space-between class="mt-6">
+    <div class="d-flex justify-space-between mt-6">
       <v-toolbar flat dense>
         <v-toolbar-items class="d-flex align-center">
-          <a href="/" class="ml-n1 ml-sm-2 ml-md-4 mr-3 mb-sm-3"><v-img src="https://rc.navigo.club/_nuxt/img/logo_mobile.b5097fc.svg" height="40px" max-width="500px"></v-img></a>
+          <a href="/" class="ml-n1 ml-sm-2 ml-md-4 mr-3 mb-sm-3"><v-img :src="require('assets/logo.svg')" height="40px" max-width="500px"></v-img></a>
           <a :href=item.link class="mx-2 subtitle-2 font-weight-bold cursor-pointer text-decoration-none" v-for="item in menuLinks" :key="item">{{ item.text }}</a>
         </v-toolbar-items> 
       </v-toolbar>
       <v-btn color="#1976d2" rounded x-large class="mr-6">rent a boat</v-btn> 
-    </v-layout>
+    </div>
     
     <v-main>
-      <v-container>
+      <v-container fluid>
         <Nuxt />
       </v-container>
     </v-main>
