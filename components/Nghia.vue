@@ -20,7 +20,7 @@
       <!-- Second Header -->
       <v-header class="d-flex px-4 py-4">
         <div>
-          <img src="https://app.navigo.club/_nuxt/img/logo_mobile.b5097fc.svg" alt="" />
+          <img src="https://app.navigo.club/_nuxt/img/logo_mobile.b5097fc.svg" alt=""/>
         </div>
         <div class="d-flex align-center mx-2">
           <a class="mx-2 text-decoration-none body-2 font-weight-bold cursor-pointer black--text">Subscription</a>
@@ -40,8 +40,8 @@
         </v-row>
       </v-header>
 
-      <!-- Step 2 -->
-      <div style="height: 100%; width: 100%;">
+      
+      <v-container fluid>
         <v-stepper v-model="e1">
           <v-stepper-header  fluid style="background-color: #c4f1ff5f; box-shadow: none; border: 0">
             
@@ -72,7 +72,7 @@
           
           <v-stepper-items>
             <v-stepper-content step="1" class="px-sm-6 px-2 pt-sm-3 pt-1">
-              <v-card class="px-2 pb-5 pt-2"  height="200px" style="box-shadow: none;">
+              <v-card class="px-2 pb-5 pt-2"  height="auto" style="box-shadow: none;">
                 
               </v-card>
               
@@ -89,7 +89,7 @@
               
             </v-stepper-content>
             
-            <v-stepper-content step="2" class="px-sm-6 px-2 pt-sm-3 pt-1">
+            <v-stepper-content step="2" class="px-2 pb-5 pt-2">
               <v-card class="px-2 pb-5 pt-2"  height="auto" style="box-shadow: none;">
                 <div class="py-2 check-2">
                   <div>
@@ -105,7 +105,7 @@
                           </v-row>
                         </h2>
                         
-                        <div style="max-width:70%">                   
+                        <div style="width:70%">                   
                           <div class="d-flex flex-wrap pr-sm-5">
                                 <div class="d-flex justify-start align-center order-1 flex-grow-1 pb-0 col-sm-4 col-12">
                                   
@@ -232,8 +232,8 @@
                                 
                               </div>
                                     
-                              <div class="d-flex flex-row" style="width:70%">
-                                <div class="py-0 col col-12">
+                              <div class="d-flex flex-row">
+                                <div class="py-0 col-6">
                                   <div>
                                     <v-simple-table>
                                       <template v-slot:default>
@@ -415,49 +415,48 @@
                     </div>
             </v-stepper-content>
                   
-                  <v-stepper-content step="3" class="px-sm-6 px-2 pt-sm-3 pt-1">
-                    <v-card class="mb-12"  height="200px" style="box-shadow: none;">
+            <v-stepper-content step="3" class="px-sm-6 px-2 pt-sm-3 pt-1">
+              <v-card class="mb-12"  height="200px" style="box-shadow: none;">
                       
-                    </v-card>
+              </v-card>
                     
-                    <v-btn text  @click="e1 = 2" width="25%" class="pa-03" style="border: thin solid ;"> 
-                      <v-icon>mdi-chevron-left</v-icon>
+              <v-btn text  @click="e1 = 2" width="25%" class="pa-03" style="border: thin solid ;"> 
+                <v-icon>mdi-chevron-left</v-icon>
                       
-                      Previous
+                Previous
                       
-                    </v-btn>
+              </v-btn>
                     
-                    <v-btn color="#1a2444" @click="e1 = 4" class="white--text pa-03" width="25%">
-                      Next Step
-                      <v-icon> mdi-chevron-right</v-icon>
-                    </v-btn>
+              <v-btn color="#1a2444" @click="e1 = 4" class="white--text pa-03" width="25%">
+                Next Step
+                <v-icon> mdi-chevron-right</v-icon>
+              </v-btn>
                     
-                  </v-stepper-content>
+            </v-stepper-content>
                   
-                  <v-stepper-content step="4" class="px-sm-6 px-2 pt-sm-3 pt-1">
-                    <v-card class="mb-12"  height="200px" style="box-shadow: none;">
+            <v-stepper-content step="4" class="px-sm-6 px-2 pt-sm-3 pt-1">
+              <v-card class="mb-12"  height="200px" style="box-shadow: none;">
                       
-                    </v-card>
+              </v-card>
                     
-                    <v-btn text @click="e1 = 3" width="25%" class="pa-03" style="border: thin solid ;">
-                      <v-icon>mdi-chevron-left</v-icon>
+              <v-btn text @click="e1 = 3" width="25%" class="pa-03" style="border: thin solid ;">
+                <v-icon>mdi-chevron-left</v-icon>
                       
-                      Previous
-                    </v-btn>
+                Previous
+              </v-btn>
                     
-                    <v-btn color="#1a2444" @click="e1 = 1" class="white--text pa-03" width="25%">
-                      Next Step
+              <v-btn color="#1a2444" @click="e1 = 1" class="white--text pa-03" width="25%">
+                Next Step
                       
-                      <v-icon>mdi-chevron-right</v-icon>
-                    </v-btn>
-                  </v-stepper-content>
+                <v-icon>mdi-chevron-right</v-icon>
+              </v-btn>
+            </v-stepper-content>
                   
                   
-                </v-stepper-items>
-              </v-stepper>
-              
-            </div>
-          </div>
+          </v-stepper-items>
+        </v-stepper>             
+      </v-container>
+    </div>
 </template>
   
   <script>
@@ -466,6 +465,17 @@ export default {
     return {
       e1: 1 // Initial step
     };
+  },
+  mounted(){
+    window.addEventListener("resize", this.handleResize);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.handleResize);
+  },
+  methods: {
+    handleResize() {
+      this.screenWidth = window.innerWidth
+    },
   },
 };
 </script>
@@ -486,6 +496,17 @@ export default {
     height: 33px; 
     font-size: 20px; 
     background-color: #bcefff !important;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .v-header {
+    flex-direction: column;
+  }
 }
 </style>
   
