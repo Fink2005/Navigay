@@ -13,9 +13,9 @@
                 <v-btn text outlined style="border-color: black;" class="mr-1"><v-icon>mdi-chevron-left</v-icon></v-btn>
                 <v-dialog v-model="dialog">
                     <template v-slot:activator="{ on, attrs }">
-                        <v-btn text outlined style="border-color: black;" class="mr-1" v-bind="attrs" v-on="on" v-model="currentDate">{{ formattedDate }}</v-btn>
+                        <v-btn text outlined style="border-color: black;" class="mr-1" v-bind="attrs" v-on="on">{{ formattedDate }}</v-btn>
                     </template>
-                    <v-date-picker full-width v-model="currentDate" @input="updateDate"></v-date-picker>
+                    <v-date-picker full-width @input="updateDate"></v-date-picker>
                 </v-dialog>
                 <v-btn text outlined style="border-color: black;"><v-icon>mdi-chevron-right</v-icon></v-btn>
             </div>

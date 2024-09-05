@@ -32,28 +32,79 @@
                 </div>
             </div>
         </div>
-        <v-container class="ml-1">
-            <v-row no-gutters>
-                <v-col class="font-weight-bold body-2 text-h6">
-                    Trip details
-                </v-col>
-            </v-row>
-            <v-row class="body-2" no-gutters>
-                <v-col cols="1">Boat:</v-col>
-                <v-col cols="4"></v-col>
-                <v-col class="font-weight-bold" cols="1">Vectra 21</v-col>
-            </v-row>
-        </v-container>
+        <div class="ml-4">
+            <div class="font-weight-bold body-2 text-h6">
+                Trip details
+            </div>
+            <div class="d-flex justify-space-between" v-for="item in category" style="width: 42%;">
+                <div class="leaders-1">
+                    <span style="font-size: 14px; background: white;">
+                        {{ item.name }}:
+                    </span>
+                </div>
+                <span class="font-weight-bold" style="font-size: 14px; background: white;">
+                    {{ receivedData[item.propItem] }}
+                </span>
+            </div>
+        </div>
         <slot></slot>
     </v-card>
 </template>
 
 <script>
 export default {
+    props: {
+        receivedData: {
+            type: Object,
+            default: () => ({})
+        }
+    },
     data() {
         return {
-
+            category: [
+                {
+                    name: 'Boat',
+                    propItem: 'boat'
+                }, 
+                {
+                    name: 'Passengers',
+                    propItem: 'passengers'
+                }, 
+                {
+                    name: 'Date',
+                    propItem: 'date'
+                }, 
+                {
+                    name: 'Time',
+                    propItem: 'time'
+                }, 
+                {
+                    name: 'Total Minutes',
+                    propItem: 'totalMinutes'
+                }, 
+                {
+                    name: 'Lake',
+                    propItem: 'lake'
+                }, 
+                {
+                    name: 'Dock',
+                    propItem: 'dock'
+                }, 
+                {
+                    name: 'City',
+                    propItem: 'city'
+                },   
+            ],
         }
     }
 }
 </script>
+
+<style scoped>
+    div.leaders-1 :before {
+        content: ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . ";
+        float: left;
+        white-space: nowrap;
+        width: 0;
+    }
+</style>

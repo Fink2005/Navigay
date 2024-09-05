@@ -21,7 +21,7 @@
             </v-stepper-content>
     
             <v-stepper-content step="2">
-                <StepperTwo :receivedData="data">
+                <StepperTwo :receivedData="data" @dataFromTwo="handleDataFromTwo">
                     <v-btn text outlined color="black" style="border-color: black;" width="25%" class="mt-5 ml-4" @click="step = 1">
                         <v-icon>mdi-chevron-left</v-icon>Previous
                     </v-btn>
@@ -32,7 +32,7 @@
             </v-stepper-content>
     
             <v-stepper-content step="3">
-                <StepperThree>
+                <StepperThree :receivedData="data2">
                     <v-btn text outlined color="black" style="border-color: black;" width="25%" class="mt-5 ml-4" @click="step = 2">
                         <v-icon>mdi-chevron-left</v-icon>Previous
                     </v-btn>
@@ -68,11 +68,20 @@ export default {
                 licenses: '',
                 color: '',
             },
+            data2: {
+                city: '',
+                time: '',
+                totalMinutes: 0,
+                ...this.data
+            }
         };
     },
     methods: {
         handleDataFromOne(data) {
             this.data = data;
+        },
+        handleDataFromTwo(data) {
+            this.data2 = data;
         }
     }
 };
