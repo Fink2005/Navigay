@@ -3,7 +3,7 @@
     <div>
       <v-toolbar flat dense height="42px">
       <v-toolbar-items class="layout wrap justify-end align-center mr-3">
-        <a :href=item.link class="mx-3 subtitle-2 text-decoration-none cursor-pointer" v-for="item in navLinks" :key="item">{{ item.text }}</a>
+        <a :href=item.link class="mx-3 subtitle-2 text-decoration-none cursor-pointer" v-for="item in navLinks">{{ item.text }}</a>
         <div class="mx-3 subtitle-2 cursor-pointer">French</div>
       </v-toolbar-items>
       </v-toolbar>
@@ -13,7 +13,7 @@
       <v-toolbar flat dense>
         <v-toolbar-items class="d-flex align-center">
           <a href="/" class="ml-n1 ml-sm-2 ml-md-4 mr-3 mb-sm-3"><v-img :src="require('assets/logo.svg')" height="40px" max-width="500px"></v-img></a>
-          <a :href=item.link class="mx-2 subtitle-2 font-weight-bold cursor-pointer text-decoration-none" v-for="item in menuLinks" :key="item">{{ item.text }}</a>
+          <a :href=item.link class="mx-2 subtitle-2 font-weight-bold cursor-pointer text-decoration-none" v-for="item in menuLinks">{{ item.text }}</a>
         </v-toolbar-items> 
       </v-toolbar>
       <v-btn color="#1976d2" rounded x-large class="mr-6">rent a boat</v-btn> 
