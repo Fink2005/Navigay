@@ -1,47 +1,7 @@
 <template>
-    <div>
-      <!-- First Header -->
-      <v-header class="d-flex justify-space-around py-2 px-4">
-        <v-spacer></v-spacer>
-        <div class="d-flex align-end">
-          <a class="mx-3 text-decoration-none body-2 black--text">About us</a>
-          <a class="mx-3 text-decoration-none body-2 black--text">Contact us</a>
-          <a class="mx-3 text-decoration-none body-2 black--text">Press kit</a>
-          <a class="mx-3 text-decoration-none body-2 black--text">Lakes</a>
-          <a class="mx-3 text-decoration-none body-2 black--text">Rules</a>
-          <a class="mx-3 text-decoration-none body-2 black--text">Blog</a>
-          <a class="mx-3 text-decoration-none body-2 black--text">Hosting</a>
-          <a class="mx-3 text-decoration-none body-2 black--text">Become a franchisee</a>
-          <a class="mx-3 text-decoration-none body-2 black--text">French</a>
-        </div>
-      </v-header>
-      <v-divider class="bold" color="#8b8b8b"></v-divider>
-  
-      <!-- Second Header -->
-      <v-header class="d-flex px-4 py-4">
-        <div>
-          <img src="https://app.navigo.club/_nuxt/img/logo_mobile.b5097fc.svg" alt=""/>
-        </div>
-        <div class="d-flex align-center mx-2">
-          <a class="mx-2 text-decoration-none body-2 font-weight-bold cursor-pointer black--text">Subscription</a>
-          <a class="mx-2 text-decoration-none body-2 font-weight-bold cursor-pointer black--text">Advantages</a>
-          <a class="mx-2 text-decoration-none body-2 font-weight-bold cursor-pointer black--text">Functioning</a>
-          <a class="mx-2 text-decoration-none body-2 font-weight-bold cursor-pointer black--text">The boats</a>
-          <a class="mx-2 text-decoration-none body-2 font-weight-bold cursor-pointer black--text">Boating License</a>
-          <a class="mx-2 text-decoration-none body-2 font-weight-bold cursor-pointer black--text">Pricing</a>
-        </div>
-  
-        <v-row class="d-flex justify-end align-center">
-          <v-col cols="12" class="d-flex justify-end">
-            <v-btn class="text-no-wrap rounded-pill d-flex align-center font-weight-normal v-size--x-large" color="#1976d2" height="60px" width="170px">
-              <span class="font-weight-light">RENT A BOAT</span>
-            </v-btn>
-          </v-col>
-        </v-row>
-      </v-header>
-
-      
-      <v-container fluid>
+  <div class="layout d-flex flex-column align-start">
+    <v-sheet style="height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0) !important; border-color: rgba(0, 0, 0, 0) !important;"> 
+      <div>
         <v-stepper v-model="e1">
           <v-stepper-header  fluid style="background-color: #c4f1ff5f; box-shadow: none; border: 0">
             
@@ -89,11 +49,11 @@
               
             </v-stepper-content>
             
-            <v-stepper-content step="2" class="px-2 pb-5 pt-2">
-              <v-card class="px-2 pb-5 pt-2"  height="auto" style="box-shadow: none;">
+            <v-stepper-content step="2" class="px-sm-6 px-2 pt-sm-3 pt-1">
+              <v-card class="px-2 pb-5 pt-2">
                 <div class="py-2 check-2">
                   <div>
-                    <v-sheet class="mb-3 pt-4">
+                    <v-card class="mb-3 pt-4">
                       <div>
                         <h2>
                           <v-row class="text-center">
@@ -105,298 +65,296 @@
                           </v-row>
                         </h2>
                         
-                        <div style="width:70%">                   
-                          <div class="d-flex flex-wrap pr-sm-5">
-                                <div class="d-flex justify-start align-center order-1 flex-grow-1 pb-0 col-sm-4 col-12">
-                                  
-                                  <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px;">Date</subtitle-2>
-                                  
-                                  <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
-                                    :
-                                    <span> 31 August </span>
-                                  </subtitle-2>
-                                  
-                                </div>
-                                
-                                <div class="d-flex justify-start align-center order-2 flex-grow-1 pb-0 col-sm-4 col-12">
-                                  
-                                  <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Boat</subtitle-2>
-                                  
-                                  <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
-                                    :
-                                    <a> Vectra 21 </a>
-                                  </subtitle-2>
-                                  
-                                </div>
-                                
-                                <div class="d-flex justify-start align-center order-3 flex-grow-1 pb-0 col-sm-4 col-12">
-                                  
-                                  <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px;">Primary</subtitle-2>
-                                  
-                                  <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
-                                    :
-                                    <span> Red </span>
-                                  </subtitle-2>
-                                </div>
-                                
-                                <div class="d-flex justify-start align-center order-4 flex-grow-1 pb-0 col-sm-4 col-12">
-                                  
-                                  <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px;">City</subtitle-2>
-                                  
-                                  <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
-                                    :
-                                    <a> Magos </a>
-                                  </subtitle-2>
-                                  
-                                </div>
-                                
-                                <div class="d-flex justify-start align-center order-5 flex-grow-1 pb-0 col-sm-4 col-12">
-                                  
-                                  <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">HP</subtitle-2>
-                                  
-                                  <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
-                                    :
-                                    <span> 60 </span>
-                                  </subtitle-2>
-                                  
-                                </div>
-                                
-                                <div class="d-flex justify-start align-center order-6 flex-grow-1 pb-0 col-sm-4 col-12">
-                                  
-                                  <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Secondary</subtitle-2>
-                                  
-                                  <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
-                                    :
-                                    <span> Black </span>
-                                  </subtitle-2>
-                                  
-                                </div>
-                                
-                                <div class="d-flex justify-start align-center order-7 flex-grow-1 pb-0 col-sm-4 col-12">
-                                  
-                                  <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Lake</subtitle-2>
-                                  
-                                  <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
-                                    :
-                                    <a> Memphrémagog </a>
-                                  </subtitle-2>
-                                  
-                                </div>
-                                
-                                <div class="d-flex justify-start align-center order-8 flex-grow-1 pb-0 col-sm-4 col-12">
-                                  
-                                  <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Passengers</subtitle-2>
-                                  
-                                  <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
-                                    :
-                                    <span> 10 Passsengers </span>
-                                  </subtitle-2>
-                                  
-                                </div>
-                                
-                                <div class="d-flex justify-start align-center order-9 flex-grow-1 pb-0 col-sm-4 col-12">
-                                  
-                                  <subtitle-2 class="d-flex align-center"></subtitle-2>
-                                  
-                                  <subtitle-2 class="d-flex justify-end pl-5 align-center">
-                                    
-                                    <a></a>
-                                    
-                                  </subtitle-2>
-                                  
-                                </div>
-                                
-                                <div class="d-flex justify-start align-center order-10 flex-grow-1 pb-0 col-sm-4 col-12">
-                                  
-                                  <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Dock</subtitle-2>
-                                  
-                                  <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
-                                    :
-                                    <a> Pointe Merry </a>
-                                    
-                                  </subtitle-2>
-                                  
-                                </div>
-                                
-                                <div class="d-flex justify-start align-center order-11 flex-grow-1 pb-0 col-sm-4 col-12">
-                                  
-                                  <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Licenses</subtitle-2>
-                                  
-                                  <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
-                                    :
-                                    <span> C35594QC </span>
-                                  </subtitle-2>
-                                  
-                                </div>
-                                      
-                                
-                              </div>
-                                    
-                              <div class="d-flex flex-row">
-                                <div class="py-0 col-6">
-                                  <div>
-                                    <v-simple-table>
-                                      <template v-slot:default>
-                                        <tbody>
-                                          <tr>
-                                            <td style="font-weight: bold" class="col-5">
-                                              Time
-                                            </td>
-                                            
-                                            <td>
-                                              <span href="" style="font-weight: bold">Member</span>
-                                            </td>
-                                            
-                                            <td>
-                                              <a href="" style="font-weight: bold; color:Black;">Non-member</a>
-                                            </td>
-                                          </tr>
-                                          
-                                          <tr>
-                                            <td class="d-flex align-center">
-                                              <div> 06:00-08:00 </div>
-                                              
-                                              <div class="ml-2">
-                                                <div>
-                                                  <div>
-                                                    <v-checkbox v-model="checkbox">
-                                                      
-                                                    </v-checkbox>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </td>
-                                            
-                                            <td>
-                                              <div>30.15$/h</div>
-                                            </td>
-                                            
-                                            <td>39.19$/h</td>
-                                          </tr>
-                                          
-                                          <tr>
-                                            <td class="d-flex align-center">
-                                              <div> 08:15-10:15</div>
-                                              
-                                              <div class="ml-2">
-                                                <div>
-                                                  <div>
-                                                    <v-checkbox v-model="checkbox">
-                                                      
-                                                    </v-checkbox>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </td>
-                                            
-                                            <td>
-                                              <div>67.07$/h</div>
-                                            </td>
-                                            
-                                            <td>87.20$/h</td>
-                                          </tr>
-                                          
-                                          <tr>
-                                            <td class="d-flex align-center">
-                                              <div> 10:30-12:30 </div>
-                                              
-                                              <div class="ml-2">
-                                                <div>
-                                                  <div>
-                                                    <v-checkbox v-model="checkbox">
-                                                      
-                                                    </v-checkbox>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </td>
-                                            
-                                            <td>
-                                              <div>73.86$/h</div>
-                                            </td>
-                                            
-                                            <td>96.01$/h</td>
-                                          </tr>
-                                          
-                                          <tr>
-                                            <td class="d-flex align-center">
-                                              <div> 12:45-14:45 </div>
-                                              
-                                              <div class="ml-2">
-                                                <div>
-                                                  <div>
-                                                    <v-checkbox v-model="checkbox">
-                                                      
-                                                    </v-checkbox>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </td>
-                                            
-                                            <td>
-                                              <div>78.38$/h</div>
-                                            </td>
-                                            
-                                            <td>101.89$/h</td>
-                                          </tr>
-                                          
-                                          <tr>
-                                            <td class="d-flex align-center">
-                                              <div> 15:00-17:00 </div>
-                                              
-                                              <div class="ml-2">
-                                                <div>
-                                                  <div>
-                                                    <v-checkbox v-model="checkbox">
-                                                      
-                                                    </v-checkbox>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </td>
-                                            
-                                            <td>
-                                              <div>78.38$/h</div>
-                                            </td>
-                                            
-                                            <td>101.89$/h</td>
-                                          </tr>
-                                          
-                                          <tr>
-                                            <td class="d-flex align-center">
-                                              <div> 17:15-18:30 </div>
-                                              
-                                              <div class="ml-2">
-                                                <div>
-                                                  <div>
-                                                    <v-checkbox v-model="checkbox">
-                                                      
-                                                    </v-checkbox>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </td>
-                                            
-                                            <td>
-                                              <div>62.70$/h</div>
-                                            </td>
-                                            
-                                            <td>81.51$/h</td>
-                                          </tr>
-                                        </tbody>
-                                      </template>
-                                    </v-simple-table>
-                                  </div>
-                                </div>
-                              </div>
+                        <v-card-text style="width:70%" class="py-0 mb-4">                   
+                          <div class="d-flex flex-wrap flex-row pr-sm-5">
+                            <div class="d-flex  align-center order-1 pb-0 col-sm-4 col-12">
+                              
+                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px;">Date</subtitle-2>
+                              
+                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                                :
+                                <span> 31 August </span>
+                              </subtitle-2>
+                              
                             </div>
+                            
+                            <div class="d-flex  align-center order-2 pb-0 col-sm-4 col-12">
+                              
+                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Boat</subtitle-2>
+                              
+                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                                :
+                                <a> Vectra 21 </a>
+                              </subtitle-2>
+                              
+                            </div>
+                            
+                            <div class="d-flex  align-center order-3 pb-0 col-sm-4 col-12">
+                              
+                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px;">Primary</subtitle-2>
+                              
+                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                                :
+                                <span> Red </span>
+                              </subtitle-2>
+                            </div>
+                            
+                            <div class="d-flex  align-center order-4 pb-0 col-sm-4 col-12">
+                              
+                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px;">City</subtitle-2>
+                              
+                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                                :
+                                <a> Magos </a>
+                              </subtitle-2>
+                              
+                            </div>
+                            
+                            <div class="d-flex  align-center order-5 pb-0 col-sm-4 col-12">
+                              
+                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">HP</subtitle-2>
+                              
+                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                                :
+                                <span> 60 </span>
+                              </subtitle-2>
+                              
+                            </div>
+                            
+                            <div class="d-flex  align-center order-6 pb-0 col-sm-4 col-12">
+                              
+                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Secondary</subtitle-2>
+                                  
+                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                                :
+                                <span> Black </span>
+                              </subtitle-2>
+                              
+                            </div>
+                            
+                            <div class="d-flex  align-center order-7 pb-0 col-sm-4 col-12">
+                              
+                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Lake</subtitle-2>
+                              
+                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                                :
+                                <a> Memphrémagog </a>
+                              </subtitle-2>
+                              
+                            </div>
+                            
+                            <div class="d-flex  align-center order-8 pb-0 col-sm-4 col-12">
+                              
+                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Passengers</subtitle-2>
+                              
+                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                                :
+                                <span> 10 Passsengers </span>
+                              </subtitle-2>
+                              
+                            </div>
+                            
+                            <div class="d-flex  align-center order-9 pb-0 col-sm-4 col-12">
+                              
+                              <subtitle-2 class="d-flex align-center"></subtitle-2>
+                              
+                              <subtitle-2 class="d-flex justify-end pl-5 align-center">
+                                
+                                <a></a>
+                                
+                              </subtitle-2>
+                              
+                            </div>
+                            
+                            <div class="d-flex  align-center order-10 pb-0 col-sm-4 col-12">
+                              
+                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Dock</subtitle-2>
+                              
+                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                                :
+                                <a> Pointe Merry </a>
+                                
+                              </subtitle-2>
+                              
+                            </div>
+                                
+                            <div class="d-flex align-center order-11 pb-0 col-sm-4 col-12">
+                                  
+                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Licenses</subtitle-2>
+                              
+                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                                :
+                                <span> C35594QC </span>
+                              </subtitle-2>
+                              
+                            </div>
+                                      
+                            
+                          </div>
+                          
+                          <div class="d-flex flex-row">
+                            <div class="py-0 col col-12">
+                              <v-simple-table class="tab-display table-mobile">
+                                <template v-slot:default>
+                                  <tbody>
+                                    <tr class="font-weight-bold">
+                                      <td class="col-5">
+                                        Time
+                                      </td>
+                                      
+                                      <td>
+                                        <span href="" style="font-weight: bold">Member</span>
+                                      </td>
+                                      
+                                      <td>
+                                        <a href="" style="font-weight: bold; color:Black;">Non-member</a>
+                                      </td>
+                                    </tr>
+                                    
+                                    <tr class="tr-mobile">
+                                      <td class="">
+                                        <div class="d-flex align-center">
+                                          <div class="px-0">06:00-08:00</div>
+                                          <div class="ml-2">
+                                            <div>
+                                              <v-simple-checkbox class="mt-0 pt-1 d-inline-flex" v-model="checkbox">
+                                                
+                                              </v-simple-checkbox>
+                                            </div>
+                                          </div>
+                                        </div>                                                
+                                      </td>
+                                      
+                                      <td>
+                                        <div>30.15$/h</div>
+                                      </td>
+                                      
+                                      <td>
+                                        <div>39.19$/h</div>
+                                      </td>
+                                    </tr>
+                                          
+                                    <tr class="tr-mobile">
+                                      <td>
+                                        <div class="d-flex align-center">
+                                          <div class="px-0">08:15-10:15</div>
+                                          <div class="ml-2">
+                                            <div>
+                                              <v-simple-checkbox v-model="checkbox" class="mt-0 pt-1 d-inline-flex">
+                                                
+                                              </v-simple-checkbox>
+                                            </div>
+                                          </div>
+                                        </div>                                             
+                                      </td>
+                                            
+                                      <td>
+                                        <div>67.07$/h</div>
+                                      </td>
+                                      
+                                      <td>87.20$/h</td>
+                                    </tr>
+                                    
+                                    <tr class="tr-mobile">
+                                      <td>
+                                        <div class="d-flex align-center">
+                                          <div class="px-0">10:30-12:30</div>
+                                          <div class="ml-2">
+                                            <div>
+                                              <v-simple-checkbox v-model="checkbox" class="mt-0 pt-1 d-inline-flex">
+                                                
+                                              </v-simple-checkbox>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        
+                                      </td>
+                                      
+                                      <td>
+                                        <div>73.86$/h</div>
+                                      </td>
+                                      
+                                      <td>96.01$/h</td>
+                                    </tr>
+                                    
+                                    <tr class="tr-mobile">
+                                      <td>
+                                        <div class="d-flex align-center">
+                                          <div class="px-0">12:45-14:45</div>
+                                          <div class="ml-2">
+                                            <div>
+                                              <v-simple-checkbox v-model="checkbox" class="mt-0 pt-1 d-inline-flex">
+                                                
+                                              </v-simple-checkbox>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        
+                                      </td>
+                                      
+                                      <td>
+                                        <div>78.38$/h</div>
+                                      </td>
+                                      
+                                      <td>101.89$/h</td>
+                                    </tr>
+                                          
+                                    <tr class="tr-mobile">
+                                      <td>
+                                        <div class="d-flex align-center">
+                                          <div class="px-0">15:00-17:00</div>
+                                          <div class="ml-2">
+                                            <div>
+                                              <v-simple-checkbox v-model="checkbox" class="mt-0 pt-1 d-inline-flex">
+
+                                              </v-simple-checkbox>
+                                            </div>
+                                          </div>
+                                        </div>
+                                                                                     
+                                      </td>
+                                            
+                                      <td>
+                                        <div>78.38$/h</div>
+                                      </td>
+                                      
+                                      <td>101.89$/h</td>
+                                    </tr>
+                                    
+                                    <tr class="tr-mobile">
+                                      <td>
+                                        <div class="d-flex align-center">
+                                          <div class="px-0">17:15-18:30</div>
+                                          <div class="ml-2">
+                                            <div>
+                                              <v-simple-checkbox v-model="checkbox" class="mt-0 pt-1 d-inline-flex">
+                                                
+                                              </v-simple-checkbox>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        
+                                      </td>
+                                      
+                                      <td>
+                                        <div>62.70$/h</div>
+                                      </td>
+                                      
+                                      <td>81.51$/h</td>
+                                    </tr>
+                                  </tbody>
+                                </template>
+                              </v-simple-table>
+                            </div>
+                          </div>
+                        </v-card-text>
                       </div>
-                    </v-sheet>         
+                    </v-card>         
                   </div>
                 </div>
               </v-card>
               
-              <div class="px-4 d-flex">
+              <div class="px-4 d-flex" :class="$vuetify.breakpoint.xsOnly ? 'flex-column' : '' ">
                 <div class="col-sm-5 col-md-4 col-lg-3 col-12">
                   <v-btn text @click="e1 = 1" class="pa-03" style="border: thin solid; width: 100%; height: 40px;">
                     <v-icon>mdi-chevron-left</v-icon>
@@ -405,58 +363,59 @@
                   </v-btn> 
                 </div>
                 
-                      <div class="col-sm-5 col-md-4 col-lg-3 col-12">
-                        <v-btn color="#1a2444" @click = "e1 = 3" class="white--text pa-03" style="width: 100%; height: 40px;">
-                          Next Step
-                          
-                          <v-icon>mdi-chevron-right</v-icon>
-                        </v-btn>
-                      </div>
-                    </div>
+                <div class="col-sm-5 col-md-4 col-lg-3 col-12">
+                  <v-btn color="#1a2444" @click = "e1 = 3" class="white--text pa-03" style="width: 100%; height: 40px;">
+                    Next Step
+                    
+                    <v-icon>mdi-chevron-right</v-icon>
+                  </v-btn>
+                </div>
+              </div>
             </v-stepper-content>
-                  
+            
             <v-stepper-content step="3" class="px-sm-6 px-2 pt-sm-3 pt-1">
               <v-card class="mb-12"  height="200px" style="box-shadow: none;">
                       
               </v-card>
-                    
+              
               <v-btn text  @click="e1 = 2" width="25%" class="pa-03" style="border: thin solid ;"> 
                 <v-icon>mdi-chevron-left</v-icon>
-                      
+                
                 Previous
-                      
+                
               </v-btn>
-                    
+              
               <v-btn color="#1a2444" @click="e1 = 4" class="white--text pa-03" width="25%">
                 Next Step
                 <v-icon> mdi-chevron-right</v-icon>
               </v-btn>
-                    
+              
             </v-stepper-content>
-                  
+            
             <v-stepper-content step="4" class="px-sm-6 px-2 pt-sm-3 pt-1">
               <v-card class="mb-12"  height="200px" style="box-shadow: none;">
-                      
+                
               </v-card>
-                    
+              
               <v-btn text @click="e1 = 3" width="25%" class="pa-03" style="border: thin solid ;">
                 <v-icon>mdi-chevron-left</v-icon>
-                      
+                
                 Previous
               </v-btn>
-                    
+              
               <v-btn color="#1a2444" @click="e1 = 1" class="white--text pa-03" width="25%">
                 Next Step
-                      
+                
                 <v-icon>mdi-chevron-right</v-icon>
               </v-btn>
             </v-stepper-content>
-                  
-                  
+            
+            
           </v-stepper-items>
         </v-stepper>             
-      </v-container>
-    </div>
+      </div>
+    </v-sheet>
+  </div>
 </template>
   
   <script>
