@@ -50,10 +50,10 @@
             </v-stepper-content>
             
             <v-stepper-content step="2" class="px-sm-6 px-2 pt-sm-3 pt-1">
-              <v-card class="px-2 pb-5 pt-2">
+              <v-card class="px-2 pb-5 pt-2" style="box-shadow: none;">
                 <div class="py-2 check-2">
                   <div>
-                    <v-card class="mb-3 pt-4">
+                    <v-card class="mb-3 pt-4" style="box-shadow: none ;">
                       <div>
                         <h2>
                           <v-row class="text-center">
@@ -65,7 +65,7 @@
                           </v-row>
                         </h2>
                         
-                        <v-card-text style="width:70%" class="py-0 mb-4">                   
+                        <v-card-text style="width:70%; box-shadow: none;" class="py-0 mb-4" >                   
                           <div class="d-flex flex-wrap flex-row pr-sm-5">
                             <div class="d-flex  align-center order-1 pb-0 col-sm-4 col-12">
                               
@@ -193,7 +193,7 @@
                           </div>
                           
                           <div class="d-flex flex-row">
-                            <div class="py-0 col col-12">
+                            <div class="py-0">
                               <v-simple-table class="tab-display table-mobile">
                                 <template v-slot:default>
                                   <tbody>

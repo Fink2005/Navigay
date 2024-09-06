@@ -44,7 +44,7 @@
                 <v-spacer></v-spacer>
                 <div class="d-flex justify-end align-center mr-3 flex-grow-1">
                   <a href="" class="v-btn v-btn--is-elevated v-btn--has-bg v-btn--rounded theme--light v-size--x-large primary">
-                    <span>RENT A BOAT</span>
+                    <span class="black--text font-weight-light">RENT A BOAT</span>
                   </a>
               </div>
             </div>
