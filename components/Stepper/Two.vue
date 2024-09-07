@@ -72,7 +72,23 @@
                 </template>
             </v-data-table>
         </div>
-        <slot></slot>
+        <v-btn text outlined color="black" style="border-color: black;" width="25%" class="mt-5 ml-4" @click="$store.commit('decrease')">
+            <v-icon>mdi-chevron-left</v-icon>Previous
+        </v-btn>
+        <v-bottom-sheet v-model="menu" hide-overlay width="24%" persistent no-click-animation :disabled="totalMinutes > 60">
+            <template v-slot:activator="{ on, attrs }">
+                <v-btn @click="totalMinutes > 60 ? $store.commit('increment') : ''" outlined text style="background-color: #1a2444;" color="white" width="25%" class="mt-5 ml-4" v-bind="attrs" v-on="on" dark :disabled="!selectedTimes.length">
+                    Next Step <v-icon>mdi-chevron-right</v-icon> {{disable}}
+                </v-btn>
+            </template>
+            <v-sheet dark rounded height="87" class="d-flex align-center pr-2 pl-4 py-4">
+                <v-card dark rounded class="d-flex justify-center align-center mr-2" color="red" width="100%" height="100%">
+                    <v-icon class="mr-2">mdi-alert</v-icon> 
+                    <div>Minimum hours must over 1 h</div>
+                </v-card>
+                <v-btn icon color="white" @click="menu = false"><v-icon>mdi-close</v-icon></v-btn>
+            </v-sheet>
+        </v-bottom-sheet>
     </v-card>
 </template>
 
@@ -155,7 +171,8 @@ export default {
             duration: [50, 120, 120, 120, 120, 120, 120, 120],
             totalMinutes: 0,
             selectedCheckBox: new Array(8).fill(false),
-            selectedTimes: []
+            selectedTimes: [],
+            menu: false,
         }
     },
     methods: {
@@ -173,7 +190,7 @@ export default {
                 passengers: this.receivedData.passengers,
                 licenses: this.receivedData.licenses, 
                 color: this.receivedData.color,
-            })
+            });
         },
         handleTotalMinutes(index) {
             if (!this.selectedCheckBox[index]) {

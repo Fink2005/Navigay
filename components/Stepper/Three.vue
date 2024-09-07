@@ -47,7 +47,12 @@
                 </span>
             </div>
         </div>
-        <slot></slot>
+        <v-btn text outlined color="black" style="border-color: black;" width="25%" class="mt-5 ml-4" @click="$store.commit('decrease')">
+            <v-icon>mdi-chevron-left</v-icon>Previous
+        </v-btn>
+        <v-btn @click="$store.commit('increment')" outlined text style="background-color: #1a2444;" color="white" width="25%" class="mt-5 ml-4">
+            Next Step <v-icon>mdi-chevron-right</v-icon>
+        </v-btn>
     </v-card>
 </template>
 

@@ -10,14 +10,14 @@
         </div>
         <div class="d-flex">
             <div class="d-flex ml-4 mr-12">
-                <v-btn text outlined style="border-color: black;" class="mr-1"><v-icon>mdi-chevron-left</v-icon></v-btn>
+                <v-btn text outlined style="border-color: black;" class="mr-1" @click="updateDate(getPreviousDay(currentDate))" :disabled="disable"><v-icon>mdi-chevron-left</v-icon></v-btn>
                 <v-dialog v-model="dialog">
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn text outlined style="border-color: black;" class="mr-1" v-bind="attrs" v-on="on">{{ formattedDate }}</v-btn>
                     </template>
-                    <v-date-picker full-width @input="updateDate"></v-date-picker>
+                    <v-date-picker full-width @input="updateDate" :allowedDates="allowedDates"></v-date-picker>
                 </v-dialog>
-                <v-btn text outlined style="border-color: black;"><v-icon>mdi-chevron-right</v-icon></v-btn>
+                <v-btn text outlined style="border-color: black;" @click="updateDate(getNextDay(currentDate))"><v-icon>mdi-chevron-right</v-icon></v-btn>
             </div>
             <div class="d-flex ml-12">
                 <v-menu offset-y nudge-bottom="10">
@@ -109,7 +109,9 @@
                 </template>
             </v-data-table>
         </div>
-        <slot></slot>
+        <v-btn @click="$store.commit('increment')" text style="background-color: #1a2444;" color="white" width="25%" class="mt-5 ml-4" :disabled="uncomplete" dark>
+            Next Step <v-icon>mdi-chevron-right</v-icon>
+        </v-btn>
     </v-card>
 </template>
 
@@ -178,6 +180,12 @@ export default {
                 { row: -1, col: -1, state: false },
                 { row: -1, col: -1, state: false },
             ],
+            uncomplete: true,
+            allowedDates: (date) => {
+                const today = new Date().toISOString().substr(0, 10);
+                return date >= today;
+            },
+            disable: true,
         };
     },
     methods: {
@@ -199,9 +207,12 @@ export default {
                 formattedDates.push({text: formattedDate, width: 108, value: formattedDate, sortable: false});
             }
             return formattedDates;
-        },
+        },     
         updateDate(newDate) {
+            const today = new Date().toISOString().substr(0, 10);
+            console.log(`newDate: ${newDate}, today: ${today}`);
             this.currentDate = newDate;
+            this.disable = (newDate === today);
             this.dialog = false;
             this.formattedDate = this.getFormattedDate(newDate);
             this.tableHeaderDate = this.getTableHeaderDate(newDate);
@@ -274,12 +285,23 @@ export default {
                 color: tableIndex === 0 ? this.boat[row]?.color || '' : this.boat[2]?.color || '',
             };
             this.$emit('dataFromOne', data);
+            this.uncomplete = false;
         },
         handleClick(index, indexCol, tableIndex) {
             this.toggleClick(index, indexCol, tableIndex);
             this.sendData(index, indexCol, tableIndex);
         },
-    },
+        getNextDay(currentDate) {
+            const date = new Date(currentDate);
+            date.setDate(date.getDate() + 7);
+            return date.toISOString().substr(0, 10);
+        },
+        getPreviousDay(currentDate) {
+            const date = new Date(currentDate);
+            date.setDate(date.getDate() - 7);
+            return date.toISOString().substr(0, 10);
+        },
+    },  
     mounted() {
         this.tableHeaderDate = this.getTableHeaderDate(this.currentDate);
         this.formattedDate = this.getFormattedDate(this.currentDate);

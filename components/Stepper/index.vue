@@ -1,53 +1,31 @@
 <template>
-    <v-stepper v-model="step" elevation="0">
+    <v-stepper v-model="$store.state.step" elevation="0">
         <v-stepper-header class="elevation-0 ml-16 pl-12" style="width: 90%;">
             <template v-for="index in 4">
-                <v-divider class="ct-divider" :color="step >= index ? '#1a2444' : '#bcefff'"></v-divider>
-                <v-stepper-step :complete="step > index" 
+                <v-divider class="ct-divider" :color="$store.state.step >= index ? '#1a2444' : '#bcefff'"></v-divider>
+                <v-stepper-step :complete="$store.state.step > index" 
                                 :step="index" 
                                 class="ct-stepper-step" 
-                                :class="step >= index ? 'active-step' : 'inactive-step'">
+                                :class="$store.state.step >= index ? 'active-step' : 'inactive-step'">
                 </v-stepper-step>
             </template>
         </v-stepper-header>
   
         <v-stepper-items>
             <v-stepper-content step="1">
-                <StepperOne @dataFromOne="handleDataFromOne">
-                    <v-btn @click="step = 2" text style="background-color: #1a2444;" color="white" width="25%" class="mt-5 ml-4">
-                        Next Step <v-icon>mdi-chevron-right</v-icon>
-                    </v-btn>
-                </StepperOne>
+                <StepperOne @dataFromOne="handleDataFromOne" />
             </v-stepper-content>
     
             <v-stepper-content step="2">
-                <StepperTwo :receivedData="data" @dataFromTwo="handleDataFromTwo">
-                    <v-btn text outlined color="black" style="border-color: black;" width="25%" class="mt-5 ml-4" @click="step = 1">
-                        <v-icon>mdi-chevron-left</v-icon>Previous
-                    </v-btn>
-                    <v-btn @click="step = 3" outlined text style="background-color: #1a2444;" color="white" width="25%" class="mt-5 ml-4">
-                        Next Step <v-icon>mdi-chevron-right</v-icon>
-                    </v-btn>
-                </StepperTwo>
+                <StepperTwo :receivedData="data" @dataFromTwo="handleDataFromTwo" />
             </v-stepper-content>
     
             <v-stepper-content step="3">
-                <StepperThree :receivedData="data2">
-                    <v-btn text outlined color="black" style="border-color: black;" width="25%" class="mt-5 ml-4" @click="step = 2">
-                        <v-icon>mdi-chevron-left</v-icon>Previous
-                    </v-btn>
-                    <v-btn @click="step = 4" outlined text style="background-color: #1a2444;" color="white" width="25%" class="mt-5 ml-4">
-                        Next Step <v-icon>mdi-chevron-right</v-icon>
-                    </v-btn>
-                </StepperThree>
+                <StepperThree :receivedData="data2" />
             </v-stepper-content>
     
             <v-stepper-content step="4">
-                <StepperFour>
-                    <v-btn text outlined color="black" style="border-color: black;" width="25%" class="mt-5 ml-4" @click="step = 3">
-                        <v-icon>mdi-chevron-left</v-icon>Previous
-                    </v-btn>
-                </StepperFour>
+                <StepperFour />
             </v-stepper-content>
         </v-stepper-items>
     </v-stepper>
@@ -57,7 +35,6 @@
 export default {
     data() {
         return {
-            step: 1,
             data: {
                 date: '',
                 lake: '',
