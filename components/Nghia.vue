@@ -7,7 +7,7 @@
             
             <v-divider color="#1a2444" class="ml-12" :style="{color: e1 >= 1 ? '#1a2444' : '#bcefff', borderColor: e1 >= 1 ? '#1a2444' : '#bcefff'}" style="border: solid 5px; margin-left: 87px !important;"></v-divider>
             
-            <v-stepper-step :complete="e1 > 1" step="1" class="pa-0 active-step" > 
+            <v-stepper-step :complete="e1 > 1" step="1" class="pa-0 active-step"> 
               
             </v-stepper-step>
             
@@ -50,19 +50,19 @@
             </v-stepper-content>
             
             <v-stepper-content step="2" class="px-sm-6 px-2 pt-1">
-              <v-card class="px-2 pb-5 pt-2 v-sheet--outlined" style="box-shadow: none;">
+              <v-card class="px-2 pb-5 pt-2 v-sheet--outlined" style="box-shadow: none">
                 <div class="py-2">
                   <div>
-                    <v-card class="mb-3 pt-4 no-border v-sheet--outlined" style="box-shadow: none ;">
+                    <v-card class="mb-3 pt-4 no-border" style="box-shadow: none">
                       <div>
-                        <h2 class="d-flex align-center" style="margin: -12px 0 21px 13px;" :class="$vuetify.breakpoint.xsOnly ? 'text-h6' : ''">
+                        <h2 class="d-flex align-center" style="margin: -12px 0 10px 13px;" :class="$vuetify.breakpoint.xsOnly ? 'text-h6 font-weight-bold' : ''">
                           <v-sheet class="d-flex align-center justify-center rounded-pill deep-orange lighten-4" style="width: 40px; height: 40px; margin: ">
                             2
                           </v-sheet>
                           <div class="ml-3"> Selected trip</div>
                         </h2>
                         
-                        <v-card-text style="box-shadow: none;" class="py-0 mb-4 text-nowrap" :width="$vuetify.breakpoint.xsOnly ? 'col-12' : 'col-7'">                   
+                        <v-card-text outlined style="box-shadow: none;" class="py-0 mb-4 text-nowrap px-1" :class="$vuetify.breakpoint.smAndDown ? 'col-12' : 'col-8'">                   
                           <div class="d-flex flex-wrap flex-row pr-sm-5">
                             <div class="d-flex align-center order-1 pb-0 col-sm-4 col-12">
                               
@@ -151,16 +151,7 @@
                               
                             </div>
                             
-                            <div class="d-flex  align-center order-9 pb-0 col-sm-4 col-12">
-                              
-                              <p class="mb-0"></p>
-                              
-                              <p class="pl-sm-5 subtitle-2 mb-0">
-                                
-                                <a></a>
-                                
-                              </p>
-                              
+                            <div class="align-center order-9 pb-0 col-sm-4 col-12 d-none d-sm-flex">
                             </div>
                             
                             <div class="d-flex  align-center order-10 pb-0 col-sm-4 col-12">
@@ -204,7 +195,7 @@
                                       </td>
                                       
                                       <td>
-                                        <a href="" style="font-weight: bold; color:Black;">Non-member</a>
+                                        <a href="" style="font-weight: bold; color:Black; text-wrap: nowrap;">Non-member</a>
                                       </td>
                                     </tr>
                                     
@@ -214,7 +205,7 @@
                                           <div class="px-0">06:00-08:00</div>
                                           <div class="ml-2">
                                             <div>
-                                              <v-simple-checkbox class="mt-0 pt-1 d-inline-flex" v-model="checkbox">
+                                              <v-simple-checkbox class="mt-0 pt-1 d-inline-flex" v-model="checkboxes[0]" color="primary">
                                                 
                                               </v-simple-checkbox>
                                             </div>
@@ -237,7 +228,7 @@
                                           <div class="px-0">08:15-10:15</div>
                                           <div class="ml-2">
                                             <div>
-                                              <v-simple-checkbox v-model="checkbox" class="mt-0 pt-1 d-inline-flex">
+                                              <v-simple-checkbox v-model="checkboxes[1]" class="mt-0 pt-1 d-inline-flex" color="primary">
                                                 
                                               </v-simple-checkbox>
                                             </div>
@@ -249,7 +240,9 @@
                                         <div>67.07$/h</div>
                                       </td>
                                       
-                                      <td>87.20$/h</td>
+                                      <td>
+                                        <div>87.20$/h</div>
+                                      </td>
                                     </tr>
                                     
                                     <tr class="tr-mobile">
@@ -258,7 +251,7 @@
                                           <div class="px-0">10:30-12:30</div>
                                           <div class="ml-2">
                                             <div>
-                                              <v-simple-checkbox v-model="checkbox" class="mt-0 pt-1 d-inline-flex">
+                                              <v-simple-checkbox v-model="checkboxes[2]" class="mt-0 pt-1 d-inline-flex" color="primary">
                                                 
                                               </v-simple-checkbox>
                                             </div>
@@ -271,7 +264,9 @@
                                         <div>73.86$/h</div>
                                       </td>
                                       
-                                      <td>96.01$/h</td>
+                                      <td>
+                                        <div>96.01$/h</div>
+                                      </td>
                                     </tr>
                                     
                                     <tr class="tr-mobile">
@@ -280,7 +275,7 @@
                                           <div class="px-0">12:45-14:45</div>
                                           <div class="ml-2">
                                             <div>
-                                              <v-simple-checkbox v-model="checkbox" class="mt-0 pt-1 d-inline-flex">
+                                              <v-simple-checkbox v-model="checkboxes[3]" class="mt-0 pt-1 d-inline-flex" color="primary">
                                                 
                                               </v-simple-checkbox>
                                             </div>
@@ -293,7 +288,9 @@
                                         <div>78.38$/h</div>
                                       </td>
                                       
-                                      <td>101.89$/h</td>
+                                      <td>
+                                        <div>101.89$/h</div>
+                                      </td>
                                     </tr>
                                           
                                     <tr class="tr-mobile">
@@ -302,7 +299,7 @@
                                           <div class="px-0">15:00-17:00</div>
                                           <div class="ml-2">
                                             <div>
-                                              <v-simple-checkbox v-model="checkbox" class="mt-0 pt-1 d-inline-flex">
+                                              <v-simple-checkbox v-model="checkboxes[4]" class="mt-0 pt-1 d-inline-flex" color="primary">
 
                                               </v-simple-checkbox>
                                             </div>
@@ -315,7 +312,9 @@
                                         <div>78.38$/h</div>
                                       </td>
                                       
-                                      <td>101.89$/h</td>
+                                      <td>
+                                        <div>101.89$/h</div>
+                                      </td>
                                     </tr>
                                     
                                     <tr class="tr-mobile">
@@ -324,7 +323,7 @@
                                           <div class="px-0">17:15-18:30</div>
                                           <div class="ml-2">
                                             <div>
-                                              <v-simple-checkbox v-model="checkbox" class="mt-0 pt-1 d-inline-flex">
+                                              <v-simple-checkbox v-model="checkboxes[5]" class="mt-0 pt-1 d-inline-flex" color="primary">
                                                 
                                               </v-simple-checkbox>
                                             </div>
@@ -337,7 +336,9 @@
                                         <div>62.70$/h</div>
                                       </td>
                                       
-                                      <td>81.51$/h</td>
+                                      <td>
+                                        <div>81.51$/h</div>
+                                      </td>
                                     </tr>
                                   </tbody>
                                 </template>
@@ -419,7 +420,8 @@
 export default {
   data() {
     return {
-      e1: 1 // Initial step
+      e1: 1, // Initial step
+      checkboxes: [false, false, false, false, false, false],
     };
   },
   mounted(){
@@ -452,11 +454,6 @@ export default {
     height: 33px; 
     font-size: 20px; 
     background-color: #bcefff !important;
-}
-
-.img-responsive {
-  max-width: 100%;
-  height: auto;
 }
 
 @media (max-width: 600px) {
