@@ -2,10 +2,10 @@
   <div class="layout d-flex flex-column align-start">
     <v-sheet style="height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0) !important; border-color: rgba(0, 0, 0, 0) !important;"> 
       <div>
-        <v-stepper v-model="e1">
-          <v-stepper-header  fluid style="background-color: #c4f1ff5f; box-shadow: none; border: 0">
+        <v-stepper v-model="e1" class="elevation-0 background-index gradient">
+          <v-stepper-header  fluid style="background-color: #c4f1ff5f; box-shadow: none; border: 0" class="d-none d-sm-flex">
             
-            <v-divider color="#1a2444" class="ml-12" :style="{color: e1 >= 1 ? '#1a2444' : '#bcefff', borderColor: e1 >= 1 ? '#1a2444' : '#bcefff'}" style="border: solid 5px;"></v-divider>
+            <v-divider color="#1a2444" class="ml-12" :style="{color: e1 >= 1 ? '#1a2444' : '#bcefff', borderColor: e1 >= 1 ? '#1a2444' : '#bcefff'}" style="border: solid 5px; margin-left: 87px !important;"></v-divider>
             
             <v-stepper-step :complete="e1 > 1" step="1" class="pa-0 active-step" > 
               
@@ -30,7 +30,7 @@
             </v-stepper-step>
           </v-stepper-header>
           
-          <v-stepper-items>
+          <v-stepper-items style="background-color: #c4f1ff5f">
             <v-stepper-content step="1" class="px-sm-6 px-2 pt-sm-3 pt-1">
               <v-card class="px-2 pb-5 pt-2"  height="auto" style="box-shadow: none;">
                 
@@ -49,150 +49,147 @@
               
             </v-stepper-content>
             
-            <v-stepper-content step="2" class="px-sm-6 px-2 pt-sm-3 pt-1">
-              <v-card class="px-2 pb-5 pt-2" style="box-shadow: none;">
-                <div class="py-2 check-2">
+            <v-stepper-content step="2" class="px-sm-6 px-2 pt-1">
+              <v-card class="px-2 pb-5 pt-2 v-sheet--outlined" style="box-shadow: none;">
+                <div class="py-2">
                   <div>
-                    <v-card class="mb-3 pt-4" style="box-shadow: none ;">
+                    <v-card class="mb-3 pt-4 no-border v-sheet--outlined" style="box-shadow: none ;">
                       <div>
-                        <h2>
-                          <v-row class="text-center">
-                            <v-col cols="12" class="d-flex">
-                              <div class="rounded-circle deep-orange lighten-4 d-flex align-center justify-center" style="width:40px; height:40px;">2</div>
-                              
-                              <div class="d-flex align-center justify-start ml-3" >Selected trip</div>
-                            </v-col>
-                          </v-row>
+                        <h2 class="d-flex align-center" style="margin: -12px 0 21px 13px;" :class="$vuetify.breakpoint.xsOnly ? 'text-h6' : ''">
+                          <v-sheet class="d-flex align-center justify-center rounded-pill deep-orange lighten-4" style="width: 40px; height: 40px; margin: ">
+                            2
+                          </v-sheet>
+                          <div class="ml-3"> Selected trip</div>
                         </h2>
                         
-                        <v-card-text style="width:70%; box-shadow: none;" class="py-0 mb-4" >                   
+                        <v-card-text style="box-shadow: none;" class="py-0 mb-4 text-nowrap" :width="$vuetify.breakpoint.xsOnly ? 'col-12' : 'col-7'">                   
                           <div class="d-flex flex-wrap flex-row pr-sm-5">
-                            <div class="d-flex  align-center order-1 pb-0 col-sm-4 col-12">
+                            <div class="d-flex align-center order-1 pb-0 col-sm-4 col-12">
                               
-                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px;">Date</subtitle-2>
+                              <p class="mb-0" style="width:80px; font-size:14px;">Date</p>
                               
-                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
                                 <span> 31 August </span>
-                              </subtitle-2>
+                              </p>
                               
                             </div>
                             
-                            <div class="d-flex  align-center order-2 pb-0 col-sm-4 col-12">
+                            <div class="d-flex align-center order-2 pb-0 col-sm-4 col-12">
                               
-                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Boat</subtitle-2>
+                              <p class="mb-0 " style="width:80px; font-size:14px">Boat</p>
                               
-                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
                                 <a> Vectra 21 </a>
-                              </subtitle-2>
+                              </p>
                               
                             </div>
                             
                             <div class="d-flex  align-center order-3 pb-0 col-sm-4 col-12">
                               
-                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px;">Primary</subtitle-2>
+                              <p class="mb-0" style="width:80px; font-size:14px;">Primary</p>
                               
-                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
                                 <span> Red </span>
-                              </subtitle-2>
+                              </p>
                             </div>
                             
                             <div class="d-flex  align-center order-4 pb-0 col-sm-4 col-12">
                               
-                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px;">City</subtitle-2>
+                              <p class="mb-0" style="width:80px; font-size:14px;">City</p>
                               
-                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
                                 <a> Magos </a>
-                              </subtitle-2>
+                              </p>
                               
                             </div>
                             
                             <div class="d-flex  align-center order-5 pb-0 col-sm-4 col-12">
                               
-                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">HP</subtitle-2>
+                              <p class="mb-0" style="width:80px; font-size:14px">HP</p>
                               
-                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
                                 <span> 60 </span>
-                              </subtitle-2>
+                              </p>
                               
                             </div>
                             
                             <div class="d-flex  align-center order-6 pb-0 col-sm-4 col-12">
                               
-                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Secondary</subtitle-2>
+                              <p class="mb-0" style="width:80px; font-size:14px">Secondary</p>
                                   
-                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
                                 <span> Black </span>
-                              </subtitle-2>
+                              </p>
                               
                             </div>
                             
                             <div class="d-flex  align-center order-7 pb-0 col-sm-4 col-12">
                               
-                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Lake</subtitle-2>
+                              <p class="mb-0" style="width:80px; font-size:14px">Lake</p>
                               
-                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
                                 <a> Memphrémagog </a>
-                              </subtitle-2>
+                              </p>
                               
                             </div>
                             
                             <div class="d-flex  align-center order-8 pb-0 col-sm-4 col-12">
                               
-                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Passengers</subtitle-2>
+                              <p class="mb-0" style="width:80px; font-size:14px">Passengers</p>
                               
-                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
                                 <span> 10 Passsengers </span>
-                              </subtitle-2>
+                              </p>
                               
                             </div>
                             
                             <div class="d-flex  align-center order-9 pb-0 col-sm-4 col-12">
                               
-                              <subtitle-2 class="d-flex align-center"></subtitle-2>
+                              <p class="mb-0"></p>
                               
-                              <subtitle-2 class="d-flex justify-end pl-5 align-center">
+                              <p class="pl-sm-5 subtitle-2 mb-0">
                                 
                                 <a></a>
                                 
-                              </subtitle-2>
+                              </p>
                               
                             </div>
                             
                             <div class="d-flex  align-center order-10 pb-0 col-sm-4 col-12">
                               
-                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Dock</subtitle-2>
+                              <p class="mb-0" style="width:80px; font-size:14px">Dock</p>
                               
-                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
                                 <a> Pointe Merry </a>
                                 
-                              </subtitle-2>
+                              </p>
                               
                             </div>
                                 
                             <div class="d-flex align-center order-11 pb-0 col-sm-4 col-12">
                                   
-                              <subtitle-2 class="d-flex align-center" style="width:80px; font-size:14px">Licenses</subtitle-2>
+                              <p class="mb-0" style="width:80px; font-size:14px">Licenses</p>
                               
-                              <subtitle-2 class="d-flex justify-end pl-5 align-center" style="font-weight: bold; font-size:14px">
+                              <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
                                 <span> C35594QC </span>
-                              </subtitle-2>
+                              </p>
                               
                             </div>
                                       
                             
                           </div>
                           
-                          <div class="d-flex flex-row">
+                          <div class="d-flex flex-row mt-3">
                             <div class="py-0">
                               <v-simple-table class="tab-display table-mobile">
                                 <template v-slot:default>
@@ -352,25 +349,25 @@
                     </v-card>         
                   </div>
                 </div>
+                <div class="px-4 d-flex" :class="$vuetify.breakpoint.xsOnly ? 'flex-column' : '' ">
+                  <div class="col-sm-5 col-md-4 col-lg-3 col-12 py-1">
+                    <v-btn text @click="e1 = 1" style="border: thin solid; width: 100%; height: 40px;">
+                      <v-icon>mdi-chevron-left</v-icon>
+                      
+                      Previous                         
+                    </v-btn> 
+                  </div>
+                  
+                  <div class="col-sm-5 col-md-4 col-lg-3 col-12 py-1">
+                    <v-btn color="#1a2444" @click = "e1 = 3" class="white--text" style="width: 100%; height: 40px;">
+                      Next Step
+                      
+                      <v-icon>mdi-chevron-right</v-icon>
+                    </v-btn>
+                  </div>
+                </div>
               </v-card>
               
-              <div class="px-4 d-flex" :class="$vuetify.breakpoint.xsOnly ? 'flex-column' : '' ">
-                <div class="col-sm-5 col-md-4 col-lg-3 col-12">
-                  <v-btn text @click="e1 = 1" class="pa-03" style="border: thin solid; width: 100%; height: 40px;">
-                    <v-icon>mdi-chevron-left</v-icon>
-                    
-                    Previous                         
-                  </v-btn> 
-                </div>
-                
-                <div class="col-sm-5 col-md-4 col-lg-3 col-12">
-                  <v-btn color="#1a2444" @click = "e1 = 3" class="white--text pa-03" style="width: 100%; height: 40px;">
-                    Next Step
-                    
-                    <v-icon>mdi-chevron-right</v-icon>
-                  </v-btn>
-                </div>
-              </div>
             </v-stepper-content>
             
             <v-stepper-content step="3" class="px-sm-6 px-2 pt-sm-3 pt-1">
