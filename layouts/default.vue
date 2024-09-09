@@ -61,12 +61,12 @@
           </div>
           
           <!-- Button -->
-          <div class="d-flex flex-column flex-wrap flex-grow-1 d-none d-sm-flex">
+          <div class="d-flex flex-column flex-wrap flex-grow-1 d-sm-none d-md-flex">
             <div class="d-flex align-start mx-0">
               <div class="d-flex align-center"></div>
                 <v-spacer></v-spacer>
                 <div class="d-flex justify-end align-center mr-3 flex-grow-1 d-none d-sm-flex">
-                  <a href="" class="v-btn v-btn--is-elevated v-btn--has-bg v-btn--rounded theme--light v-size--x-large primary d-none d-sm-flex">
+                  <a href="" class="v-btn v-btn--is-elevated v-btn--has-bg v-btn--rounded theme--light v-size--x-large primary d-none d-sm-flex d-md-flex">
                     <span class="black--text font-weight-light">RENT A BOAT</span>
                   </a>
               </div>

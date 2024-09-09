@@ -71,18 +71,38 @@
                           <div class="d-flex justify-center justify-md-start">
                             <div class="d-flex flex-row no-gutters">
                               <div class="d-flex justify-start col col-1">
-                                <v-btn style="height:40px;">
+                                <v-btn style="height:40px;" outlined @click="adjustDate(-7)">
                                   <v-icon>mdi-chevron-left</v-icon>
                                 </v-btn>
                               </div>
 
-                              <div class="d-flex justify-center px-12 px-sm-0 col col-10">
-                                <v-btn class="mx-4 mx-sm-1" role="button" aria-haspopup="true" aria-expanded="false" style="height:40px;"></v-btn>
-                                <v-dialog></v-dialog>
+                              <div class="d-flex justify-center px-12 px-sm-0 col col-10 text-center">
+                                <v-dialog v-model="dialog" persistent>
+                                  <template v-slot:activator="{ on, attrs }">
+                                    <v-btn 
+                                      class="mx-4 mx-sm-1" 
+                                      outlined 
+                                      v-bind="attrs" 
+                                      v-on="on"
+                                      height="40px"
+                                    > 
+                                      {{ formatDate(picker) }}
+                                    </v-btn>
+                                  </template>
+
+                                  <v-date-picker 
+                                    v-model="picker"
+                                    full-width="true"
+                                    :min="minDate"                                   
+                                  >
+
+                                  </v-date-picker>
+                                </v-dialog>
+                                
                               </div>
 
                               <div class="d-flex justify-end col col-1">
-                                <v-btn style="height: 40px;">
+                                <v-btn style="height: 40px;" outlined @click="adjustDate(7)">
                                   <v-icon>mdi-chevron-right</v-icon>
                                 </v-btn>
                               </div>
@@ -108,134 +128,43 @@
                                         <v-icon>mdi-account</v-icon>
                                       </th>
                                       <th width="80px" class="font-weight-bold black--text pl-0">HP</th>
-                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 9 September</th>
-                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 10 September</th>
-                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 11 September</th>
-                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 12 September</th>
-                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 13 September</th>
-                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 14 September</th>
-                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 15 September</th>
-                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 16 September</th>
-                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 17 September</th>
-                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 18 September</th>
-                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 19 September</th>
-                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 20 September</th>
-                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 21 September</th>
+                                      <th 
+                                        v-for="(day, index) in displayedDays" 
+                                        :key="index" 
+                                        width="80px" 
+                                        class="font-weight-bold black--text text-no-wrap"
+                                      >
+                                        {{ day }}
+                                      </th>
                                     </tr>
                                   </thead>
 
                                   <tbody>
-                                    <tr>
+                                    <tr v-for="(boat, index) in boats" :key="index">
                                       <td class="pl-0">
                                         <a href="" class="font-weight-bold anchorbase--text text-decoration-underline d-flex text-no-wrap">
-                                          Vectra 21
+                                          {{ boat.name }}
                                         </a>
                                       </td>
 
                                       <td class="pl-0">
-                                        <span>10</span>
+                                        <span>{{ boat.capacity }}</span>
                                       </td>
 
                                       <td class="pl-0">
-                                        <span>60</span>
+                                        <span>{{ boat.hp }}</span>
                                       </td>
 
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      <td v-for="(day, iconIndex) in displayedDays" :key="iconIndex">
+                                        <v-btn 
+                                          icon
+                                          :class="{'blue--text' : selectedDays[day], 'green--text': !selectedDays[day]}"
+                                          @click="toggleDay(day)"
+                                        >
+                                          <v-icon>mdi-clock-outline</v-icon>
+                                        </v-btn>
                                       </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                    </tr>
-
-                                    <tr>
-                                      <td class="pl-0">
-                                        <a href="" class="font-weight-bold anchorbase--text text-decoration-underline d-flex text-no-wrap">
-                                          Sportfisher 21
-                                        </a>
-                                      </td>
-
-                                      <td class="pl-0">
-                                        <span>10</span>
-                                      </td>
-
-                                      <td class="pl-0">
-                                        <span>60</span>
-                                      </td>
-
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                      <td>
-                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
-                                      </td>
-                                    </tr>
+                                    </tr>                                   
                                   </tbody>
                                 </template>
                               </v-simple-table>
@@ -714,13 +643,43 @@
   </div>
 </template>
   
-  <script>
+<script>
 export default {
   data() {
     return {
       e1: 1, // Initial step
       checkboxes: [false, false, false, false, false, false], // Initial array of checkboxes
+      dialog: false,
+      picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      minDate: this.getToday(), // Setting the min date dynamically
+      selectedDays: {},
+      boats: [
+        {
+          name: "Vectra 21",
+          capacity: 10,
+          hp: 60
+        },
+        {
+          name: "Sportfisher 21",
+          capacity: 10,
+          hp: 60
+        }
+      ]
     };
+  },
+  computed: {
+    displayedDays() {
+      const days = [];
+      const startDate = new Date(this.picker);
+
+      for (let i = 0; i <= 13; i++) {
+        const day = new Date(startDate);
+        day.setDate(startDate.getDate() + i);
+        const formattedDate = day.toLocaleDateString(undefined, { day: 'numeric', month: 'long' });
+        days.push(formattedDate);
+      }
+      return days;
+    }
   },
   mounted(){
     window.addEventListener("resize", this.handleResize);
@@ -732,7 +691,23 @@ export default {
     handleResize() {
       this.screenWidth = window.innerWidth
     },
-  },
+    getToday() {
+      const today = new Date();
+      return today.toISOString().substr(0, 10);
+    },
+    formatDate(date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric'};
+      return new Date(date).toLocaleDateString(undefined, options );
+    },
+    adjustDate(days) {
+      const current = new Date(this.picker);
+      current.setDate(current.getDate() + days);
+      this.picker = current.toISOString().substr(0, 10);
+    },
+    toggleDay(day) {
+      this.$set(this.selectedDays, day, !this.selectedDays[day]);
+    }
+  }
 };
 </script>
 
@@ -753,6 +728,21 @@ export default {
     font-size: 20px; 
     background-color: #bcefff !important;
 }
+
+::v-deep .v-date-picker-header {
+  font-size: 21px !important;
+}
+
+::v-deep .v-date-picker-table .v-btn {
+  font-size: 16px !important;
+  font-weight: normal;
+}
+
+::v-deep .v-date-picker-table th {
+  font-size: 16px !important;
+}
+
+
 
 
 </style>
