@@ -2,67 +2,294 @@
   <div class="layout d-flex flex-column align-start">
     <v-sheet style="height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0) !important; border-color: rgba(0, 0, 0, 0) !important;"> 
       <div>
+        <!-- Steppers & Progress Bar -->
         <v-stepper v-model="e1" class="elevation-0 background-index gradient">
-          <v-stepper-header  fluid style="background-color: #c4f1ff5f; box-shadow: none; border: 0" class="d-none d-sm-flex">
-            
-            <v-divider color="#1a2444" class="ml-12" :style="{color: e1 >= 1 ? '#1a2444' : '#bcefff', borderColor: e1 >= 1 ? '#1a2444' : '#bcefff'}" style="border: solid 5px; margin-left: 87px !important;"></v-divider>
+          <v-stepper-header  
+            fluid 
+            style="background-color: #c4f1ff5f; box-shadow: none; border: 0" 
+            class="d-none d-sm-flex"
+          >           
+            <v-divider 
+              color="#1a2444" 
+              class="ml-12" 
+              :style="{color: e1 >= 1 ? '#1a2444' : '#bcefff', borderColor: e1 >= 1 ? '#1a2444' : '#bcefff'}" 
+              style="border: solid 5px; margin-left: 87px !important;"
+            ></v-divider>
             
             <v-stepper-step :complete="e1 > 1" step="1" class="pa-0 active-step"> 
               
             </v-stepper-step>
             
-            <v-divider :style="{ color: e1 >= 2 ? '#1a2444' : '#bcefff', borderColor: e1 >= 2 ? '#1a2444' : '#bcefff' }" style="border: solid 5px;"></v-divider>
+            <v-divider 
+              :style="{ color: e1 >= 2 ? '#1a2444' : '#bcefff', borderColor: e1 >= 2 ? '#1a2444' : '#bcefff' }" 
+              style="border: solid 5px;"
+            ></v-divider>
             
             <v-stepper-step :complete="e1 > 2" step="2" class="pa-0" :class="e1 >= 2 ? 'active-step' : 'inactive-step'">
               
             </v-stepper-step>
             
-            <v-divider :style="{ color: e1 >= 3 ? '#1a2444' : '#bcefff', borderColor: e1 >= 3 ? '#1a2444' : '#bcefff' }" style="border: solid 5px;"></v-divider>
+            <v-divider 
+              :style="{ color: e1 >= 3 ? '#1a2444' : '#bcefff', borderColor: e1 >= 3 ? '#1a2444' : '#bcefff' }" 
+              style="border: solid 5px;"
+            ></v-divider>
             
             <v-stepper-step :complete="e1 > 3" step="3" class="pa-0" :class="e1 >= 3 ? 'active-step' : 'inactive-step'">
               
             </v-stepper-step>
             
-            <v-divider :style="{ color: e1 >= 4 ? '#1a2444' : '#bcefff', borderColor: e1 >= 4 ? '#1a2444' : '#bcefff' }" style="border: solid 5px;"></v-divider>
+            <v-divider 
+              :style="{ color: e1 >= 4 ? '#1a2444' : '#bcefff', borderColor: e1 >= 4 ? '#1a2444' : '#bcefff' }" 
+              style="border: solid 5px;"
+            ></v-divider>
             
             <v-stepper-step step="4" class="mr-12 pa-0" :class="e1 >= 4 ? 'active-step' : 'inactive-step'">
               
             </v-stepper-step>
           </v-stepper-header>
           
+          <!-- Stepper Contents-->
+           <!-- Step 1 -->
           <v-stepper-items style="background-color: #c4f1ff5f">
             <v-stepper-content step="1" class="px-sm-6 px-2 pt-sm-3 pt-1">
               <v-card class="px-2 pb-5 pt-2"  height="auto" style="box-shadow: none;">
-                
+                <div>
+                  <v-card class="my-1 pt-2 no-border" style="box-shadow: none;">
+                    <h2 class="ml-4 ms-4 pb-6 d-flex align-center font-weight-bold">
+                      <v-sheet 
+                        class="d-flex align-center justify-center rounded-pill light-blue lighten-2" 
+                        style="height: 40px; width: 40px;"
+                      >
+                        1
+                      </v-sheet>
+                      <div class="ml-3"> Choose time </div>
+                    </h2>
+
+                    <v-card-text class="py-0">
+                      <div class="mb-2">
+                        <div class="d-flex flex-wrap">
+                          <div class="d-flex justify-center justify-md-start">
+                            <div class="d-flex flex-row no-gutters">
+                              <div class="d-flex justify-start col col-1">
+                                <v-btn style="height:40px;">
+                                  <v-icon>mdi-chevron-left</v-icon>
+                                </v-btn>
+                              </div>
+
+                              <div class="d-flex justify-center px-12 px-sm-0 col col-10">
+                                <v-btn class="mx-4 mx-sm-1" role="button" aria-haspopup="true" aria-expanded="false" style="height:40px;"></v-btn>
+                                <v-dialog></v-dialog>
+                              </div>
+
+                              <div class="d-flex justify-end col col-1">
+                                <v-btn style="height: 40px;">
+                                  <v-icon>mdi-chevron-right</v-icon>
+                                </v-btn>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="mb-5">
+                        <div>
+                          <div>
+                            <v-card flat="true">
+                              <v-card-title class="pl-0 pb-0 pt-0">
+                                <div>Lake Memphrémagog - Dock Pointe Merry</div>
+                              </v-card-title>
+
+                              <v-simple-table>
+                                <template v-slot:default>
+                                  <thead>
+                                    <tr>
+                                      <th width="150px" class="font-weight-bold black--text pl-0"> Boat</th>
+                                      <th width="100px" class="font-weight-bold black--text pl-0">
+                                        <v-icon>mdi-account</v-icon>
+                                      </th>
+                                      <th width="80px" class="font-weight-bold black--text pl-0">HP</th>
+                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 9 September</th>
+                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 10 September</th>
+                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 11 September</th>
+                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 12 September</th>
+                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 13 September</th>
+                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 14 September</th>
+                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 15 September</th>
+                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 16 September</th>
+                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 17 September</th>
+                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 18 September</th>
+                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 19 September</th>
+                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 20 September</th>
+                                      <th width="80px" class="font-weight-bold black--text text-no-wrap"> 21 September</th>
+                                    </tr>
+                                  </thead>
+
+                                  <tbody>
+                                    <tr>
+                                      <td class="pl-0">
+                                        <a href="" class="font-weight-bold anchorbase--text text-decoration-underline d-flex text-no-wrap">
+                                          Vectra 21
+                                        </a>
+                                      </td>
+
+                                      <td class="pl-0">
+                                        <span>10</span>
+                                      </td>
+
+                                      <td class="pl-0">
+                                        <span>60</span>
+                                      </td>
+
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                    </tr>
+
+                                    <tr>
+                                      <td class="pl-0">
+                                        <a href="" class="font-weight-bold anchorbase--text text-decoration-underline d-flex text-no-wrap">
+                                          Sportfisher 21
+                                        </a>
+                                      </td>
+
+                                      <td class="pl-0">
+                                        <span>10</span>
+                                      </td>
+
+                                      <td class="pl-0">
+                                        <span>60</span>
+                                      </td>
+
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                      <td>
+                                        <v-icon class="green--text">mdi-clock-outline</v-icon>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </template>
+                              </v-simple-table>
+                            </v-card>
+                          </div>
+                        </div>
+                      </div>
+                    </v-card-text>
+                  </v-card>
+                </div>
+                <!-- Next Step Button 1 -->
+                <div class="d-flex flex-row mx-1">
+                  <div class="col-sm-4 col-md-3 col-12">
+                    <v-btn color="#1a2444" @click="e1 = 2" class="white--text" style="width: 100%; height: 40px;">
+                      Next Step
+                      
+                      <v-icon>mdi-chevron-right</v-icon>
+                    </v-btn>
+                  </div>
+                </div>
               </v-card>
               
               
-              <div class="px-1">
-                <div class="col-sm-4 col-md-3 col-12">
-                  <v-btn color="#1a2444" @click="e1 = 2" class="white--text" style="width: 100%; height: 40px;">
-                    Next Step
-                    
-                    <v-icon>mdi-chevron-right</v-icon>
-                  </v-btn>
-                </div>
-              </div>
-              
             </v-stepper-content>
             
+            <!-- Step 2 -->
             <v-stepper-content step="2" class="px-sm-6 px-2 pt-1">
               <v-card class="px-2 pb-5 pt-2 v-sheet--outlined" style="box-shadow: none">
                 <div class="py-2">
                   <div>
+                    <!-- Content -->
                     <v-card class="mb-3 pt-4 no-border" style="box-shadow: none">
                       <div>
-                        <h2 class="d-flex align-center" style="margin: -12px 0 10px 13px;" :class="$vuetify.breakpoint.xsOnly ? 'text-h6 font-weight-bold' : ''">
-                          <v-sheet class="d-flex align-center justify-center rounded-pill deep-orange lighten-4" style="width: 40px; height: 40px; margin: ">
+                        <h2 
+                          class="d-flex align-center" 
+                          style="margin: -12px 0 10px 13px;" 
+                          :class="$vuetify.breakpoint.xsOnly ? 'text-h6 font-weight-bold' : ''"
+                        >
+                          <v-sheet 
+                            class="d-flex align-center justify-center rounded-pill deep-orange lighten-4" 
+                            style="width: 40px; height: 40px;"
+                          >
                             2
                           </v-sheet>
                           <div class="ml-3"> Selected trip</div>
                         </h2>
                         
-                        <v-card-text outlined style="box-shadow: none;" class="py-0 mb-4 text-nowrap px-1" :class="$vuetify.breakpoint.smAndDown ? 'col-12' : 'col-8'">                   
+                        <!-- Boat Statistics -->
+                        <v-card-text 
+                          outlined 
+                          style="box-shadow: none;" 
+                          class="py-0 mb-4 text-nowrap px-1" 
+                          :class="$vuetify.breakpoint.smAndDown ? 'col-12' : 'col-8'"
+                        >                   
                           <div class="d-flex flex-wrap flex-row pr-sm-5">
                             <div class="d-flex align-center order-1 pb-0 col-sm-4 col-12">
                               
@@ -81,7 +308,7 @@
                               
                               <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
-                                <a> Vectra 21 </a>
+                                <a class="anchorbase--text text-decoration-underline"> Vectra 21 </a>
                               </p>
                               
                             </div>
@@ -102,7 +329,7 @@
                               
                               <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
-                                <a> Magos </a>
+                                <a class="anchorbase--text text-decoration-underline"> Magos </a>
                               </p>
                               
                             </div>
@@ -135,7 +362,7 @@
                               
                               <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
-                                <a> Memphrémagog </a>
+                                <a class="anchorbase--text text-decoration-underline"> Memphrémagog </a>
                               </p>
                               
                             </div>
@@ -160,7 +387,7 @@
                               
                               <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
-                                <a> Pointe Merry </a>
+                                <a class="anchorbase--text text-decoration-underline"> Pointe Merry </a>
                                 
                               </p>
                               
@@ -180,6 +407,7 @@
                             
                           </div>
                           
+                          <!-- Table of Booking Time & Pricing -->
                           <div class="d-flex flex-row mt-3">
                             <div class="py-0">
                               <v-simple-table class="tab-display table-mobile">
@@ -195,18 +423,23 @@
                                       </td>
                                       
                                       <td>
-                                        <a href="" style="font-weight: bold; color:Black; text-wrap: nowrap;">Non-member</a>
+                                        <a href="" style="font-weight: bold; color:Black; text-wrap: nowrap;">
+                                          Non-member
+                                        </a>
                                       </td>
                                     </tr>
                                     
                                     <tr class="tr-mobile">
-                                      <td class="">
+                                      <td>
                                         <div class="d-flex align-center">
                                           <div class="px-0">06:00-08:00</div>
                                           <div class="ml-2">
                                             <div>
-                                              <v-simple-checkbox class="mt-0 pt-1 d-inline-flex" v-model="checkboxes[0]" color="primary">
-                                                
+                                              <v-simple-checkbox 
+                                                class="mt-0 pt-1 d-inline-flex" 
+                                                v-model="checkboxes[0]" 
+                                                color="primary"
+                                              >                                               
                                               </v-simple-checkbox>
                                             </div>
                                           </div>
@@ -228,8 +461,11 @@
                                           <div class="px-0">08:15-10:15</div>
                                           <div class="ml-2">
                                             <div>
-                                              <v-simple-checkbox v-model="checkboxes[1]" class="mt-0 pt-1 d-inline-flex" color="primary">
-                                                
+                                              <v-simple-checkbox 
+                                                v-model="checkboxes[1]" 
+                                                class="mt-0 pt-1 d-inline-flex" 
+                                                color="primary"
+                                              >                                               
                                               </v-simple-checkbox>
                                             </div>
                                           </div>
@@ -251,8 +487,11 @@
                                           <div class="px-0">10:30-12:30</div>
                                           <div class="ml-2">
                                             <div>
-                                              <v-simple-checkbox v-model="checkboxes[2]" class="mt-0 pt-1 d-inline-flex" color="primary">
-                                                
+                                              <v-simple-checkbox 
+                                                v-model="checkboxes[2]" 
+                                                class="mt-0 pt-1 d-inline-flex" 
+                                                color="primary"
+                                              >                                               
                                               </v-simple-checkbox>
                                             </div>
                                           </div>
@@ -275,8 +514,11 @@
                                           <div class="px-0">12:45-14:45</div>
                                           <div class="ml-2">
                                             <div>
-                                              <v-simple-checkbox v-model="checkboxes[3]" class="mt-0 pt-1 d-inline-flex" color="primary">
-                                                
+                                              <v-simple-checkbox 
+                                                v-model="checkboxes[3]" 
+                                                class="mt-0 pt-1 d-inline-flex" 
+                                                color="primary"
+                                              >                                                
                                               </v-simple-checkbox>
                                             </div>
                                           </div>
@@ -299,8 +541,11 @@
                                           <div class="px-0">15:00-17:00</div>
                                           <div class="ml-2">
                                             <div>
-                                              <v-simple-checkbox v-model="checkboxes[4]" class="mt-0 pt-1 d-inline-flex" color="primary">
-
+                                              <v-simple-checkbox 
+                                                v-model="checkboxes[4]" 
+                                                class="mt-0 pt-1 d-inline-flex" 
+                                                color="primary"
+                                              >
                                               </v-simple-checkbox>
                                             </div>
                                           </div>
@@ -323,8 +568,11 @@
                                           <div class="px-0">17:15-18:30</div>
                                           <div class="ml-2">
                                             <div>
-                                              <v-simple-checkbox v-model="checkboxes[5]" class="mt-0 pt-1 d-inline-flex" color="primary">
-                                                
+                                              <v-simple-checkbox 
+                                              v-model="checkboxes[5]" 
+                                              class="mt-0 pt-1 d-inline-flex" 
+                                              color="primary"
+                                              >                                               
                                               </v-simple-checkbox>
                                             </div>
                                           </div>
@@ -350,6 +598,8 @@
                     </v-card>         
                   </div>
                 </div>
+
+                <!-- Previous & Next Step Button 2 -->
                 <div class="px-4 d-flex" :class="$vuetify.breakpoint.xsOnly ? 'flex-column' : '' ">
                   <div class="col-sm-5 col-md-4 col-lg-3 col-12 py-1">
                     <v-btn text @click="e1 = 1" style="border: thin solid; width: 100%; height: 40px;">
@@ -371,30 +621,78 @@
               
             </v-stepper-content>
             
+            <!-- Step 3 -->
             <v-stepper-content step="3" class="px-sm-6 px-2 pt-sm-3 pt-1">
-              <v-card class="mb-12"  height="200px" style="box-shadow: none;">
+              <v-card class="px-2 pb-5 pt-2"  height="auto" style="box-shadow: none;">
+                <div>
+                  <div class="px-4 py-4">
+                    <h2 class="pt-0 pb-2 d-flex align-center font-weight-bold">
+                      <v-sheet class="d-flex align-center justify-center rounded-pill deep-purple lighten-4" style="height: 40px; width: 40px">
+                        3
+                      </v-sheet>
+                      <div class="ml-3">Confirm your trip details</div>
+                    </h2>
+
+                    <div class="d-flex flex-row">
+                      <div xs="12" class="col-sm-12 col-md-8 col-lg-8 col-xl-6 col-12">
+                        <div class="pb-3 mt-3">
+                          <div class="d-lg-flex baseline">
+                            <div class="font-weight-bold me-2">Not a member? You can book too.</div>
+                            <a href="" class="anchorbase--text subtitle-1">Become a member and save a lot!</a>
+                          </div>
+                          <div class="mb-4">
+                            Enter your cell phone number and click on "Send code". A unique code will be sent to you. Enter this code and apply your member price.
+                          </div>
+                          <v-form class="mb-3" novalidate="novalidate">
+                            <div class="d-flex flex-wrap">
+                              <div class="pa-0 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-12">
+                                <label for="phone" class="text-no-wrap">Mobile number</label>
+                                <v-text-field hide-details="true" dense enclosed outlined>
+                                  
+                                </v-text-field>
+                              </div>
+                              <div class="d-flex align-end me-4 ms-2">
+                                <v-btn style="height:40px; background-color:#1a2444" color="white--text">
+                                  <span>SEND CODE</span>
+                                </v-btn>
+                              </div>
+                            </div>
+                          </v-form>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <!-- Previous & Next Step Button 3 -->
+                <div class="px-4 d-flex" :class="$vuetify.breakpoint.xsOnly ? 'flex-column' : '' ">
+                  <div class="col-sm-5 col-md-4 col-lg-3 col-12 py-1">
+                    <v-btn text @click="e1 = 2" style="border: thin solid; width: 100%; height: 40px;">
+                      <v-icon>mdi-chevron-left</v-icon>
                       
+                      Previous                         
+                    </v-btn> 
+                  </div>
+                  
+                  <div class="col-sm-5 col-md-4 col-lg-3 col-12 py-1">
+                    <v-btn color="#1a2444" @click = "e1 = 4" class="white--text" style="width: 100%; height: 40px;">
+                      Next Step
+                      
+                      <v-icon>mdi-chevron-right</v-icon>
+                    </v-btn>
+                  </div>
+                </div>
               </v-card>
-              
-              <v-btn text  @click="e1 = 2" width="25%" class="pa-03" style="border: thin solid ;"> 
-                <v-icon>mdi-chevron-left</v-icon>
-                
-                Previous
-                
-              </v-btn>
-              
-              <v-btn color="#1a2444" @click="e1 = 4" class="white--text pa-03" width="25%">
-                Next Step
-                <v-icon> mdi-chevron-right</v-icon>
-              </v-btn>
               
             </v-stepper-content>
             
+            <!-- Step 4 -->
             <v-stepper-content step="4" class="px-sm-6 px-2 pt-sm-3 pt-1">
               <v-card class="mb-12"  height="200px" style="box-shadow: none;">
                 
               </v-card>
               
+              <!-- Previous & Next Step Button 4 -->
               <v-btn text @click="e1 = 3" width="25%" class="pa-03" style="border: thin solid ;">
                 <v-icon>mdi-chevron-left</v-icon>
                 
@@ -421,7 +719,7 @@ export default {
   data() {
     return {
       e1: 1, // Initial step
-      checkboxes: [false, false, false, false, false, false],
+      checkboxes: [false, false, false, false, false, false], // Initial array of checkboxes
     };
   },
   mounted(){
@@ -456,10 +754,6 @@ export default {
     background-color: #bcefff !important;
 }
 
-@media (max-width: 600px) {
-  .v-header {
-    flex-direction: column;
-  }
-}
+
 </style>
   
