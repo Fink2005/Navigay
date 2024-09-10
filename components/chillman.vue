@@ -29,10 +29,29 @@
     <v-stepper-items>
       <v-stepper-content step="1">
         <v-card
+          outlined
+          flat
           class="mb-12"
-          color="grey lighten-1"
+          color="white"
           height="200px"
-        ></v-card>
+        >
+          <div class="all5 d-flex ml-4 ms-4 pb-6 flex-column">
+            <div class="d-flex">
+              <div class="d-flex align-center justify-center v-sheet rounded-pill light-blue lighten-2" style="height: 40px; width: 40px;">1</div>
+              <div class="ml-3 mt-2">Choose 1</div>
+            </div>
+            <div class="3 button d-flex">
+              <v-btn text outlined style="border-color: black;" class="mr-1" @click="updateDate(getPreviousDay(currentDate))" :disabled="disable"><v-icon>mdi-chevron-left</v-icon></v-btn>
+              <v-dialog v-model="dialog">
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn text outlined style="border-color: black;" class="mr-1" v-bind="attrs" v-on="on">{{ formattedDate }}</v-btn>
+                    </template>
+                    <v-date-picker full-width @input="updateDate" :allowedDates="allowedDates"></v-date-picker>
+                </v-dialog>
+                <v-btn text outlined style="border-color: black;" @click="updateDate(getNextDay(currentDate))"><v-icon>mdi-chevron-right</v-icon></v-btn>
+            </div>
+          </div>
+        </v-card>
 
         <v-btn
           color="primary"
@@ -176,5 +195,120 @@
         e1: 1,
       }
     },
+    methods: {
+        getFormattedDate(date) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(date).toLocaleDateString(undefined, options);
+        },
+        getTableHeaderDate(newDate) {
+            const currentDate = new Date(newDate);
+            const monthNames = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+            ];
+            const formattedDates = [];
+            for (let i = 0; i < 12; i++) {
+                const nextDate = new Date(currentDate);
+                nextDate.setDate(currentDate.getDate() + i);
+                const formattedDate = `${nextDate.getDate()} ${monthNames[nextDate.getMonth()]}`;
+                formattedDates.push({text: formattedDate, width: 108, value: formattedDate, sortable: false});
+            }
+            return formattedDates;
+        },     
+        updateDate(newDate) {
+            const today = new Date().toISOString().substr(0, 10);
+            console.log(`newDate: ${newDate}, today: ${today}`);
+            this.currentDate = newDate;
+            this.disable = (newDate === today);
+            this.dialog = false;
+            this.formattedDate = this.getFormattedDate(newDate);
+            this.tableHeaderDate = this.getTableHeaderDate(newDate);
+            this.updateHeaders();
+            this.resetClickState();
+        },
+        selectHour1(item) {
+            this.selectedHour1 = item;
+        },
+        selectMinute1(item) {
+            this.selectedMinute1 = item;
+        },
+        selectHour2(item) {
+            this.selectedHour2 = item;
+        },
+        selectMinute2(item) {
+            this.selectedMinute2 = item;
+        },
+        updateHeaders() {
+            this.header = [
+                {
+                    text: 'Boat',
+                    value: 'boat',
+                    sortable: false,
+                    width: 105,
+                    align: 'start'
+                },
+                {
+                    value: 'people',
+                    sortable: false,
+                    width: 10,
+                    align: 'start'
+                },
+                {
+                    text: 'HP',
+                    value: 'hp',
+                    sortable: false,
+                    width: 10,
+                    align: 'start',
+                    divider: true
+                },
+                ...this.tableHeaderDate
+            ];
+        },
+        toggleClick(row, col, tableIndex) {
+            this.resetClickState();
+            this.selectedButton[tableIndex].state = true;
+            this.selectedButton[tableIndex].row = row;
+            this.selectedButton[tableIndex].col = col;
+        },
+        resetClickState() {
+            this.selectedButton.forEach(button => {
+                button.state = false;
+                button.row = -1;
+                button.col = -1;
+            });
+        },
+        isSelected(row, col, tableIndex) {
+            return this.selectedButton[tableIndex].row === row && this.selectedButton[tableIndex].col === col;
+        },
+        sendData(row, col, tableIndex) {
+            const data = {
+                date: this.tableHeaderDate[col].text,
+                lake: this.lake[tableIndex]?.name || '',
+                dock: this.lake[tableIndex]?.dock || '',
+                boat: tableIndex === 0 ? this.items[row]?.boat || '' : this.items2[row]?.boat || '',
+                hp: tableIndex === 0 ? this.items[row]?.hp || '' : this.items2[row]?.hp || '',
+                passengers: tableIndex === 0 ? this.items[row]?.people || '' : this.items2[row]?.people || '',
+                licenses: tableIndex === 0 ? this.boat[row]?.licenses || '' : this.boat[2]?.licenses || '',
+                color: tableIndex === 0 ? this.boat[row]?.color || '' : this.boat[2]?.color || '',
+            };
+            this.$emit('dataFromOne', data);
+            this.uncomplete = false;
+        },
+        handleClick(index, indexCol, tableIndex) {
+            this.toggleClick(index, indexCol, tableIndex);
+            this.sendData(index, indexCol, tableIndex);
+        },
+        getNextDay(currentDate) {
+            const date = new Date(currentDate);
+            date.setDate(date.getDate() + 7);
+            return date.toISOString().substr(0, 10);
+        },
+        getPreviousDay(currentDate) {
+            const date = new Date(currentDate);
+            date.setDate(date.getDate() - 7);
+            return date.toISOString().substr(0, 10);
+        },
+    },
   }
+  
 </script>
