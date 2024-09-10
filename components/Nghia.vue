@@ -69,7 +69,7 @@
                       <div class="mb-2">
                         <div class="d-flex flex-wrap">
                           <div class="d-flex justify-center justify-md-start">
-                            <div class="d-flex flex-row no-gutters">
+                            <div class="row no-gutters">
                               <div class="d-flex justify-start col col-1">
                                 <v-btn style="height:40px;" outlined @click="adjustDate(-7)">
                                   <v-icon>mdi-chevron-left</v-icon>
@@ -77,7 +77,7 @@
                               </div>
 
                               <div class="d-flex justify-center px-12 px-sm-0 col col-10 text-center">
-                                <v-dialog v-model="dialog" persistent>
+                                <v-dialog v-model="dialog">
                                   <template v-slot:activator="{ on, attrs }">
                                     <v-btn 
                                       class="mx-4 mx-sm-1" 
@@ -93,12 +93,12 @@
                                   <v-date-picker 
                                     v-model="picker"
                                     full-width="true"
-                                    :min="minDate"                                   
+                                    :min="minDate"
+                                    @input="onDateSelected"
                                   >
 
                                   </v-date-picker>
                                 </v-dialog>
-                                
                               </div>
 
                               <div class="d-flex justify-end col col-1">
@@ -653,6 +653,7 @@ export default {
       picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       minDate: this.getToday(), // Setting the min date dynamically
       selectedDays: {},
+      overlay: false,
       boats: [
         {
           name: "Vectra 21",
@@ -664,9 +665,18 @@ export default {
           capacity: 10,
           hp: 60
         }
-      ]
+      ],
+      displayedDays: []
     };
   },
+  watch: {
+    overlay (val) {
+      val && setTimeout(() => {
+        this.overlay = false
+      }, 2000)
+    }
+  },
+
   computed: {
     displayedDays() {
       const days = [];
@@ -683,6 +693,7 @@ export default {
   },
   mounted(){
     window.addEventListener("resize", this.handleResize);
+    this.updateDisplayedDays();
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.handleResize);
@@ -699,12 +710,29 @@ export default {
       const options = { year: 'numeric', month: 'long', day: 'numeric'};
       return new Date(date).toLocaleDateString(undefined, options );
     },
-    adjustDate(days) {
+    updateDisplayedDays() {
+      const days = [];
+      const startDate = new Date(this.picker);
+
+      for (let i = 0; i <= 13; i++) {
+        const day = new Date(startDate);
+        day.setDate(startDate.getDate() + i);
+        const formattedDate = day.toLocaleDateString(undefined, { day: 'numeric', month: 'long'});
+        days.push(formattedDate);
+      }
+      this.displayedDays = days;
+    },
+    onDateSelected() {
+      this.updateDisplayedDays();
+      this.dialog = false; // Automatically turn off when finish choosing date
+    },
+    adjustDate(days) { // Adjust days for button
       const current = new Date(this.picker);
       current.setDate(current.getDate() + days);
       this.picker = current.toISOString().substr(0, 10);
+      this.updateDisplayedDays();
     },
-    toggleDay(day) {
+    toggleDay(day) { // fck up
       this.$set(this.selectedDays, day, !this.selectedDays[day]);
     }
   }
