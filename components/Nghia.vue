@@ -114,7 +114,7 @@
                       <div class="mb-5">
                         <div>
                           <div>
-                            <v-card flat="true">
+                            <v-card flat>
                               <v-card-title class="pl-0 pb-0 pt-0">
                                 <div>Lake Memphrémagog - Dock Pointe Merry</div>
                               </v-card-title>
@@ -158,8 +158,11 @@
                                       <td v-for="(day, iconIndex) in displayedDays" :key="iconIndex">
                                         <v-btn 
                                           icon
-                                          :class="{'blue--text' : selectedDays[day], 'green--text': !selectedDays[day]}"
-                                          @click="toggleDay(day)"
+                                          :class="{
+                                            'blue--text' : selected.boat === boat.name && selected.day === day, 
+                                            'green--text': !(selected.boat === boat.name && selected.day ===day)
+                                          }"
+                                          @click="toggleDay(boat, day)"
                                         >
                                           <v-icon>mdi-clock-outline</v-icon>
                                         </v-btn>
@@ -226,7 +229,7 @@
                               
                               <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
-                                <span> 31 August </span>
+                                <span> {{ selectedDate }} </span>
                               </p>
                               
                             </div>
@@ -237,7 +240,7 @@
                               
                               <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
-                                <a class="anchorbase--text text-decoration-underline"> Vectra 21 </a>
+                                <a class="anchorbase--text text-decoration-underline"> {{ selectedBoat.name }} </a>
                               </p>
                               
                             </div>
@@ -248,7 +251,7 @@
                               
                               <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
-                                <span> Red </span>
+                                <span> {{ selectedBoat.primaryColor }} </span>
                               </p>
                             </div>
                             
@@ -258,7 +261,7 @@
                               
                               <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
-                                <a class="anchorbase--text text-decoration-underline"> Magos </a>
+                                <a class="anchorbase--text text-decoration-underline"> {{ selectedBoat.city }} </a>
                               </p>
                               
                             </div>
@@ -269,7 +272,7 @@
                               
                               <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
-                                <span> 60 </span>
+                                <span> {{ selectedBoat.hp }} </span>
                               </p>
                               
                             </div>
@@ -280,7 +283,7 @@
                                   
                               <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
-                                <span> Black </span>
+                                <span> {{ selectedBoat.secondaryColor }} </span>
                               </p>
                               
                             </div>
@@ -291,7 +294,7 @@
                               
                               <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
-                                <a class="anchorbase--text text-decoration-underline"> Memphrémagog </a>
+                                <a class="anchorbase--text text-decoration-underline"> {{ selectedBoat.lake }} </a>
                               </p>
                               
                             </div>
@@ -302,7 +305,7 @@
                               
                               <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
-                                <span> 10 Passsengers </span>
+                                <span> {{ selectedBoat.passengers }} </span>
                               </p>
                               
                             </div>
@@ -316,7 +319,7 @@
                               
                               <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
-                                <a class="anchorbase--text text-decoration-underline"> Pointe Merry </a>
+                                <a class="anchorbase--text text-decoration-underline"> {{ selectedBoat.dock }} </a>
                                 
                               </p>
                               
@@ -328,7 +331,7 @@
                               
                               <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                 :
-                                <span> C35594QC </span>
+                                <span> {{ selectedBoat.license }} </span>
                               </p>
                               
                             </div>
@@ -652,20 +655,36 @@ export default {
       dialog: false,
       picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       minDate: this.getToday(), // Setting the min date dynamically
-      selectedDays: {},
+      selected: { boat: null, day: null},
+      selectedBoat: null,
+      selectedDate: null,
       overlay: false,
-      boats: [
-        {
+      boatDetails: {
+        "Vectra 21": {
           name: "Vectra 21",
           capacity: 10,
-          hp: 60
+          hp: 60,
+          primaryColor: "Red",
+          secondaryColor: "Black",
+          passengers: 10,
+          city: "Magog",
+          lake: "Memphrémagog",
+          dock: "Pointe Merry",
+          license: "C35594QC"
         },
-        {
+        "Sportfisher 21": {
           name: "Sportfisher 21",
           capacity: 10,
-          hp: 60
+          hp: 60,
+          primaryColor: "Black",
+          secondaryColor: "Brown",
+          passengers: 10,
+          city: "Magog",
+          lake: "Memphrémagog",
+          dock: "Pointe Merry",
+          license: "C35596QC"
         }
-      ],
+      },
       displayedDays: []
     };
   },
@@ -732,9 +751,17 @@ export default {
       this.picker = current.toISOString().substr(0, 10);
       this.updateDisplayedDays();
     },
-    toggleDay(day) { // fck up
-      this.$set(this.selectedDays, day, !this.selectedDays[day]);
+    toggleDay(boat, day) { 
+      if (this.selected.boat === boat.name && this.selected.day === day) {
+      return;
     }
+    this.selected.boat = boat.name;
+    this.selected.day = day;
+    },
+    proceedToStep2(boat, date) {
+      this.selectedBoat = boat;
+      this.selectedDate = date;
+    },
   }
 };
 </script>
@@ -769,9 +796,6 @@ export default {
 ::v-deep .v-date-picker-table th {
   font-size: 16px !important;
 }
-
-
-
 
 </style>
   
