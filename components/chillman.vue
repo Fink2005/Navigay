@@ -41,14 +41,13 @@
               <div class="ml-3 mt-2">Choose 1</div>
             </div>
             <div class="3 button d-flex">
-              <v-btn text outlined style="border-color: black;" class="mr-1" @click="updateDate(getPreviousDay(currentDate))" :disabled="disable"><v-icon>mdi-chevron-left</v-icon></v-btn>
+              <v-btn text outlined style="border-color: black;" class="mr-1" :disabled="disable"><v-icon>mdi-chevron-left</v-icon></v-btn>
               <v-dialog v-model="dialog">
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn text outlined style="border-color: black;" class="mr-1" v-bind="attrs" v-on="on">{{ formattedDate }}</v-btn>
+                    <template>
+                        <v-btn> </v-btn>
                     </template>
-                    <v-date-picker full-width @input="updateDate" :allowedDates="allowedDates"></v-date-picker>
                 </v-dialog>
-                <v-btn text outlined style="border-color: black;" @click="updateDate(getNextDay(currentDate))"><v-icon>mdi-chevron-right</v-icon></v-btn>
+                <v-btn text outlined style="border-color: black;" ><v-icon>mdi-chevron-right</v-icon></v-btn>
             </div>
           </div>
         </v-card>
