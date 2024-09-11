@@ -223,7 +223,7 @@
                           :class="$vuetify.breakpoint.smAndDown ? 'col-12' : 'col-8'"
                         >                   
                           <div class="d-flex flex-wrap flex-row pr-sm-5">
-                            <div class="d-flex align-center order-1 pb-0 col-sm-4 col-12">
+                            <div class="d-flex align-center order-1 pb-0 col-sm-4 col-12" @click="toggleDay">
                               
                               <p class="mb-0" style="width:80px; font-size:14px;">Date</p>
                               
@@ -588,11 +588,38 @@
                                   <span>SEND CODE</span>
                                 </v-btn>
                               </div>
+                              <div class="pa-0 col-sm-3 col-md-2 col-lg-2 col-xl-2 col-12">
+                                <label for="code">Code</label>
+                                <v-text-field hide-details="true" dense enclosed outlined>
+
+                                </v-text-field>
+                              </div>
+                              <div class="d-flex align-end ms-2">
+                                <v-btn style="height: 40px; background-color:#1a2444;" color="white--text">
+                                  <span>CHECK CODE</span>
+                                </v-btn>
+                              </div>
                             </div>
                           </v-form>
                         </div>
                       </div>
-
+                    </div>
+                    <div>
+                      <div class="mb-5 mt-0 pt-0">
+                        <div class="d-flex">
+                          <div class="px-0 py-0 col col-12">
+                            <div class="font-weight-bold body-2 text-h6"> 
+                              Trip details
+                            </div>
+                          </div>
+                        </div>
+                        <div class="leaders-1">
+                          <div>
+                            <span>Boat</span>
+                            <span class="font-weight-bold"> Vectra 21 </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
