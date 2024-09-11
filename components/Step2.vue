@@ -28,13 +28,13 @@
                             :class="$vuetify.breakpoint.smAndDown ? 'col-12' : 'col-8'"
                             >                   
                                 <div class="d-flex flex-wrap flex-row pr-sm-5">
-                                    <div class="d-flex align-center order-1 pb-0 col-sm-4 col-12" @click="toggleDay">
+                                    <div class="d-flex align-center order-1 pb-0 col-sm-4 col-12">
                               
                                         <p class="mb-0" style="width:80px; font-size:14px;">Date</p>
                               
                                         <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                             :
-                                            <span> {{ selectedDate }} </span>
+                                            <!-- <span> {{ selectedDate }} </span> -->
                                         </p>
                               
                                     </div>
@@ -361,7 +361,6 @@ export default {
     name: 'Step2',
     data () {
         return {
-            e1: 1,
             checkboxes: [false, false, false, false, false, false], // Initial array of checkboxes
             selected: { boat: null, day: null},
             selectedBoat: {
