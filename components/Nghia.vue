@@ -140,7 +140,7 @@
                                   </thead>
 
                                   <tbody>
-                                    <tr v-for="(boat, index) in boats" :key="index">
+                                    <tr v-for="(boat, index) in boatDetails" :key="index">
                                       <td class="pl-0">
                                         <a href="" class="font-weight-bold anchorbase--text text-decoration-underline d-flex text-no-wrap">
                                           {{ boat.name }}
@@ -656,7 +656,18 @@ export default {
       picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       minDate: this.getToday(), // Setting the min date dynamically
       selected: { boat: null, day: null},
-      selectedBoat: null,
+      selectedBoat: {
+        name: '',
+        capacity: 0,
+        hp: 0,
+        primaryColor: '',
+        secondaryColor: '',
+        passengers: 0,
+        city: '',
+        lake: '',
+        dock: '',
+        license: '',
+      },
       selectedDate: null,
       overlay: false,
       boatDetails: {
@@ -688,14 +699,6 @@ export default {
       displayedDays: []
     };
   },
-  watch: {
-    overlay (val) {
-      val && setTimeout(() => {
-        this.overlay = false
-      }, 2000)
-    }
-  },
-
   computed: {
     displayedDays() {
       const days = [];
