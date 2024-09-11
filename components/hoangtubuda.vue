@@ -1,10 +1,12 @@
 <template>
  <v-container>
    <v-row class="align-center">
-      <v-avatar color="blue" size="30">
+      <v-avatar color="blue" size="45">
         <span class="white--text">1</span>
       </v-avatar>
-      <span class="ml-3, font-weigth-bold">Choose time</span>
+      <v-col>
+      <span class="">Choose time</span>
+      </v-col>
     </v-row>
     <v-row align="center" justify="center">
         <v-col cols="auto">
