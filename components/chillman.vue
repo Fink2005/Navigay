@@ -1,30 +1,5 @@
 <template>
-    <v-stepper v-model="e1">
-    <v-stepper-header>
-      <v-divider></v-divider>
-      <v-stepper-step 
-        :complete="e1 > 1"
-        step="1">
-      <v-divider></v-divider>
-      </v-stepper-step>
-
-      <v-divider></v-divider>
-
-      <v-stepper-step
-        :complete="e1 > 2"
-        step="2">
-      </v-stepper-step>
-
-      <v-divider></v-divider>
-
-      <v-stepper-step :complete="e1 > 3"
-        step="3">
-      </v-stepper-step>
-      <v-divider></v-divider>
-      <v-stepper-step 
-        step="4">
-      </v-stepper-step>
-    </v-stepper-header>
+    
 
     <v-stepper-items>
       <v-stepper-content step="1">
@@ -44,7 +19,10 @@
               <v-btn text outlined style="border-color: black;" class="mr-1" :disabled="disable"><v-icon>mdi-chevron-left</v-icon></v-btn>
               <v-dialog v-model="dialog">
                     <template>
-                        <v-btn> </v-btn>
+                        <v-btn> <v-row justify="center">
+                        <v-date-picker v-model="picker"></v-date-picker>
+                                </v-row>
+                        </v-btn>
                     </template>
                 </v-dialog>
                 <v-btn text outlined style="border-color: black;" ><v-icon>mdi-chevron-right</v-icon></v-btn>
@@ -191,6 +169,7 @@
   export default {
     data () {
       return {
+        picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
         e1: 1,
       }
     },
