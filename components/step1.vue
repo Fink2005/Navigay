@@ -15,7 +15,6 @@
             <v-btn text outlined style="border-color: black;" class="mr-1" :disabled="disable"><v-icon>mdi-chevron-left</v-icon></v-btn>
                   <template>
                       <v-btn text outlined> 
-                        SEPTEMBER GAY
                       </v-btn>
                   </template>
               <v-btn text outlined style="border-color: black;" ><v-icon>mdi-chevron-right</v-icon></v-btn>
@@ -29,26 +28,40 @@
         <template v-slot:default>
         <thead>
             <tr>
-            <th class="text-left">
+            <th class="boat">
                 Boat
             </th>
-            <th class="text-left">
+            <th class="icon">
                 <v-icon>
                     mdi-account
                 </v-icon>
             </th>
-            <th class="text-left">
+            <th class="HP">
                 HP
+            </th>
+            <th v-for="date in weekendDays">
+                <div class="text-no-wrap">
+                  {{ date }}
+                </div>
             </th>
             </tr>
         </thead>
         <tbody>
             <tr
-            v-for="item in desserts"
-            :key="item.name"
+            v-for="item in boats"
+            :key="item.boat"
             >
             <td>{{ item.name }}</td>
-            <td>{{ item.calories }}</td>
+            <td>fewf</td>
+            <td>fewf</td>
+            <td v-for="date in weekendDays">
+                <v-btn color="green" icon>
+                    <v-icon>
+                        mdi-clock-outline
+                    </v-icon>
+                </v-btn>
+            </td>
+
             </tr>
           </tbody>
      </template>
@@ -70,7 +83,29 @@ export default {
     data () {
       return {
         e1: 1,
+        boats: [
+            {
+                name: "Vectra 21"
+            }, 
+            {
+                name: "Sportfisher 21"
+            }
+        ]
       }
     },
+    computed: {
+        weekendDays() {
+            const dates = [];
+            const startDate = new Date()
+            const dateFormatter = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'long' });
+            for (let i = 0; i < 13; i++) {
+
+                const date = new Date(startDate);
+                date.setDate(startDate.getDate() + i);
+                dates.push(dateFormatter.format(date));
+            }
+            return dates
+        }
+    }
   }
 </script>

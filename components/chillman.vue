@@ -1,6 +1,5 @@
 <template>
     
-
     <v-stepper-items>
       <v-stepper-content step="1">
         <v-card
@@ -161,7 +160,6 @@
         </v-btn>
       </v-stepper-content>
     </v-stepper-items>
-  </v-stepper>
     
 </template>
 
@@ -169,7 +167,6 @@
   export default {
     data () {
       return {
-        picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
         e1: 1,
       }
     },
