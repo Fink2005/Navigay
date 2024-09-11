@@ -88,8 +88,9 @@ export default {
   name: 'DefaultLayout',
   data () {
     return {
+      e1: 1,
     }
-  }
+  },
 }
 </script>
 

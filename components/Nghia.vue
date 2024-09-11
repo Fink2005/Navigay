@@ -739,8 +739,8 @@ export default {
       },
       selectedDate: null,
       overlay: false,
-      boatDetails: {
-        "Vectra 21": {
+      boatDetails: [
+        {
           name: "Vectra 21",
           capacity: 10,
           hp: 60,
@@ -752,7 +752,7 @@ export default {
           dock: "Pointe Merry",
           license: "C35594QC"
         },
-        "Sportfisher 21": {
+        {
           name: "Sportfisher 21",
           capacity: 10,
           hp: 60,
@@ -764,7 +764,7 @@ export default {
           dock: "Pointe Merry",
           license: "C35596QC"
         }
-      },
+      ],
       displayedDays: []
     };
   },
@@ -795,13 +795,13 @@ export default {
     },
     getToday() {
       const today = new Date();
-      return today.toISOString().substr(0, 10);
+      return today.toISOString().substring(0, 10)
     },
-    formatDate(date) {
+    formatDate(date) { // Setup dynamically time for button
       const options = { year: 'numeric', month: 'long', day: 'numeric'};
       return new Date(date).toLocaleDateString(undefined, options );
     },
-    updateDisplayedDays() {
+    updateDisplayedDays() { // Update days when clicking arrow button and appearing days
       const days = [];
       const startDate = new Date(this.picker);
 
@@ -820,7 +820,7 @@ export default {
     adjustDate(days) { // Adjust days for button
       const current = new Date(this.picker);
       current.setDate(current.getDate() + days);
-      this.picker = current.toISOString().substr(0, 10);
+      this.picker = current.toISOString().substring(0, 10);
       this.updateDisplayedDays();
     },
     toggleDay(boat, day) { 
