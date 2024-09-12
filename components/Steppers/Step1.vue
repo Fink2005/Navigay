@@ -239,11 +239,32 @@ export default {
         this.selected.boat = boat.name;
         this.selected.day = day;
         },
+        sendData() {
+            this.$emit('dataFromOne', {
+
+            })
+        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
+::v-deep .active-step .v-stepper__step__step {
+    color: white; 
+    width: 33px; 
+    height: 33px; 
+    font-size: 20px; 
+    background-color: #1a2444 !important;
+}
+
+::v-deep .inactive-step .v-stepper__step__step {
+    color: #1a2444; 
+    width: 33px; 
+    height: 33px; 
+    font-size: 20px; 
+    background-color: #bcefff !important;
+}
+
 
 ::v-deep .v-date-picker-header {
   font-size: 21px !important;

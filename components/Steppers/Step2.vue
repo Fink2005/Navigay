@@ -359,22 +359,17 @@
 <script>
 export default {
     name: 'Step2',
+    props: {
+        selectedBoat: {
+            type: Object,
+            default: () => ({})
+        }  
+    },
     data () {
         return {
             checkboxes: [false, false, false, false, false, false], // Initial array of checkboxes
             selected: { boat: null, day: null},
-            selectedBoat: {
-                name: '',
-                capacity: 0,
-                hp: 0,
-                primaryColor: '',
-                secondaryColor: '',
-                passengers: 0,
-                city: '',
-                lake: '',
-                dock: '',
-                license: '',
-            },
+            
         }
     },
 }

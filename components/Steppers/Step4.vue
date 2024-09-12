@@ -3,7 +3,7 @@
         <v-card class="mb-12"  height="200px" style="box-shadow: none;">     
             </v-card>
                 <!-- Previous & Next Step Button 4 -->
-                <v-btn text @click="e1 = 3" width="25%" class="pa-03" style="border: thin solid ;">
+                <v-btn text @click="$emit('previous-step')" width="25%" class="pa-03" style="border: thin solid ;">
                     <v-icon>mdi-chevron-left</v-icon>
                 
                     Previous
