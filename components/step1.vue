@@ -51,9 +51,9 @@
             v-for="item in boats"
             :key="item.boat"
             >
-            <td>{{ item.name }}</td>
-            <td>fewf</td>
-            <td>fewf</td>
+            <td><a class="text-no-wrap text-decoration-underline font-weight-bold">{{ item.name }}</a></td>
+            <td>10</td>
+            <td>60</td>
             <td v-for="date in weekendDays">
                 <v-btn color="green" icon>
                     <v-icon>
