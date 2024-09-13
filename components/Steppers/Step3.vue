@@ -57,10 +57,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="leaders-1">
+                            <div>
                                 <div>
-                                    <span>Boat:</span>
-                                    <span class="font-weight-bold"> </span>
+                                    <span id="f">Boat:</span>
+                                    <span class="font-weight-bold">Vectra</span>
                                 </div>
                             </div>
                             <div class="leaders-1">
@@ -143,5 +143,18 @@ export default {
 </script>
 
 <style>
+div.leaders-1::before {
+    content: ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . ";
+    float: left;
+    white-space: nowrap;
+    width: 0;
+}
+
+
+#f::after {
+    content: ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . ";
+}
+
+
 
 </style>
