@@ -57,9 +57,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div>
+                            <div class="leaders-1">
                                 <div>
-                                    <span id="f">Boat:</span>
+                                    <span>Boat:</span>
                                     <span class="font-weight-bold">Vectra</span>
                                 </div>
                             </div>
@@ -143,7 +143,15 @@ export default {
 </script>
 
 <style>
-div.leaders-1::before {
+
+.leaders-1 {
+    list-style: none;
+    max-width: 40em;
+    overflow-x: hidden;
+    padding: 0;
+}
+
+.leaders-1 div::before {
     content: ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . ";
     float: left;
     white-space: nowrap;
@@ -151,9 +159,7 @@ div.leaders-1::before {
 }
 
 
-#f::after {
-    content: ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . ";
-}
+
 
 
 

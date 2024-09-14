@@ -49,10 +49,10 @@
 
           <v-stepper-items style="background-color: #c4f1ff5f">
             <v-stepper-content step="1" class="px-sm-6 px-2 pt-sm-3 pt-1">
-              <steppers-step1 @next-step="e1 = 2"></steppers-step1>
+              <steppers-step1 @dataFromOne="receiveDataFromStep1" @next-step="e1 = 2"></steppers-step1>
             </v-stepper-content>
             <v-stepper-content step="2" class="px-sm-6 px-2 pt-1">
-              <steppers-step2 @next-step="e1 = 3" @previous-step="e1 = 1"></steppers-step2>
+              <steppers-step2 :boatData="selectedBoatData" @next-step="e1 = 3" @previous-step="e1 = 1"></steppers-step2>
             </v-stepper-content>
             <v-stepper-content step="3" class="px-sm-6 px-2 pt-1">
               <steppers-step3 @next-step="e1 = 4" @previous-step="e1 = 2"></steppers-step3>
@@ -72,12 +72,16 @@ export default {
     data () {
     return {
       e1: 1,
+      selectedBoatData: null,
     };
   },
   methods: {
     nextStep() {      
       this.e1 = this.e1 + 1
       
+    },
+    receiveDataFromStep1(data) {
+      this.selectedBoatData = data;
     }
   }
 

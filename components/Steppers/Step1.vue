@@ -128,7 +128,14 @@
                 <!-- Next Step Button 1 -->
             <div class="d-flex flex-row mx-1">
                 <div class="col-sm-4 col-md-3 col-12">
-                    <v-btn color="#1a2444" @click="$emit('next-step')" class="white--text" style="width: 100%; height: 40px;">
+                    <v-btn 
+                        color="#1a2444" 
+                        @click="$emit('next-step')" 
+                        class="white--text" 
+                        style="width: 100%; height: 40px;"
+                        :class="{ 'btn-disabled': !isStepComplete }"
+                        :disabled="!isStepComplete"
+                    >
                         Next Step
                       
                     <v-icon>mdi-chevron-right</v-icon>
@@ -166,25 +173,13 @@ export default {
                 name: "Vectra 21",
                 capacity: 10,
                 hp: 60,
-                primaryColor: "Red",
-                secondaryColor: "Black",
-                passengers: 10,
-                city: "Magog",
-                lake: "Memphrémagog",
-                dock: "Pointe Merry",
-                license: "C35594QC"
+                
                 },
                 {
                 name: "Sportfisher 21",
                 capacity: 10,
                 hp: 60,
-                primaryColor: "Black",
-                secondaryColor: "Brown",
-                passengers: 10,
-                city: "Magog",
-                lake: "Memphrémagog",
-                dock: "Pointe Merry",
-                license: "C35596QC"
+                
                 }
             ],
             displayedDays: []
@@ -197,7 +192,12 @@ export default {
     beforeDestroy() {
         window.removeEventListener("resize", this.handleResize);
     },
-
+    computed: {
+    isStepComplete() {
+      // Return true if both boat and date are selected
+      return this.selected.boat !== null && this.selected.day !== null;
+    }
+},
     methods: {
         handleResize() {
             this.screenWidth = window.innerWidth
@@ -238,12 +238,13 @@ export default {
         }
         this.selected.boat = boat.name;
         this.selected.day = day;
-        },
-        sendData() {
-            this.$emit('dataFromOne', {
 
-            })
-        }
+        this.$emit('dataFromOne', {
+            boat: boat.name,
+            day: day
+        });
+        
+        },
     }
 }
 </script>
@@ -278,4 +279,10 @@ export default {
 ::v-deep .v-date-picker-table th {
   font-size: 16px !important;
 }
+
+::v-deep .btn-disabled {
+  background-color: #1a2444; /* Original color */
+  opacity: 0.6; /* Adjust opacity for a darker effect */
+}
+
 </style>

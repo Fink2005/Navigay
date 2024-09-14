@@ -34,7 +34,7 @@
                               
                                         <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                             :
-                                            <!-- <span> {{ selectedDate }} </span> -->
+                                            <span v-if='boatData'> {{ boatData.day }} </span>
                                         </p>
                               
                                     </div>
@@ -45,7 +45,7 @@
                               
                                         <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                             :
-                                            <a class="anchorbase--text text-decoration-underline"> {{ selectedBoat.name }} </a>
+                                            <a class="anchorbase--text text-decoration-underline" v-if="boatData"> {{ boatData.boat }} </a>
                                         </p>
                               
                                     </div>
@@ -56,7 +56,7 @@
                               
                                         <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                             :
-                                            <span> {{ selectedBoat.primaryColor }} </span>
+                                            <span v-if="boatData"> {{ getBoatColor(boatData.boat).primaryColor }} </span>
                                         </p>
                                     </div>
                             
@@ -66,7 +66,7 @@
                               
                                         <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                             :
-                                            <a class="anchorbase--text text-decoration-underline"> {{ selectedBoat.city }} </a>
+                                            <a class="anchorbase--text text-decoration-underline" v-if="boatData"> {{ getBoatCity(boatData.boat) }} </a>
                                         </p>
                               
                                     </div>
@@ -77,7 +77,7 @@
                               
                                         <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                             :
-                                            <span> {{ selectedBoat.hp }} </span>
+                                            <span v-if="boatData"> {{ getBoatHP(boatData.boat) }} </span>
                                         </p>
                               
                                     </div>
@@ -88,7 +88,7 @@
                                   
                                         <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                             :
-                                            <span> {{ selectedBoat.secondaryColor }} </span>
+                                            <span v-if="boatData"> {{ getBoatColor(boatData.boat).secondaryColor }} </span>
                                         </p>
                               
                                     </div>
@@ -99,7 +99,7 @@
                               
                                         <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                             :
-                                            <a class="anchorbase--text text-decoration-underline"> {{ selectedBoat.lake }} </a>
+                                            <a class="anchorbase--text text-decoration-underline" v-if="boatData"> {{ getBoatLake(boatData.boat) }} </a>
                                         </p>
                               
                                     </div>
@@ -110,7 +110,7 @@
                               
                                         <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                             :
-                                            <span> {{ selectedBoat.passengers }} </span>
+                                            <span v-if="boatData"> {{ getBoatPassengers(boatData.boat) }} </span>
                                         </p>
                               
                                     </div>
@@ -124,7 +124,7 @@
                               
                                         <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                         :
-                                        <a class="anchorbase--text text-decoration-underline"> {{ selectedBoat.dock }} </a>
+                                        <a class="anchorbase--text text-decoration-underline" v-if="boatData"> {{ getBoatDock(boatData.boat) }} </a>
                                 
                                         </p>
                               
@@ -136,7 +136,7 @@
                               
                                         <p class="pl-sm-5 subtitle-2 mb-0" style="font-weight: bold; font-size:14px">
                                             :
-                                            <span> {{ selectedBoat.license }} </span>
+                                            <span v-if="boatData"> {{ getBoatLicense(boatData.boat) }} </span>
                                         </p>
                               
                                     </div>
@@ -338,7 +338,13 @@
             <!-- Previous & Next Step Button 2 -->
             <div class="px-4 d-flex" :class="$vuetify.breakpoint.xsOnly ? 'flex-column' : '' ">
                 <div class="col-sm-5 col-md-4 col-lg-3 col-12 py-1">
-                    <v-btn text @click="$emit('previous-step')" style="border: thin solid; width: 100%; height: 40px;">
+                    <v-btn 
+                        text 
+                        @click="$emit('previous-step')" 
+                        style="border: thin solid; 
+                        width: 100%; 
+                        height: 40px;"
+                    >
                         <v-icon>mdi-chevron-left</v-icon>
                       
                         Previous                         
@@ -346,7 +352,13 @@
                 </div>
                   
                 <div class="col-sm-5 col-md-4 col-lg-3 col-12 py-1">
-                    <v-btn color="#1a2444" @click = "$emit('next-step')" class="white--text" style="width: 100%; height: 40px;">
+                    <v-btn 
+                        color="#1a2444" 
+                        @click = "$emit('next-step')" 
+                        class="white--text" 
+                        style="width: 100%; height: 40px;"
+                        :disabled="!isStepComplete"
+                    >
                         Next Step
                       
                         <v-icon>mdi-chevron-right</v-icon>
@@ -360,9 +372,9 @@
 export default {
     name: 'Step2',
     props: {
-        selectedBoat: {
+        boatData: {
             type: Object,
-            default: () => ({})
+            default: null
         }  
     },
     data () {
@@ -372,6 +384,66 @@ export default {
             
         }
     },
+    mounted() {
+        console.log('Received boat data', this.boatData);
+    },
+    computed: {
+    isStepComplete() {
+      // Returns true if at least one checkbox is selected
+      return this.checkboxes.some(checked => checked === true);
+    }
+},
+    methods: {
+    getBoatColor(boatName) {
+      const boats = {
+        'Vectra 21': { primaryColor: 'Red', secondaryColor: 'Black' },
+        'Sportfisher 21': { primaryColor: 'Black', secondaryColor: 'Brown' }
+      };
+      return boats[boatName] || { primaryColor: '', secondaryColor: '' };
+    },
+    getBoatCity(boatName) {
+      const boats = {
+        'Vectra 21': 'Magog',
+        'Sportfisher 21': 'Magog'
+      };
+      return boats[boatName] || '';
+    },
+    getBoatHP(boatName) {
+      const boats = {
+        'Vectra 21': '60',
+        'Sportfisher 21': '60'
+      };
+      return boats[boatName] || '';
+    },
+    getBoatLake(boatName) {
+      const boats = {
+        'Vectra 21': 'Memphrémagog',
+        'Sportfisher 21': 'Memphrémagog'
+      };
+      return boats[boatName] || '';
+    },
+    getBoatPassengers(boatName) {
+      const boats = {
+        'Vectra 21': '10 Passagers',
+        'Sportfisher 21': '10 Passagers'
+      };
+      return boats[boatName] || '';
+    },
+    getBoatDock(boatName) {
+      const boats = {
+        'Vectra 21': 'Pointe Merry',
+        'Sportfisher 21': 'Pointe Merry'
+      };
+      return boats[boatName] || '';
+    },
+    getBoatLicense(boatName) {
+      const boats = {
+        'Vectra 21': 'C35594QC',
+        'Sportfisher 21': 'C35596QC'
+      };
+      return boats[boatName] || '';
+    }
+  }
 }
 </script>
 
