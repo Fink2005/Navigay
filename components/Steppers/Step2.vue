@@ -1,5 +1,5 @@
+<!-- Step 2 -->
 <template>
-    <!-- Step 2 -->
         <v-card class="px-2 pb-5 pt-2 v-sheet--outlined" style="box-shadow: none">
             <div class="py-2">
                 <div>
@@ -393,7 +393,7 @@ export default {
       return this.checkboxes.some(checked => checked === true);
     }
 },
-    methods: {
+    methods: { // Statistic Functions, it will take the statistics based on the Boat & Date chosen in Step 1
     getBoatColor(boatName) {
       const boats = {
         'Vectra 21': { primaryColor: 'Red', secondaryColor: 'Black' },
@@ -472,14 +472,8 @@ export default {
         const totalMinutes = this.checkboxes.filter(checked => checked).length * 120;
 
         this.$emit('update-data', {
-            boat: this.boatData.boat,
-            passengers: this.getBoatPassengers(this.boatData.boat),
-            date: this.boatData.day,
             time: selectedTimes.join(', '),
             totalMinutes: totalMinutes,
-            lake: this.getBoatLake(this.boatData.boat),
-            dock: this.getBoatDock(this.boatData.boat),
-            city: this.getBoatCity(this.boatData.boat),
         });
 
     },

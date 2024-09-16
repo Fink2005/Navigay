@@ -81,7 +81,7 @@ export default {
   },
     data () {
     return {
-      tripData: {
+      tripData: { //  Data for step 3
         time: null,
         totalMinutes: null
       },
@@ -91,7 +91,7 @@ export default {
     };
   },
   methods: {
-    nextStep() {      
+    nextStep() {
       this.e1 = this.e1 + 1
       
     },
@@ -100,9 +100,9 @@ export default {
     },
     handleDataFromOne(data) {
       this.selectedBoatData = data;
-      this.step3Data = data;
+      this.step3Data = data; // Pass data to step 3
     },
-    updateStep2Data(data) {
+    updateStep2Data(data) { // Update data for step 2
       const updatedData = {
         ...data,
         time: data.time || null,

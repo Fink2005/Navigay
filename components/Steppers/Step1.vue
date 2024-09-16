@@ -1,5 +1,4 @@
 <!-- Step 1 -->
-
 <template>
         <v-card class="px-2 pb-5 pt-2"  height="auto" style="box-shadow: none;">
             <div>
@@ -13,7 +12,7 @@
                         </v-sheet>
                         <div class="ml-3"> Choose time </div>
                     </h2>
-
+                    
                     <v-card-text class="py-0">
                         <div class="mb-2">
                             <div class="d-flex flex-wrap">
@@ -152,10 +151,10 @@ export default {
     name: 'Step1',
     data () {
         return {
-            dialog: false,
-            picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+            dialog: false, // Dialog
+            picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10), // Date Picker, getting the time up to date
             minDate: this.getToday(), // Setting the min date dynamically
-            selected: { boat: null, day: null},
+            selected: { boat: null, day: null}, // Selected boat and day
             selectedBoat: {
                 name: '',
                 capacity: 0,
@@ -170,7 +169,8 @@ export default {
             },
             selectedDate: null,
             overlay: false,
-            boatDetails: [
+            boatDetails: [ // Array of boat details
+
                 {
                 name: "Vectra 21",
                 capacity: 10,
@@ -190,15 +190,18 @@ export default {
                 
                 }
             ],
-            displayedDays: []
+            displayedDays: [] // Array to store the days of the week
+
         };
     },
     mounted(){
         window.addEventListener("resize", this.handleResize);
-        this.updateDisplayedDays();
+        this.updateDisplayedDays(); // Update the displayed days on mount
+
     },
     beforeDestroy() {
-        window.removeEventListener("resize", this.handleResize);
+        window.removeEventListener("resize", this.handleResize); // Remove the event listener on destroy
+
     },
     computed: {
     isStepComplete() {
@@ -207,10 +210,10 @@ export default {
     }
 },
     methods: {
-        handleResize() {
+        handleResize() { // Handle window resize event
             this.screenWidth = window.innerWidth
         },
-        getToday() {
+        getToday() { // Get today's date
             const today = new Date();
             return today.toISOString().substr(0, 10)
         },
@@ -218,7 +221,7 @@ export default {
             const options = { year: 'numeric', month: 'long', day: 'numeric'};
             return new Date(date).toLocaleDateString(undefined, options );
         },
-        updateDisplayedDays() { // Update days when clicking arrow button and appearing days
+        updateDisplayedDays() { // Update days when clicking arrow button and appearing 13 days ahead
             const days = [];
             const startDate = new Date(this.picker);
 
@@ -230,7 +233,7 @@ export default {
             }
             this.displayedDays = days;
         },
-        onDateSelected() {
+        onDateSelected() { // Update selected day when clicking on a day
             this.updateDisplayedDays();
             this.dialog = false; // Automatically turn off when finish choosing date
         },
@@ -240,14 +243,14 @@ export default {
             this.picker = current.toISOString().substr(0, 10);
             this.updateDisplayedDays();
         },
-        toggleDay(boat, day) { 
+        toggleDay(boat, day) { //  Toggle day when clicking on a boat
             if (this.selected.boat === boat.name && this.selected.day === day) {
             return;
         }
         this.selected.boat = boat.name;
         this.selected.day = day;
 
-        this.$emit('dataFromOne', {
+        this.$emit('dataFromOne', { //  Emit data to parent
             boat: boat.name,
             day: day,
             passengers: boat.capacity,
@@ -293,8 +296,8 @@ export default {
 }
 
 ::v-deep .btn-disabled {
-  background-color: #1a2444; /* Original color */
-  opacity: 0.6; /* Adjust opacity for a darker effect */
+  background-color: #1a2444;
+  opacity: 0.6;
 }
 
 </style>
