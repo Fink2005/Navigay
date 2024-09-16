@@ -52,10 +52,10 @@
               <steppers-step1 @dataFromOne="receiveDataFromStep1" @next-step="e1 = 2"></steppers-step1>
             </v-stepper-content>
             <v-stepper-content step="2" class="px-sm-6 px-2 pt-1">
-              <steppers-step2 :boatData="selectedBoatData" @next-step="e1 = 3" @previous-step="e1 = 1"></steppers-step2>
+              <steppers-step2 @update-data="updateStep2Data" :boatData="selectedBoatData" @next-step="e1 = 3" @previous-step="e1 = 1"></steppers-step2>
             </v-stepper-content>
             <v-stepper-content step="3" class="px-sm-6 px-2 pt-1">
-              <steppers-step3 @next-step="e1 = 4" @previous-step="e1 = 2"></steppers-step3>
+              <steppers-step3 :tripData="tripData" @next-step="e1 = 4" @previous-step="e1 = 2"></steppers-step3>
             </v-stepper-content>
             <v-stepper-content step="4" class="px-sm-6 px-2 pt-sm-3 pt-1">
               <steppers-step4 @previous-step="e1 = 3"></steppers-step4>
@@ -68,11 +68,21 @@
 </template>
 
 <script>
+import Step1 from './Step1.vue';
+import Step2 from './Step2.vue';
+import Step3 from './Step3.vue';
+
 export default {
+  components: {
+    Step1,
+    Step2,
+    Step3
+  },
     data () {
     return {
       e1: 1,
       selectedBoatData: null,
+      tripData: {}
     };
   },
   methods: {
@@ -82,13 +92,16 @@ export default {
     },
     receiveDataFromStep1(data) {
       this.selectedBoatData = data;
+    },
+    updateStep2Data(data) {
+      this.tripData = data;
     }
   }
 
 }
 </script>
 
-<style>
+<style scoped>
 ::v-deep .active-step .v-stepper__step__step {
     color: white; 
     width: 33px; 

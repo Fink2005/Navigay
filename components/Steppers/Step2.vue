@@ -442,11 +442,33 @@ export default {
         'Sportfisher 21': 'C35596QC'
       };
       return boats[boatName] || '';
+    },
+    emitData() {
+        const selectedTimes = this.checkboxes
+            .map((checked, index) => checked ? `Time Slot ${index + 1}` : null)
+            .filter(time => time !== null);
+        
+        const totalMinutes = this.checkboxes.length * 120;
+
+        this.$emit('update-data', {
+            boat: this.boatData.boat,
+            passengers: this.getBoatPassengers(this.boatData.boat),
+            date: this.boatData.day,
+            time: selectedTimes.join(', '),
+            totalMinutes: totalMinutes,
+            lake: this.getBoatLake(this.boatData.boat),
+            dock: this.getBoatDock(this.boatData.boat),
+            city: this.getBoatCity(this.boatData.boat),
+        });
+    },
+    updateStep() {
+        this.emitData();
+        this.$emit('next-step');
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

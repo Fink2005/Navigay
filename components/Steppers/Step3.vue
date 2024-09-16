@@ -60,49 +60,49 @@
                             <div class="leaders-1">
                                 <div>
                                     <span>Boat:</span>
-                                    <span class="font-weight-bold">Vectra</span>
+                                    <span class="font-weight-bold">{{ tripData.boat || 'N/A' }}</span>
                                 </div>
                             </div>
                             <div class="leaders-1">
                                 <div>
                                     <span>Passengers:</span>
-                                    <span class="font-weight-bold"></span>
+                                    <span class="font-weight-bold">{{ tripData.passengers }}</span>
                                 </div>
                             </div>
                             <div class="leaders-1">
                                 <div>
                                     <span>Date:</span>
-                                    <span class="font-weight-bold"></span>
+                                    <span class="font-weight-bold">{{ tripData.date }}</span>
                                 </div>
                             </div>
                             <div class="leaders-1">
                                 <div>
                                     <span>Time:</span>
-                                    <span class="font-weight-bold"></span>
+                                    <span class="font-weight-bold">{{ tripData.time }}</span>
                                 </div>
                             </div>
                             <div class="leaders-1">
                                 <div>
                                     <span>Total Minutes:</span>
-                                    <span class="font-weight-bold"></span>
+                                    <span class="font-weight-bold">{{ tripData.totalMinutes }}</span>
                                 </div>
                             </div>
                             <div class="leaders-1">
                                 <div>
                                     <span>Lake:</span>
-                                    <span class="font-weight-bold"></span>
+                                    <span class="font-weight-bold">{{ tripData.lake }}</span>
                                 </div>
                             </div>
                             <div class="leaders-1">
                                 <div>
                                     <span>Dock:</span>
-                                    <span class="font-weight-bold">  </span>
+                                    <span class="font-weight-bold">{{ tripData.dock }}</span>
                                 </div>
                             </div>
                             <div class="leaders-1">
                                 <div>
                                     <span>City:</span>
-                                    <span class="font-weight-bold"> </span>
+                                    <span class="font-weight-bold">{{ tripData.city }}</span>
                                 </div>
                             </div>
                         </div>
@@ -133,16 +133,19 @@
 <script>
 export default {
     name: 'Step3',
-    data () {
-        return {
-            
+    props: {
+        tripData: {
+            type: Object,
+            default: () => ({})
         }
+    },
+    mounted() {
+        console.log('Step3 tripData:', this.tripData);
     }
-
 }
 </script>
 
-<style>
+<style scoped>
 
 .leaders-1 {
     list-style: none;
@@ -156,6 +159,17 @@ export default {
     float: left;
     white-space: nowrap;
     width: 0;
+}
+.leaders-1 span {
+    background: #fff;
+    padding-right: .33em;
+    font-size: 14px;
+}
+.leaders-1 span+span {
+    background: #fff;
+    padding-left: .33em;
+    float: right;
+    font-size: 14px;
 }
 
 
