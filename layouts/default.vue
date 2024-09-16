@@ -3,7 +3,7 @@
     <!-- Initial Header -->
     <div> 
       <!-- First Header -->
-      <v-header 
+      <header 
         class="v-sheet theme--light elevation-0 v-toolbar v-app-bar mx-0 d-none d-sm-flex" 
         :class="$vuetify.breakpoint.xsOnly ? '' : 'px-sm-5'" 
         style="margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px; border-bottom: 1px solid #8b8b8b !important; background-color: #c4f1ff5f; box-shadow: none;" 
@@ -24,10 +24,10 @@
             <a href="" class="d-flex align-start mx-3 subtitle-2 text-decoration-none black--text cursor-pointer font-weight-normal" > French</a>
           </div>
         </v-toolbar>
-      </v-header>
+      </header>
 
       <!-- Second Header -->
-      <v-header 
+      <header 
         class="px-0 v-sheet theme--light elevation-0 v-toolbar v-app-bar pt-sm-2 " 
         style="transform: translateY(0px); left: 0px; right: 0px; box-shadow: none; background:#c4f1ff5f;" 
         data-booted="true" 
@@ -73,7 +73,7 @@
             </div>
           </div>
         </v-toolbar>
-      </v-header>
+      </header>
     </div>
     <v-main style="padding: 0px 0px 0px; position: relative; ">
       <v-container class="container--fluid fill-height pa-0">

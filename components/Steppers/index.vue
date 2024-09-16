@@ -1,4 +1,5 @@
-<template>
+<!-- Index File -->
+<template> 
   <div class="layout d-flex flex-column align-start">
     <v-sheet style="height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0) !important; border-color: rgba(0, 0, 0, 0) !important;">
       <div>
@@ -49,13 +50,13 @@
 
           <v-stepper-items style="background-color: #c4f1ff5f">
             <v-stepper-content step="1" class="px-sm-6 px-2 pt-sm-3 pt-1">
-              <steppers-step1 @dataFromOne="receiveDataFromStep1" @next-step="e1 = 2"></steppers-step1>
+              <steppers-step1  @dataFromOne="handleDataFromOne" @next-step="e1 = 2"></steppers-step1>
             </v-stepper-content>
             <v-stepper-content step="2" class="px-sm-6 px-2 pt-1">
               <steppers-step2 @update-data="updateStep2Data" :boatData="selectedBoatData" @next-step="e1 = 3" @previous-step="e1 = 1"></steppers-step2>
             </v-stepper-content>
             <v-stepper-content step="3" class="px-sm-6 px-2 pt-1">
-              <steppers-step3 :tripData="tripData" @next-step="e1 = 4" @previous-step="e1 = 2"></steppers-step3>
+              <steppers-step3 :data="step3Data" :trip-data="tripData" @next-step="e1 = 4" @previous-step="e1 = 2"></steppers-step3>
             </v-stepper-content>
             <v-stepper-content step="4" class="px-sm-6 px-2 pt-sm-3 pt-1">
               <steppers-step4 @previous-step="e1 = 3"></steppers-step4>
@@ -80,9 +81,13 @@ export default {
   },
     data () {
     return {
+      tripData: {
+        time: null,
+        totalMinutes: null
+      },
       e1: 1,
       selectedBoatData: null,
-      tripData: {}
+      step3Data: {},
     };
   },
   methods: {
@@ -93,8 +98,17 @@ export default {
     receiveDataFromStep1(data) {
       this.selectedBoatData = data;
     },
+    handleDataFromOne(data) {
+      this.selectedBoatData = data;
+      this.step3Data = data;
+    },
     updateStep2Data(data) {
-      this.tripData = data;
+      const updatedData = {
+        ...data,
+        time: data.time || null,
+        totalMinutes: data.totalMinutes || null
+      };
+      this.tripData = { ...this.tripData, ...updatedData };
     }
   }
 

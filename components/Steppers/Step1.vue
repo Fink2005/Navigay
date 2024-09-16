@@ -1,3 +1,5 @@
+<!-- Step 1 -->
+
 <template>
         <v-card class="px-2 pb-5 pt-2"  height="auto" style="box-shadow: none;">
             <div>
@@ -173,12 +175,18 @@ export default {
                 name: "Vectra 21",
                 capacity: 10,
                 hp: 60,
+                lake: "Memphrémagog",
+                dock: "Pointe Merry",
+                city: "Magog",
                 
                 },
                 {
                 name: "Sportfisher 21",
                 capacity: 10,
                 hp: 60,
+                lake: "Memphrémagog",
+                dock: "Pointe Merry",
+                city: "Magog",
                 
                 }
             ],
@@ -241,7 +249,11 @@ export default {
 
         this.$emit('dataFromOne', {
             boat: boat.name,
-            day: day
+            day: day,
+            passengers: boat.capacity,
+            lake: boat.lake,
+            dock: boat.dock,
+            city: boat.city
         });
         
         },

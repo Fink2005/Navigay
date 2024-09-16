@@ -445,10 +445,31 @@ export default {
     },
     emitData() {
         const selectedTimes = this.checkboxes
-            .map((checked, index) => checked ? `Time Slot ${index + 1}` : null)
+            .map((checked, index) => {
+                if (checked) {
+                    switch (index) {
+                        case 0:
+                            return '06:00-08:00';
+                        case 1:
+                            return '08:15-10:15';
+                        case 2:
+                            return '10:30-12:30';
+                        case 3:
+                            return '12:45-14:45';
+                        case 4:
+                            return '15:00-17:00';
+                        case 5:
+                            return '17:15-18:30';
+                        default:
+                            return null;
+                    }
+                } else {
+                    return null;
+                }
+            })
             .filter(time => time !== null);
         
-        const totalMinutes = this.checkboxes.length * 120;
+        const totalMinutes = this.checkboxes.filter(checked => checked).length * 120;
 
         this.$emit('update-data', {
             boat: this.boatData.boat,
@@ -460,6 +481,7 @@ export default {
             dock: this.getBoatDock(this.boatData.boat),
             city: this.getBoatCity(this.boatData.boat),
         });
+
     },
     updateStep() {
         this.emitData();

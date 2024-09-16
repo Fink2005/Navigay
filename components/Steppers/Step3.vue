@@ -1,3 +1,4 @@
+<!-- Step 3 -->
 <template>
         <v-card class="px-2 pb-5 pt-2"  height="auto" style="box-shadow: none;">
             <div>
@@ -57,22 +58,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="leaders-1">
+                            <div class="leaders-1" v-if="data">
                                 <div>
                                     <span>Boat:</span>
-                                    <span class="font-weight-bold">{{ tripData.boat || 'N/A' }}</span>
+                                    <span class="font-weight-bold">{{ data.boat }}</span>
                                 </div>
                             </div>
-                            <div class="leaders-1">
+                            <div class="leaders-1" v-if="data">
                                 <div>
                                     <span>Passengers:</span>
-                                    <span class="font-weight-bold">{{ tripData.passengers }}</span>
+                                    <span class="font-weight-bold">{{ data.passengers }}</span>
                                 </div>
                             </div>
-                            <div class="leaders-1">
+                            <div class="leaders-1" v-if="data">
                                 <div>
                                     <span>Date:</span>
-                                    <span class="font-weight-bold">{{ tripData.date }}</span>
+                                    <span class="font-weight-bold">{{ data.day }}</span>
                                 </div>
                             </div>
                             <div class="leaders-1">
@@ -87,22 +88,22 @@
                                     <span class="font-weight-bold">{{ tripData.totalMinutes }}</span>
                                 </div>
                             </div>
-                            <div class="leaders-1">
+                            <div class="leaders-1" v-if="data">
                                 <div>
                                     <span>Lake:</span>
-                                    <span class="font-weight-bold">{{ tripData.lake }}</span>
+                                    <span class="font-weight-bold">{{ data.lake }}</span>
                                 </div>
                             </div>
-                            <div class="leaders-1">
+                            <div class="leaders-1" v-if="data">
                                 <div>
                                     <span>Dock:</span>
-                                    <span class="font-weight-bold">{{ tripData.dock }}</span>
+                                    <span class="font-weight-bold">{{ data.dock }}</span>
                                 </div>
                             </div>
-                            <div class="leaders-1">
+                            <div class="leaders-1" v-if="data">
                                 <div>
                                     <span>City:</span>
-                                    <span class="font-weight-bold">{{ tripData.city }}</span>
+                                    <span class="font-weight-bold">{{ data.city }}</span>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +121,7 @@
                 </div>
                   
                 <div class="col-sm-5 col-md-4 col-lg-3 col-12 py-1">
-                    <v-btn color="#1a2444" @click = "$emit('next-step')" class="white--text" style="width: 100%; height: 40px;">
+                    <v-btn color="#1a2444" @click = "$emit('updateStep')" class="white--text" style="width: 100%; height: 40px;">
                         Next Step
                       
                         <v-icon>mdi-chevron-right</v-icon>
@@ -134,10 +135,18 @@
 export default {
     name: 'Step3',
     props: {
+        data: Object,
+        default: () => ({}),
+
         tripData: {
             type: Object,
             default: () => ({})
-        }
+        },
+    },
+    data() {
+        return {
+            data: this.tripData,
+        };
     },
     mounted() {
         console.log('Step3 tripData:', this.tripData);
