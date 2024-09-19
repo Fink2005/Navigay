@@ -490,4 +490,16 @@ export default {
 
 <style scoped>
 
+.theme--light.v-btn.v-btn--disabled {
+    color: #ffffff4d !important;
+}
+
+.theme--light.v-btn.v-btn--disabled .v-icon {
+    color: #ffffff4d !important;
+}
+
+.theme--light.v-btn.v-btn--disabled.v-btn--has-bg {
+    background-color: #1a2444 !important; 
+}
+
 </style>

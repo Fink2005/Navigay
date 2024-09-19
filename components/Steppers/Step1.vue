@@ -19,7 +19,7 @@
                                 <div class="d-flex justify-center justify-md-start">
                                     <div class="row no-gutters">
                                         <div class="d-flex justify-start col col-1">
-                                            <v-btn style="height:40px;" outlined @click="adjustDate(-7)">
+                                            <v-btn style="height:40px;" outlined @click="adjustDate(-7)" :disabled="isPastDate">
                                                 <v-icon>mdi-chevron-left</v-icon>
                                             </v-btn>
                                         </div>
@@ -134,7 +134,7 @@
                         @click="$emit('next-step')" 
                         class="white--text" 
                         style="width: 100%; height: 40px;"
-                        :class="{ 'btn-disabled': !isStepComplete }"
+                        :class="{ 'btn-disabled': !isStepComplete, 'btn-custom-disabled': !isStepComplete }"
                         :disabled="!isStepComplete"
                     >
                         Next Step
@@ -207,6 +207,12 @@ export default {
     isStepComplete() {
       // Return true if both boat and date are selected
       return this.selected.boat !== null && this.selected.day !== null;
+    },
+    isPastDate() {
+        const today = new Date(this.minDate); // Get the current date (minDate)
+        const selectedDate = new Date(this.picker); // Get the date selected in the picker
+        // Disable button if the selected date is less than or equal to today
+        return selectedDate <= today;
     }
 },
     methods: {
@@ -295,9 +301,17 @@ export default {
   font-size: 16px !important;
 }
 
-::v-deep .btn-disabled {
-  background-color: #1a2444;
-  opacity: 0.6;
+.theme--light.v-btn.v-btn--disabled {
+    color: #ffffff4d !important;
 }
+
+.theme--light.v-btn.v-btn--disabled .v-icon {
+    color: #ffffff4d !important;
+}
+
+.theme--light.v-btn.v-btn--disabled.v-btn--has-bg {
+    background-color: #1a2444 !important; 
+}
+
 
 </style>
