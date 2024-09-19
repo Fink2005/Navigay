@@ -354,7 +354,7 @@
                 <div class="col-sm-5 col-md-4 col-lg-3 col-12 py-1">
                     <v-btn 
                         color="#1a2444" 
-                        @click = "$emit('next-step')" 
+                        @click = "updateStep"
                         class="white--text" 
                         style="width: 100%; height: 40px;"
                         :disabled="!isStepComplete"
@@ -381,6 +381,9 @@ export default {
         return {
             checkboxes: [false, false, false, false, false, false], // Initial array of checkboxes
             selected: { boat: null, day: null},
+            selectedTimes: {},
+            totalMinutes: {},
+
             
         }
     },
@@ -444,7 +447,7 @@ export default {
       return boats[boatName] || '';
     },
     emitData() {
-        const selectedTimes = this.checkboxes
+        this.selectedTimes = this.checkboxes
             .map((checked, index) => {
                 if (checked) {
                     switch (index) {
@@ -469,11 +472,11 @@ export default {
             })
             .filter(time => time !== null);
         
-        const totalMinutes = this.checkboxes.filter(checked => checked).length * 120;
+        this.totalMinutes = this.checkboxes.filter(checked => checked).length * 120;
 
         this.$emit('update-data', {
-            time: selectedTimes.join(', '),
-            totalMinutes: totalMinutes,
+            time: this.selectedTimes.join(', '),
+            totalMinutes: this.totalMinutes,
         });
 
     },

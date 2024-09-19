@@ -58,52 +58,52 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="leaders-1" v-if="data">
+                            <div class="leaders-1" v-if="localData">
                                 <div>
                                     <span>Boat:</span>
-                                    <span class="font-weight-bold">{{ data.boat }}</span>
+                                    <span class="font-weight-bold">{{ localData.boat }}</span>
                                 </div>
                             </div>
-                            <div class="leaders-1" v-if="data">
+                            <div class="leaders-1" v-if="localData">
                                 <div>
                                     <span>Passengers:</span>
-                                    <span class="font-weight-bold">{{ data.passengers }}</span>
+                                    <span class="font-weight-bold">{{ localData.passengers }}</span>
                                 </div>
                             </div>
-                            <div class="leaders-1" v-if="data">
+                            <div class="leaders-1" v-if="localData">
                                 <div>
                                     <span>Date:</span>
-                                    <span class="font-weight-bold">{{ data.day }}</span>
+                                    <span class="font-weight-bold">{{ localData.day }}</span>
                                 </div>
                             </div>
                             <div class="leaders-1">
                                 <div>
                                     <span>Time:</span>
-                                    <span class="font-weight-bold">{{ tripData.time }}</span>
+                                    <span class="font-weight-bold">{{ localTripData.time }}</span>
                                 </div>
                             </div>
                             <div class="leaders-1">
                                 <div>
                                     <span>Total Minutes:</span>
-                                    <span class="font-weight-bold">{{ tripData.totalMinutes }}</span>
+                                    <span class="font-weight-bold">{{ localTripData.totalMinutes }}</span>
                                 </div>
                             </div>
-                            <div class="leaders-1" v-if="data">
+                            <div class="leaders-1" v-if="localData">
                                 <div>
                                     <span>Lake:</span>
-                                    <span class="font-weight-bold">{{ data.lake }}</span>
+                                    <span class="font-weight-bold">{{ localData.lake }}</span>
                                 </div>
                             </div>
-                            <div class="leaders-1" v-if="data">
+                            <div class="leaders-1" v-if="localData">
                                 <div>
                                     <span>Dock:</span>
-                                    <span class="font-weight-bold">{{ data.dock }}</span>
+                                    <span class="font-weight-bold">{{ localData.dock }}</span>
                                 </div>
                             </div>
-                            <div class="leaders-1" v-if="data">
+                            <div class="leaders-1" v-if="localData">
                                 <div>
                                     <span>City:</span>
-                                    <span class="font-weight-bold">{{ data.city }}</span>
+                                    <span class="font-weight-bold">{{ localData.city }}</span>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +121,7 @@
                 </div>
                   
                 <div class="col-sm-5 col-md-4 col-lg-3 col-12 py-1">
-                    <v-btn color="#1a2444" @click = "$emit('updateStep')" class="white--text" style="width: 100%; height: 40px;">
+                    <v-btn color="#1a2444" @click = "updateStep" class="white--text" style="width: 100%; height: 40px;">
                         Next Step
                       
                         <v-icon>mdi-chevron-right</v-icon>
@@ -135,8 +135,10 @@
 export default {
     name: 'Step3',
     props: {
-        data: Object,
-        default: () => ({}),
+        data: {
+            type: Object,
+            default: () => ({})
+        },
 
         tripData: {
             type: Object,
@@ -145,11 +147,34 @@ export default {
     },
     data() {
         return {
-            data: this.tripData,
+            localData: {},
+            localTripData: {},
         };
     },
     mounted() {
-        console.log('Step3 tripData:', this.tripData);
+        this.localData = {...this.data };
+        this.localTripData = {...this.tripData };
+    },
+    watch: {
+        data: {
+            handler(newVal) {
+                this.localData = {...newVal };
+            },
+            immediate: true,
+            deep: true,
+        },
+        tripData: {
+            handler(newVal) {
+                this.localTripData = {...newVal };
+            },
+            immediate: true,
+            deep: true,
+        }
+    },
+    methods: {
+    updateStep() {
+        this.$emit('next-step');
+    }
     }
 }
 </script>

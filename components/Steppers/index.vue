@@ -95,21 +95,13 @@ export default {
       this.e1 = this.e1 + 1
       
     },
-    receiveDataFromStep1(data) {
-      this.selectedBoatData = data;
-    },
     handleDataFromOne(data) {
       this.selectedBoatData = data;
       this.step3Data = data; // Pass data to step 3
     },
     updateStep2Data(data) { // Update data for step 2
-      const updatedData = {
-        ...data,
-        time: data.time || null,
-        totalMinutes: data.totalMinutes || null
-      };
-      this.tripData = { ...this.tripData, ...updatedData };
-    }
+      this.tripData = data;
+    },
   }
 
 }

@@ -9,11 +9,7 @@
                     Previous
                 </v-btn>
               
-                <v-btn color="#1a2444" @click="$emit('previous-step')" class="white--text pa-03" width="25%">
-                    Next Step
                 
-                    <v-icon>mdi-chevron-right</v-icon>
-                </v-btn>
     </v-stepper-content>
 </template>
 
