@@ -134,7 +134,7 @@
 <script>
 export default {
     name: 'Step3',
-    props: {
+    props: { 
         data: {
             type: Object,
             default: () => ({})
@@ -151,11 +151,11 @@ export default {
             localTripData: {},
         };
     },
-    mounted() {
+    mounted() { 
         this.localData = {...this.data };
         this.localTripData = {...this.tripData };
     },
-    watch: {
+    watch: { //  watch for changes in props
         data: {
             handler(newVal) {
                 this.localData = {...newVal };

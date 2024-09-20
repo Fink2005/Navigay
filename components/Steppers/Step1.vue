@@ -132,14 +132,13 @@
                     <v-btn 
                         color="#1a2444" 
                         @click="$emit('next-step')" 
-                        class="white--text" 
+                        class="white--text btn-disabled" 
                         style="width: 100%; height: 40px;"
-                        :class="{ 'btn-disabled': !isStepComplete, 'btn-custom-disabled': !isStepComplete }"
                         :disabled="!isStepComplete"
                     >
                         Next Step
                       
-                    <v-icon>mdi-chevron-right</v-icon>
+                    <v-icon class="icon-disabled">mdi-chevron-right</v-icon>
                     </v-btn>
                 </div>
             </div>
@@ -301,17 +300,15 @@ export default {
   font-size: 16px !important;
 }
 
-.theme--light.v-btn.v-btn--disabled {
-    color: #ffffff4d !important;
-}
 
-.theme--light.v-btn.v-btn--disabled .v-icon {
-    color: #ffffff4d !important;
-}
 
 .theme--light.v-btn.v-btn--disabled.v-btn--has-bg {
     background-color: #1a2444 !important; 
+    color: #ffffff4d !important;
 }
 
+.theme--light.v-btn.v-btn--disabled.v-btn--has-bg .v-icon {
+    color: #ffffff4d !important
+}
 
 </style>

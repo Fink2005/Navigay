@@ -446,7 +446,7 @@ export default {
       };
       return boats[boatName] || '';
     },
-    emitData() {
+    emitData() { //  emit data to parent component
         this.selectedTimes = this.checkboxes
             .map((checked, index) => {
                 if (checked) {
@@ -474,13 +474,13 @@ export default {
         
         this.totalMinutes = this.checkboxes.filter(checked => checked).length * 120;
 
-        this.$emit('update-data', {
+        this.$emit('update-data', { //  emit data to parent
             time: this.selectedTimes.join(', '),
             totalMinutes: this.totalMinutes,
         });
 
     },
-    updateStep() {
+    updateStep() { //  called when the user clicks on the next button
         this.emitData();
         this.$emit('next-step');
     }
