@@ -5,20 +5,18 @@
         About us
       </v-header>
       <v-header>
-
       </v-header>
-      
     </div>
-  
     <v-main>
-      <v-container>
-        
-      </v-container>
+      <Nuxt />
     </v-main>
   </v-app>
 </template>
 
 <script>
+import Step1 from '../components/step1.vue';
+import Step2 from '../components/step2.vue';
+
   export default {
     data () {
       return {
@@ -27,3 +25,5 @@
     },
   }
 </script>
+
+</style>
