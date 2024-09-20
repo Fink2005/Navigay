@@ -1,40 +1,39 @@
 <template>
   <v-container>
-    <v-row class="align-center">
-       <v-avatar color="blue" size="45">
-         <span class="white--text">1</span>
-       </v-avatar>
-       <v-col>
-       <span class="ml-3, font-weight-bold">Choose time</span>
-       </v-col>
-     </v-row>
-     <v-row align="center" justify="center">
-         <v-col cols="auto">
-             <v-btn style="height:40px;" @click="prevDay">
+            <h2 class="ml-4 ms-4 pb-6 d-flex align-center font-weight-bold">
+              <v-sheet 
+              class="d-flex align-center justify-center rounded-pill light-blue lighten-2" 
+              style="height: 40px; width: 40px;"
+              >
+                1
+              </v-sheet>
+              <div class="ml-3"> Choose time </div>
+            </h2>
+     <div class="row no-gutters">
+         <div class="d-flex jusify-start col col-1">
+             <v-btn style="height:40px;" outlined @click="prevDay">
                  <v-icon>mdi-chevron-left</v-icon>
              </v-btn>
-         </v-col>
-         <v-col cols="2">
+         </div>
+         <div class="d-flex justify-center">
                <v-dialog v-model="dialog">
                  <template v-slot:activator="{on, attrs}">
                      <v-btn
                          outlined
                          height="40px"
-                         
                          v-bind="attrs"
                          v-on="on"
-                         append-icon="mdi-calendar"
                      >{{ getFormattedDate(buttonDate) }}</v-btn>
                  </template>
                  <v-date-picker full-width="" @input="updateDate"></v-date-picker>
                </v-dialog>
-         </v-col>
-         <v-col cols="-5">
-         <v-btn style="height:40px;" @click="nextDay">
+         </div>
+         <div class="d-flex justify-end col col-1">
+         <v-btn style="height:40px;" outlined @click="nextDay">
            <v-icon>mdi-chevron-right</v-icon>
          </v-btn>
-       </v-col>
-     </v-row>
+       </div>
+     </div>
      <v-row>
        <span class="subtitle-1">Lake Memphrémagog - Dock Pointe Merry</span>
      </v-row>
