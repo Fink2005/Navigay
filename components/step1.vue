@@ -67,14 +67,6 @@
      </template>
     </v-simple-table>
     </template>
-        <div class="2btn ml-5">
-        <v-btn
-          color="primary"
-          @click="e1 = 2"
-          class="font-weight-bold mt-5">
-          NEXT STEP >
-        </v-btn>       
-      </div>
       </v-card>
 </template>
 <script>

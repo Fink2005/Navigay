@@ -2,23 +2,23 @@
     <div height="100%">
       <v-stepper v-model="e1" height="100%" width="100%">
         <v-stepper-header class="">
-          <v-divider style="border:solid 5px; margin-left:87px"></v-divider>
+          <v-divider class="divider1" ></v-divider>
             <v-stepper-step 
             :complete="e1 > 1"
-            step="1" class="pa-0 active-step">
+            step="1" class="pa-0 ">
           </v-stepper-step>
-          <v-divider style="border:solid 5px"></v-divider>
+          <v-divider class="divider" :class="e1 >=2 ? 'active' : 'inactive' "></v-divider>
             <v-stepper-step
             :complete="e1 > 2"
-            step="2" class="pa-0 inactive-step" :class="e1 >=2 ? 'active-step' : 'inactive-step' ">
+            step="2" class="pa-0">
             </v-stepper-step>
-          <v-divider style="border:solid 5px"></v-divider>
+          <v-divider class="divider"></v-divider>
         <v-stepper-step :complete="e1 > 3"
-          step="3" class="pa-0 inactive-step" :class="e1 >=3 ? 'active-step' : 'inactive-step' ">
+          step="3" class="pa-0">
         </v-stepper-step>
-          <v-divider style="border:solid 5px"></v-divider>
+          <v-divider class="divider"></v-divider>
             <v-stepper-step 
-              step="4" class="pa-0 inactive-step" :class="e1 >=4 ? 'active-step' : 'inactive-step'" style="margin-right:87px">
+              step="4" class="pa-0" style="margin-right:87px">
         </v-stepper-step>
   </v-stepper-header>
     <v-stepper-items>
@@ -26,6 +26,14 @@
         <v-card min-height="1000">
           <Step1>
           </Step1>
+          <div class="2btn" style="margin-top: 100px ;margin-left: 18px;">
+        <v-btn
+          color="primary"
+          @click="e1 = 2"
+          class="font-weight-bold mt-5">
+          NEXT STEP >
+        </v-btn>       
+      </div>
         </v-card>
       </v-stepper-content height="1000" >
       <v-stepper-content step="2">
@@ -41,7 +49,6 @@
 <script>
 
 import Step1 from '../components/step1.vue';
-import Step2 from '../components/step2.vue';
 
 export default {
     data () {
@@ -52,19 +59,25 @@ export default {
   }
 </script>
 <style lang="scss" scoped>
-::v-deep .active-step .v-stepper__step__step {
-    color: white; 
-    width: 33px; 
-    height: 33px; 
-    font-size: 20px; 
-    background-color: #1a2444 !important;
+.divider {
+  background-color: aqua;
+  max-height: 100px;
+  height: 10px;
+  border: none;
+}
+.divider1 {
+  background-color: black;
+  max-height: 100px;
+  height: 10px;
+  border: none;
+  
+}
+.inactive {
+  background-color: aqua;
 }
 
-::v-deep .inactive-step .v-stepper__step__step {
-    color: #1a2444; 
-    width: 33px; 
-    height: 33px; 
-    font-size: 20px; 
-    background-color: #bcefff !important;
+.active {
+  background-color: black;
 }
+
 </style>
