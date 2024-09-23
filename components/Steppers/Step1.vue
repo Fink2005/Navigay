@@ -3,7 +3,7 @@
         <v-card class="px-2 pb-5 pt-2"  height="auto" style="box-shadow: none;">
             <div>
                 <v-card class="my-1 pt-2 no-border" style="box-shadow: none;">
-                    <h2 class="ml-4 ms-4 pb-6 d-flex align-center font-weight-bold">
+                    <h2 class="ml-4 ms-4 pb-6 d-flex align-center font-weight-bold" :class="$vuetify.breakpoint.xsOnly ? 'text-h6 font-weight-bold' : ''">
                         <v-sheet 
                             class="d-flex align-center justify-center rounded-pill light-blue lighten-2" 
                             style="height: 40px; width: 40px;"

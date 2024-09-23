@@ -4,7 +4,12 @@
             <div>
                 <div class="px-4 py-4">
                     <h2 class="pt-0 pb-2 d-flex align-center font-weight-bold">
-                        <v-sheet class="d-flex align-center justify-center rounded-pill deep-purple lighten-4" style="height: 40px; width: 40px">
+                        <v-sheet 
+                            class="d-flex align-center justify-center rounded-pill deep-purple lighten-4" 
+                            style="height: 40px; 
+                            width: 40px"
+                            :class="$vuetify.breakpoint.xsOnly ? 'text-h6 font-weight-bold' : ''"
+                        >
                             3
                         </v-sheet>
                         <div class="ml-3">Confirm your trip details</div>
