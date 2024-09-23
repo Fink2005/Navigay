@@ -69,11 +69,20 @@
          </v-col>
      </v-row>
  
-     <v-row class="mt-6 pl-3 ">
-       <v-btn color="primary" large @click="nextStep">Next Step
-          <v-icon>mdi-chevron-right</v-icon>
-       </v-btn>
-     </v-row>
+     <div class="d-flex flex-row mx-1">
+        <div class="col-sm-4 col-md-3 col-12">
+          <v-btn 
+            color="primary" 
+            class="white--text btn-disable" 
+            style="width: 100%; height: 40px;"
+            @click="$emit('next step')"
+            :disabled="!isStepComplete"
+          >
+              Next Step
+            <v-icon>mdi-chevron-right</v-icon>
+          </v-btn>
+        </div>
+     </div>
   </v-container>
  </template>
  
@@ -86,11 +95,17 @@
            name: "Vectra 21",
            link: "#",
            hp: 60,
+           lake: "Memphrémagog",
+           dock: "Pointe Merry",
+           city: "Magog",
          },
          {
            name: "Sportfisher 21",
            link: "#",
            hp: 60,
+           lake: "Memphrémagog",
+           dock: "Pointe Merry",
+           city: "Magog",
          },
        ],
        selectedDate: null,
@@ -116,6 +131,9 @@
        const dates = `${date.getDate()} ${date.toLocaleString('en-CA', { month: 'long' })}`;
        return dates
      },
+     isStepComplete() {
+        return this.selectedBoat !== null && this.selectedDate !== null;
+     }
    },
    methods: {
      prevDay() {
@@ -128,7 +146,13 @@
      },
      nextStep() {
        // Function to handle the next step action
-       alert("Proceeding to the next step...");
+       this.$emit('dataFromOne', {
+          boat: boats,
+          day: day,
+          lake: boats.lake,
+          dock: boats.dock,
+          city: boats.city,
+       });
      },
      selectDate (boat, date) {
        this.selectedBoat = boat
@@ -142,8 +166,7 @@
        this.buttonDate = newDate;
        this.getFormattedDate(this.buttonDate);
        this.dialog = false;
-     }
- 
+     },
    },
  };
  </script>
