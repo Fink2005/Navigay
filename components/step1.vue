@@ -7,9 +7,9 @@
         height="200px"
       >
         <div class="all5 d-flex ml-4 ms-4 pb-6 flex-column justify-left">
-          <div class="d-flex">
+          <div class="d-flex mb-4">
             <div class="d-flex align-center justify-center v-sheet rounded-pill light-blue lighten-2 font-weight-bold" style="height: 40px; width: 40px;">1</div>
-            <div class="d-flex ml-3 mt-2 font-weight-bold">Choose 1</div>
+            <div class="d-flex ml-3 mt-2 font-weight-bold">Choose time</div>
           </div>
           <div class="3 button d-flex">
             <v-btn text outlined style="border-color: black;" class="mr-1" :disabled="disable"><v-icon>mdi-chevron-left</v-icon></v-btn>
@@ -21,7 +21,7 @@
               <v-btn text outlined style="border-color: black;" ><v-icon>mdi-chevron-right</v-icon></v-btn>
           </div>
         </div>
-        <p class="d-flex ml-5" style="color:black">
+        <p class="d-flex ml-5 font-weight-bold" style="color:black">
             Lake Memphrémagog - Dock Pointe Merry
         </p>
             <template>

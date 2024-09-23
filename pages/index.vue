@@ -1,18 +1,19 @@
 <template>
-    <div class="ml-4" height="100%">
+  <v-sheet class="big">
+    <div height="100%">
       <v-stepper v-model="e1" height="100%" width="100%">
-        <v-stepper-header class="" outlined>
-          <v-divider class="divider1" ></v-divider>
+        <v-stepper-header class="">
+          <v-divider class="divider1 ml-16" ></v-divider>
             <v-stepper-step 
             :complete="e1 > 1"
             step="1" class="num pa-0 font-weight-bold"  >
           </v-stepper-step>
           <v-divider class="divider" :class="e1 >=2 ? 'active' : 'inactive' "></v-divider>
-            <v-stepper-step
-            :complete="e1 > 2"
-            step="2" class="num font-weight-bold pa-0 ">
-            </v-stepper-step>
-            <v-divider class="divider" :class="e1 >=3 ? 'active' : 'inactive' "></v-divider>
+          <v-stepper-step
+          :complete="e1 > 2"
+          step="2" class="num font-weight-bold pa-0 ">
+        </v-stepper-step>
+        <v-divider class="divider" :class="e1 >=3 ? 'active' : 'inactive' "></v-divider>
         <v-stepper-step :complete="e1 > 3"
           step="3" class="num font-weight-bold pa-0">
         </v-stepper-step>
@@ -20,17 +21,17 @@
             <v-stepper-step 
               step="4" class="num font-weight-bold pa-0" style="margin-right:87px">
             </v-stepper-step>
-  </v-stepper-header>
-    <v-stepper-items>
-      <v-stepper-content class="" height="1000" step="1">
-        <v-card min-height="1000">
-          <Step1>
-          </Step1>
-          <div class="2btn" style="margin-top: 100px ;margin-left: 18px;">
-        <v-btn
+          </v-stepper-header>
+          <v-stepper-items>
+            <v-stepper-content class="" height="1000" step="1">
+              <v-card min-height="370">
+                <Step1>
+                </Step1>
+                <div class="2btn" style="margin-top: 100px ;margin-left: 18px;">
+                  <v-btn
           color="primary"
           @click="e1 = 2"
-          class="font-weight-bold mt-5">
+          class="font-weight-bold mt-7">
           NEXT STEP >
         </v-btn>       
       </div>
@@ -41,7 +42,7 @@
             </Step2>
             <div class="3btn" style="margin-top: 100px ;margin-left: 18px;">
         <v-btn
-          color="primary"
+        color="primary"
           @click="e1 = 3"
           class="font-weight-bold mt-5">
           NEXT STEP >
@@ -52,23 +53,23 @@
             <Step3>
             </Step3>
             <div class="4btn" style="margin-top: 100px ;margin-left: 18px;">
-        <v-btn
-          color="primary"
-          @click="e1 = 4"
-          class="font-weight-bold mt-5">
-          NEXT STEP >
-        </v-btn>       
+              <v-btn
+              color="primary"
+              @click="e1 = 4"
+              class="font-weight-bold mt-5">
+              NEXT STEP >
+            </v-btn>       
       </div>
-          </v-stepper-content>
-          <v-stepper-content step="4">
-            <Step4>
-            </Step4>
-          </v-stepper-content>
-        </v-stepper-items>
-      </v-stepper>
-    </div>
-      
-</template>
+    </v-stepper-content>
+    <v-stepper-content step="4">
+      <Step4>
+      </Step4>
+    </v-stepper-content>
+  </v-stepper-items>
+</v-stepper>
+    </div>   
+  </v-sheet>
+  </template>
 
 <script>
 
@@ -95,6 +96,7 @@ export default {
 ::v-deep .v-stepper__step__step {
 min-width: 33px;
 min-height: 33px;
+font-size: 1.00rem;
 }
 .divider1 {
   background-color: black;
@@ -124,6 +126,9 @@ min-height: 33px;
 
 .active {
   background-color: black !important;
+}
+::v-deep .theme--light.v-sheet {
+  background-color: #d7f7fc;
 }
 
 </style>
