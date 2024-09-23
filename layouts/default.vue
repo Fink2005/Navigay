@@ -1,7 +1,7 @@
 <template>
   <v-app dark>
     <div>
-      <v-header>
+      <v-header class="head">
         <v-toolbar outlined class="d-flex wrap justify-end" elevation="0">
           <a href="https://app.econavigo.com/en" class="d-flex align-start mx-3 subtitle-2 text-decoration-none cursor-pointer"> About us</a>
           <a href="https://navigo.club/en/contact-us" class="d-flex align-start mx-3 subtitle-2 text-decoration-none cursor-pointer"> Contact us</a>
@@ -14,9 +14,8 @@
           <div> French 
           </div>
         </v-toolbar>
-        <v-toolbar class="d-flex">
-          <div class="d-flex">
-            <div class="d-flex">
+        <v-toolbar elevation="0">
+          <div class="d-flex flex-grow-1">
               <a href="https://app.econavigo.com/en"><img src="https://app.econavigo.com/_nuxt/img/logo_mobile.b5097fc.svg"> </a>
               <a href="https://app.econavigo.com/subscription" class="d-flex align-center mx-3 subtitle-2 text-decoration-none cursor-pointer">Subscription</a>
               <a href="https://navigo.club/en#advantages" class="d-flex align-center mx-3 subtitle-2 text-decoration-none cursor-pointer">Advantages</a>
@@ -25,13 +24,8 @@
               <a href="https://navigo.club/en#" class="d-flex align-center mx-3 subtitle-2 text-decoration-none cursor-pointer">Boating license</a>
               <a href="https://app.econavigo.com/pricing" class="d-flex align-center mx-3 subtitle-2 text-decoration-none cursor-pointer">Pricing</a>
             </div>
-            <div class="d-flex">
-              <v-spacer class="space">
-              </v-spacer>
-            </div>
-            <div>
-              <v-btn class="v-btn--is-elevated v-btn--has-bg v-btn--rounded theme--light v-size--x-large primary">RENT A BOAT</v-btn>
-            </div>
+          <div>
+            <v-btn class="v-btn--is-elevated v-btn--has-bg v-btn--rounded theme--light v-size--x-large primary">RENT A BOAT</v-btn>
           </div>
           </v-toolbar>
       </v-header>
@@ -55,7 +49,7 @@ import Step2 from '../components/step2.vue';
   }
 </script>
 <style>
-.space {
-  flex-grow: 1 !important;
+.theme--light.v-toolbar.v-sheet {
+  background-color: #d7f7fc !important;
 }
 </style>

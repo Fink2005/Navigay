@@ -130,5 +130,7 @@ font-size: 1.00rem;
 ::v-deep .theme--light.v-sheet {
   background-color: #d7f7fc;
 }
-
+.v-stepper__header {
+box-shadow: none;
+}
 </style>
