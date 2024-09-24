@@ -55,6 +55,7 @@
                                     readonly
                                     v-bind="attrs"
                                     v-on="on"
+                                    :rules="[rules.required, rules.dateOfBirth]"
 
                                 >
                                 </v-text-field>
@@ -63,7 +64,8 @@
                                 v-model="date"
                                 no-title
                                 scrollable
-                                @click="$refs.dialog.save(date)"
+                                @input="$refs.menu.save(date)"
+                                
                             >
                             </v-date-picker>
                         </v-menu>
@@ -166,7 +168,8 @@
 <script>
   export default {
     data: () => ({
-        date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+        date: '',
+        menu: false,
         items: ['Advanced', 'Intermediate', 'Beginner', 'None'],
         email: '',
         rules: {
@@ -174,6 +177,23 @@
             email: value => {
                 const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                 return pattern.test(value) || 'Invalid email address.'
+            },
+            dateOfBirth: value => {
+                if (!value) return true; // allow empty value
+                const birthDate = new Date(value);
+                const today = new Date();
+                if (birthDate > today) {
+                    return 'You cannot choose a date in the future';
+                }
+                let calculatedAge = today.getFullYear() - birthDate.getFullYear();
+                let m = today.getMonth() - birthDate.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                    calculatedAge--;
+                }
+                if (calculatedAge < 25) {
+                    return 'You must be 25 or older';
+                }
+                return true;
             }
         }
     }),
