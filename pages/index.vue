@@ -31,7 +31,7 @@
                   <v-btn
           color="primary"
           @click="e1 = 2"
-          class="font-weight-bold mt-7">
+          class="button font-weight-bold mt-7 pl-16 pr-16">
           NEXT STEP >
         </v-btn>       
       </div>
@@ -44,7 +44,7 @@
         <v-btn
         color="primary"
           @click="e1 = 3"
-          class="font-weight-bold mt-5">
+          class="button font-weight-bold mt-7 pl-16 pr-16">
           NEXT STEP >
         </v-btn>       
       </div>
@@ -56,7 +56,7 @@
               <v-btn
               color="primary"
               @click="e1 = 4"
-              class="font-weight-bold mt-5">
+              class="button font-weight-bold mt-7 pl-16 pr-16">
               NEXT STEP >
             </v-btn>       
       </div>
@@ -132,5 +132,8 @@ font-size: 1.00rem;
 }
 .v-stepper__header {
 box-shadow: none;
+}
+.button {
+  background-color: darkblue !important;
 }
 </style>
