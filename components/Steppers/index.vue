@@ -72,12 +72,15 @@
 import Step1 from './Step1.vue';
 import Step2 from './Step2.vue';
 import Step3 from './Step3.vue';
+import ImageUploader from './ImageUploader.vue';
+
 
 export default {
   components: {
     Step1,
     Step2,
-    Step3
+    Step3,
+    ImageUploader,
   },
     data () {
     return {
@@ -102,6 +105,7 @@ export default {
     updateStep2Data(data) { // Update data for step 2
       this.tripData = data;
     },
+    
   }
 
 }

@@ -130,9 +130,8 @@
             <div class="d-flex flex-row mx-1">
                 <div class="col-sm-4 col-md-3 col-12">
                     <v-btn 
-                        color="#1a2444" 
                         @click="$emit('next-step')" 
-                        class="white--text btn-disabled" 
+                        class="white--text btn-disabled darkbluebutton" 
                         style="width: 100%; height: 40px;"
                         :disabled="!isStepComplete"
                     >

@@ -65,6 +65,7 @@ export default {
         },
         light: {
           anchorbase: colors.blue.lighten1,
+          darkbluebutton: "#1a2444"
         }
       }
     }

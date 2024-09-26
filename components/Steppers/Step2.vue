@@ -353,9 +353,8 @@
                   
                 <div class="col-sm-5 col-md-4 col-lg-3 col-12 py-1">
                     <v-btn 
-                        color="#1a2444" 
                         @click = "updateStep"
-                        class="white--text" 
+                        class="white--text darkbluebutton" 
                         style="width: 100%; height: 40px;"
                         :disabled="!isStepComplete"
                     >

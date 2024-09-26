@@ -100,24 +100,43 @@
                     </div>
                     <div class="pt-0 pb-3 col col-12">
                         <div>
-                            <div class="row flex-row">
-                                <div class="col col-6">
+                            <div class="row flex-row" :class="$vuetify.breakpoint.xsOnly ? 'flex-column' : ''">
+                                <div class="col-6" :class="$vuetify.breakpoint.xsOnly ? 'col-12 mt-5' : '' ">
                                     <div>Boat license</div>
-                                    <div class="layout align-center">
-                                        <v-sheet>
-
+                                    <div class="layout align-center" style="display: block;">
+                                        <v-sheet flat style="min-height: 100px; width: 100%;">
+                                            <file-drop></file-drop>
                                         </v-sheet>
+                                        <div class="row">
+                                            <div class="col-sm-6 col-12">
+                                                <v-btn class="py-2 px-9 mt-4 darkbluebutton text-capitalize" block dark>
+                                                    Click here to Upload
+                                                </v-btn>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col col-6">
+                                <div class="col col-6" :class="$vuetify.breakpoint.xsOnly ? 'col-12' : '' ">
                                     <div>Driver license</div>
+                                    <div class="layout align-center" style="display: block;">
+                                        <v-sheet flat style="min-height: 100px; width: 100%;">
+                                            <file-drop></file-drop>
+                                        </v-sheet>
+                                        <div class="row">
+                                            <div class="col-sm-6 col-12">
+                                                <v-btn class="py-2 px-9 mt-4 darkbluebutton text-capitalize" block dark>
+                                                    Click here to Upload
+                                                </v-btn>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </v-form>
-            <div class="mt-8 v-sheet" style="width:100%">
+            <div class="mt-8 v-sheet" :style="$vuetify.breakpoint.mdAndUp ? 'width:700px' : 'width:100%'">
                 <span class="font-weight-bold">Important reminders</span>
                 <ul>
                     <li class="mt-2">The key to start the boat is in a key box at the stern of the boat. Of the boat. You access the key box with the access code that will be sent to you by sms after payment.</li>
@@ -146,7 +165,7 @@
                     </div>
                   
                     <div class="col-sm-5 col-md-4 col-lg-3 col-12" :class="$vuetify.breakpoint.xsOnly ? 'py-1' : '' ">
-                        <v-btn color="#1a2444" class="white--text" style="width: 100%; height: 40px;" disabled>
+                        <v-btn class="white--text darkbluebutton" style="width: 100%; height: 40px;" disabled>
                             Proceed To Checkout
                       
                             <v-icon>mdi-chevron-right</v-icon>
@@ -166,8 +185,12 @@
 </template>
 
 <script>
+import ImageUploader from './ImageUploader.vue';
+
+
   export default {
     data: () => ({
+        components: { ImageUploader },
         date: '',
         menu: false,
         items: ['Advanced', 'Intermediate', 'Beginner', 'None'],
@@ -195,7 +218,8 @@
                 }
                 return true;
             }
-        }
+        },
+        
     }),
   }
 </script>
