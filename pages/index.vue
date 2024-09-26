@@ -1,5 +1,5 @@
 <template>
-  <hoangtubuda></hoangtubuda>
+  <step1></step1>
 </template>
 
 <script>
