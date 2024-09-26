@@ -105,11 +105,16 @@
                                     <div>Boat license</div>
                                     <div class="layout align-center" style="display: block;">
                                         <v-sheet flat style="min-height: 100px; width: 100%;">
-                                            <file-drop></file-drop>
+                                            <file-drop @image-uploaded="handleImageUpload"></file-drop>
                                         </v-sheet>
                                         <div class="row">
                                             <div class="col-sm-6 col-12">
-                                                <v-btn class="py-2 px-9 mt-4 darkbluebutton text-capitalize" block dark>
+                                                <v-btn
+                                                    class="py-2 px-9 mt-4 darkbluebutton text-capitalize" 
+                                                    block 
+                                                    dark
+                                                    :disabled="!isImageUploaded"
+                                                >
                                                     Click here to Upload
                                                 </v-btn>
                                             </div>
@@ -120,11 +125,16 @@
                                     <div>Driver license</div>
                                     <div class="layout align-center" style="display: block;">
                                         <v-sheet flat style="min-height: 100px; width: 100%;">
-                                            <file-drop></file-drop>
+                                            <file-drop @image-uploaded="handleImageUpload"></file-drop>
                                         </v-sheet>
                                         <div class="row">
                                             <div class="col-sm-6 col-12">
-                                                <v-btn class="py-2 px-9 mt-4 darkbluebutton text-capitalize" block dark>
+                                                <v-btn 
+                                                    class="py-2 px-9 mt-4 darkbluebutton text-capitalize" 
+                                                    block 
+                                                    dark
+                                                    :disabled="!isImageUploaded"
+                                                >
                                                     Click here to Upload
                                                 </v-btn>
                                             </div>
@@ -191,6 +201,7 @@ import ImageUploader from './ImageUploader.vue';
   export default {
     data: () => ({
         components: { ImageUploader },
+        isImageUploaded: false,
         date: '',
         menu: false,
         items: ['Advanced', 'Intermediate', 'Beginner', 'None'],
@@ -218,9 +229,13 @@ import ImageUploader from './ImageUploader.vue';
                 }
                 return true;
             }
-        },
-        
+        },     
     }),
+    methods: {
+        handleImageUpload(isUploaded) {
+            this.isImageUploaded = isUploaded; // Update state when image is uploaded
+        },
+    }
   }
 </script>
 

@@ -6,19 +6,18 @@
       @dragleave="handleDragLeave"
       @drop.prevent="handleFileDrop"
       :class="{ 'drag-over': isDragging }"
-      outlined="false"
     >
       <input type="file" accept="image/*" @change="handleFileSelect" ref="fileInput" hidden />
-      
+  
       <!-- Show text only if no image is selected -->
       <p v-if="!image">Click here to select image or drag and drop here</p>
-      
+  
       <!-- Show the image if an image is selected -->
       <img v-if="image" :src="image" alt="Selected Image" />
     </v-card>
 </template>
   
-<script>
+  <script>
   export default {
     data() {
       return {
@@ -51,13 +50,13 @@
           const reader = new FileReader();
           reader.onload = (e) => {
             this.image = e.target.result; // Set the image as base64 URL
+            this.$emit('image-uploaded', true); // Emit event when image is uploaded
           };
           reader.readAsDataURL(file);
         }
       },
       triggerFileInput() {
-        // Open the file input dialog
-        this.$refs.fileInput.click();
+        this.$refs.fileInput.click(); // Open the file dialog
       },
     },
   };
