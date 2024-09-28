@@ -8,78 +8,21 @@
                 </div>
             </h2>
         </div>
-        <div class="d-flex">
-            <div class="d-flex ml-4 mr-12">
-                <v-btn text outlined style="border-color: black;" class="mr-1" @click="updateDate(getPreviousDay(currentDate))" :disabled="disable"><v-icon>mdi-chevron-left</v-icon></v-btn>
-                <v-dialog v-model="dialog">
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn text outlined style="border-color: black;" class="mr-1" v-bind="attrs" v-on="on">{{ formattedDate }}</v-btn>
-                    </template>
-                    <v-date-picker full-width @input="updateDate" :allowedDates="allowedDates"></v-date-picker>
-                </v-dialog>
-                <v-btn text outlined style="border-color: black;" @click="updateDate(getNextDay(currentDate))"><v-icon>mdi-chevron-right</v-icon></v-btn>
-            </div>
-            <div class="d-flex ml-12">
-                <v-menu offset-y nudge-bottom="10">
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn text outlined v-bind="attrs" v-on="on" width="145px" style="border-color: darkgray;" class="text-capitalize body-2" v-if="selectedHour1 || selectedMinute1">{{ `${selectedHour1}:${selectedMinute1}` }}</v-btn>
-                        <v-btn text outlined v-bind="attrs" v-on="on" width="145px" style="border-color: darkgray;" class="text-capitalize body-2" v-else></v-btn>
-                    </template>
-                    <div class="d-flex rounded-lg align-center pa-4">
-                        <v-menu offset-y nudge-top="37"> 
-                            <template v-slot:activator="{ on, attrs }">
-                                <v-btn text v-bind="attrs" v-on="on" class="mr-2 text-capitalize body-2" style="background-color: white">{{ selectedHour1 }}</v-btn>
-                            </template>
-                            <div class="d-flex flex-column" style="height: 285px;">
-                                <v-btn text v-for="item in hourItems" :key="item" class="text-capitalize caption" style="background-color: white; border-radius: 0%;" @click="selectHour1(item)">{{ item }}</v-btn>
-                            </div>
-                        </v-menu>
-                        <span class="mr-2">:</span>
-                        <v-menu offset-y nudge-top="37">
-                            <template v-slot:activator="{ on, attrs }">
-                                <v-btn text v-bind="attrs" v-on="on" style="background-color: white" class="text-capitalize body-2">{{ selectedMinute1 }}</v-btn>
-                            </template>
-                            <div class="d-flex flex-column" style="height: 285px;">
-                                <v-btn text v-for="item in minuteItems" :key="item" class="text-capitalize caption" style="background-color: white; border-radius: 0%;" @click="selectMinute1(item)">{{ item }}</v-btn>
-                            </div>
-                        </v-menu>
-                    </div>
-                </v-menu>
-                <span class="body-2 grey--text text--darken-1 ml-3 mr-9">To</span>
-                <v-menu offset-y nudge-bottom="10">
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn text outlined v-bind="attrs" v-on="on" width="145px" style="border-color: darkgray;" class="text-capitalize body-2" v-if="selectedHour2 || selectedMinute2">{{ `${selectedHour2}:${selectedMinute2}` }}</v-btn>
-                        <v-btn text outlined v-bind="attrs" v-on="on" width="145px" style="border-color: darkgray;" class="text-capitalize body-2" v-else></v-btn>
-                    </template>
-                    <div class="d-flex rounded-lg align-center pa-4">
-                        <v-menu offset-y nudge-top="37">
-                            <template v-slot:activator="{ on, attrs }">
-                                <v-btn text v-bind="attrs" class="mr-2 text-capitalize body-2" v-on="on" style="background-color: white">{{ selectedHour2 }}</v-btn>
-                            </template>
-                            <div class="d-flex flex-column" style="height: 285px;">
-                                <v-btn text v-for="item in hourItems" :key="item" class="text-capitalize caption" style="background-color: white; border-radius: 0%;" @click="selectHour2(item)">{{ item }}</v-btn>
-                            </div>
-                        </v-menu>
-                        <span class="mr-2">:</span>
-                        <v-menu offset-y nudge-top="37">
-                            <template v-slot:activator="{ on, attrs }">
-                                <v-btn text v-bind="attrs" v-on="on" style="background-color: white" class="text-capitalize body-2">{{ selectedMinute2 }}</v-btn>
-                            </template>
-                            <div class="d-flex flex-column" style="height: 285px;">
-                                <v-btn text v-for="item in minuteItems" :key="item" class="text-capitalize caption" style="background-color: white; border-radius: 0%;" @click="selectMinute2(item)">{{ item }}</v-btn>
-                            </div>
-                        </v-menu>
-                    </div>
-                </v-menu>
-            </div>
-            <div class="d-flex ml-10">
-                <v-btn text color="white" style="background-color: #1976d2;" class="mr-5">apply</v-btn>
-                <v-btn text style="background-color: #c62828;" class="ml-5">clear</v-btn>
-            </div>
+        <div class="d-flex ml-4 mr-12" style="width: 23%;">
+            <v-btn text outlined style="border-color: black;" @click="updateDate(getPreviousDay(currentDate))" :disabled="disable"><v-icon>mdi-chevron-left</v-icon></v-btn>
+            <v-spacer></v-spacer>
+            <v-dialog v-model="dialog">
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn text outlined style="border-color: black;" :class="$vuetify.breakpoint.xs ? 'mx-1' : ''" v-bind="attrs" v-on="on" :width="$vuetify.breakpoint.xs ? '12rem' : ''">{{ formattedDate }}<v-icon color="blue" v-if="$vuetify.breakpoint.xs">mdi-calendar-check-outline</v-icon></v-btn>
+                </template>
+                <v-date-picker full-width @input="updateDate" :allowedDates="allowedDates" v-model="currentDate" />
+            </v-dialog>
+            <v-spacer></v-spacer>
+            <v-btn text outlined style="border-color: black;" @click="updateDate(getNextDay(currentDate))"><v-icon>mdi-chevron-right</v-icon></v-btn>
         </div>
         <div class="mt-4 ml-4">
-            <span style="font-size: 1.25rem;">Lake {{ lake[0].name }} - Dock {{ lake[0].dock }}</span>
-            <v-data-table :headers="header" :items="items" hide-default-footer>
+            <span style="font-size: 1.25rem;" :class="$vuetify.breakpoint.xs ? 'subtitle-2 font-weight-bold': ''">Lake {{ lakes[0].name }} - Dock {{ lakes[0].dock }}</span>
+            <v-data-table :headers="header" :items="items" hide-default-footer mobile-breakpoint="0">
                 <template v-slot:header.people="{ header }"> 
                     <v-icon>mdi-account</v-icon>
                 </template>
@@ -94,8 +37,8 @@
             </v-data-table>
         </div>
         <div class="ml-4">
-            <span style="font-size: 1.25rem;">Lake {{ lake[1].name }} - Dock {{ lake[1].dock }}</span>
-            <v-data-table :headers="header" :items="items2" hide-default-footer>
+            <span style="font-size: 1.25rem;" :class="$vuetify.breakpoint.xs ? 'subtitle-2 font-weight-bold': ''">Lake {{ lakes[1].name }} - Dock {{ lakes[1].dock }}</span>
+            <v-data-table :headers="header" :items="items2" hide-default-footer mobile-breakpoint="0">
                 <template v-slot:header.people="{ header }"> 
                     <v-icon>mdi-account</v-icon>
                 </template>
@@ -109,13 +52,14 @@
                 </template>
             </v-data-table>
         </div>
-        <v-btn @click="$store.commit('increment')" text style="background-color: #1a2444;" color="white" width="25%" class="mt-5 ml-4" :disabled="uncomplete" dark>
+        <v-btn @click="step = 2" text style="background-color: #1a2444;" color="white" :width="$vuetify.breakpoint.xs ? '95%' : '25%'" class="mt-5 ml-4" :disabled="uncomplete" dark>
             Next Step <v-icon>mdi-chevron-right</v-icon>
         </v-btn>
     </v-card>
 </template>
 
 <script>
+import { mapFields } from 'vuex-map-fields';
 export default {
     data() {
         return {
@@ -140,16 +84,10 @@ export default {
                 }
             ],
             dialog: false,
-            hourItems: ['All', '00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'],
-            minuteItems: ['All', '00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'],
-            selectedHour1: '',
-            selectedMinute1: '',
-            selectedHour2: '',
-            selectedMinute2: '',
             currentDate: new Date().toISOString().substr(0, 10),
             formattedDate: '',
             tableHeaderDate: [],
-            boat: [
+            boats: [
                 {
                     name: 'Vantage 22',
                     licenses: 'A',
@@ -166,7 +104,7 @@ export default {
                     color: 'Blue'
                 }
             ],
-            lake: [
+            lakes: [
                 {
                     name: 'Memphrémagog',
                     dock: 'North'
@@ -187,6 +125,19 @@ export default {
             },
             disable: true,
         };
+    },
+    computed: {
+        ...mapFields([
+            'step',
+            'date',
+            'lake',
+            'dock',
+            'boat',
+            'hp',
+            'passengers',
+            'licenses',
+            'color',
+        ])
     },
     methods: {
         getFormattedDate(date) {
@@ -210,7 +161,6 @@ export default {
         },     
         updateDate(newDate) {
             const today = new Date().toISOString().substr(0, 10);
-            console.log(`newDate: ${newDate}, today: ${today}`);
             this.currentDate = newDate;
             this.disable = (newDate === today);
             this.dialog = false;
@@ -218,18 +168,6 @@ export default {
             this.tableHeaderDate = this.getTableHeaderDate(newDate);
             this.updateHeaders();
             this.resetClickState();
-        },
-        selectHour1(item) {
-            this.selectedHour1 = item;
-        },
-        selectMinute1(item) {
-            this.selectedMinute1 = item;
-        },
-        selectHour2(item) {
-            this.selectedHour2 = item;
-        },
-        selectMinute2(item) {
-            this.selectedMinute2 = item;
         },
         updateHeaders() {
             this.header = [
@@ -274,17 +212,14 @@ export default {
             return this.selectedButton[tableIndex].row === row && this.selectedButton[tableIndex].col === col;
         },
         sendData(row, col, tableIndex) {
-            const data = {
-                date: this.tableHeaderDate[col].text,
-                lake: this.lake[tableIndex]?.name || '',
-                dock: this.lake[tableIndex]?.dock || '',
-                boat: tableIndex === 0 ? this.items[row]?.boat || '' : this.items2[row]?.boat || '',
-                hp: tableIndex === 0 ? this.items[row]?.hp || '' : this.items2[row]?.hp || '',
-                passengers: tableIndex === 0 ? this.items[row]?.people || '' : this.items2[row]?.people || '',
-                licenses: tableIndex === 0 ? this.boat[row]?.licenses || '' : this.boat[2]?.licenses || '',
-                color: tableIndex === 0 ? this.boat[row]?.color || '' : this.boat[2]?.color || '',
-            };
-            this.$emit('dataFromOne', data);
+            this.date = this.tableHeaderDate[col].text;
+            this.lake = this.lakes[tableIndex].name;
+            this.dock = this.lakes[tableIndex].dock;
+            this.boat = tableIndex === 0 ? this.items[row].boat : this.items2[row].boat;
+            this.hp = tableIndex === 0 ? this.items[row].hp : this.items2[row].hp;  
+            this.passengers = tableIndex === 0 ? this.items[row].people : this.items2[row].people;  
+            this.licenses = tableIndex === 0 ? this.boats[row].licenses : this.boats[2].licenses;
+            this.color = tableIndex === 0 ? this.boats[row].color : this.boats[2].color;
             this.uncomplete = false;
         },
         handleClick(index, indexCol, tableIndex) {
@@ -297,8 +232,12 @@ export default {
             return date.toISOString().substr(0, 10);
         },
         getPreviousDay(currentDate) {
+            const today = new Date();
             const date = new Date(currentDate);
             date.setDate(date.getDate() - 7);
+            if (date < today) {
+                date.setDate(today.getDate())
+            }  
             return date.toISOString().substr(0, 10);
         },
     },  

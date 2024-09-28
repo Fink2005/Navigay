@@ -1,77 +1,67 @@
 <template>
-    <v-stepper v-model="$store.state.step" elevation="0">
-        <v-stepper-header class="elevation-0 ml-16 pl-12" style="width: 90%;">
-            <template v-for="index in 4">
-                <v-divider class="ct-divider" :color="$store.state.step >= index ? '#1a2444' : '#bcefff'"></v-divider>
-                <v-stepper-step :complete="$store.state.step > index" 
-                                :step="index" 
-                                class="ct-stepper-step" 
-                                :class="$store.state.step >= index ? 'active-step' : 'inactive-step'">
-                </v-stepper-step>
-            </template>
-        </v-stepper-header>
-  
-        <v-stepper-items>
-            <v-stepper-content step="1">
-                <StepperOne @dataFromOne="handleDataFromOne" />
-            </v-stepper-content>
+    <div>
+        <a href="/" class="d-flex d-sm-none ml-5 mt-4" style="width: 100px;"><v-img :src="require('assets/logo.svg')" contain height="20px" width="100px"></v-img></a>
+        <v-stepper v-model="step" elevation="0" fluid>
+            <v-stepper-header class="elevation-0 d-sm-flex d-none" style="padding: 0 6rem">
+                <template v-for="index in 4">
+                    <v-divider class="ct-divider" :color="step >= index ? '#1a2444' : '#bcefff'"></v-divider>
+                    <v-stepper-step :complete="step > index" 
+                                    :step="index" 
+                                    class="ct-stepper-step" 
+                                    :class="step >= index ? 'active-step' : 'inactive-step'">
+                    </v-stepper-step>
+                </template>
+            </v-stepper-header>
     
-            <v-stepper-content step="2">
-                <StepperTwo :receivedData="data" @dataFromTwo="handleDataFromTwo" />
-            </v-stepper-content>
-    
-            <v-stepper-content step="3">
-                <StepperThree :receivedData="data2" />
-            </v-stepper-content>
-    
-            <v-stepper-content step="4">
-                <StepperFour />
-            </v-stepper-content>
-        </v-stepper-items>
-    </v-stepper>
+            <v-stepper-items style="background-color: rgba(196, 241, 255, .373);">
+                <v-stepper-content step="1">
+                    <StepperOne />
+                </v-stepper-content>
+        
+                <v-stepper-content step="2">
+                    <StepperTwo />
+                </v-stepper-content>
+        
+                <v-stepper-content step="3">
+                    <StepperThree />
+                </v-stepper-content>
+        
+                <v-stepper-content step="4">
+                    <StepperFour />
+                </v-stepper-content>
+            </v-stepper-items>
+        </v-stepper>
+    </div>
 </template>
   
 <script>
+import { mapFields } from 'vuex-map-fields';
 export default {
     data() {
         return {
-            data: {
-                date: '',
-                lake: '',
-                dock: '',
-                boat: '',
-                hp: '',
-                passengers: '',
-                licenses: '',
-                color: '',
-            },
-            data2: {
-                city: '',
-                time: '',
-                totalMinutes: 0,
-                ...this.data
-            }
+
         };
     },
-    methods: {
-        handleDataFromOne(data) {
-            this.data = data;
-        },
-        handleDataFromTwo(data) {
-            this.data2 = data;
-        }
-    }
+    computed: {
+        ...mapFields([
+            'step'
+        ])
+    },
 };
 </script>
 
 <style scoped>
 .ct-divider {
     border-width: 4px;
-    height: 100%;
+    height: 100%;   
 }
 .ct-stepper-step {
-    padding: 0;
-}   
+    padding: 0px;
+} 
+.v-stepper__header {
+    height: auto; 
+    background-color: rgba(196, 241, 255, .373);
+}
 ::v-deep .active-step .v-stepper__step__step {
     color: white; 
     width: 33px; 
